@@ -1,0 +1,82 @@
+<form novalidate class="simple-form">
+  <div class="row">
+     <div class="col-sm-6">
+        <div class="form-group">
+           <label for="name">Nom</label>
+           <input type="text" class="form-control" id="name"  ng-model="user.firstName" placeholder="Nom">
+        </div>
+     </div>
+     <div class="col-sm-6">
+        <div class="form-group">
+          <label for="firstName">Prenom</label>
+          <input type="text" class="form-control" id="firstName" ng-model="user.lastName" placeholder="Prenom">
+       </div>
+     </div>
+  </div>
+  <div class="row">
+     <div class="col-sm-6">
+        <div class="form-group">
+           <label for="departure">Ville d'origine</label>
+           <input type="text" class="form-control" id="departure" ng-model="user.departure" placeholder="Ex. La Rochelle">
+        </div>
+     </div>
+     <div class="col-sm-6">
+        <div class="form-group">
+          <label for="ban">Ville à eviter</label>
+          <input type="text" class="form-control" id="ban" ng-model="user.ban" placeholder="Ex. Paris">
+       </div>
+     </div>
+ </div>
+
+<div class="form-group">
+  <label for="topic">Thèmes</label>
+  <input type="text" class="form-control hidden" id="topic" ng-model="user.topic">
+
+  <div class="row">
+     <div class="col-sm-3">
+        <div class="panel panel-default" ng-click="changeTopic($event, 0)">
+          <div class="panel-body topic-box topic-ski">
+          </div>
+          <div class="panel-footer text-center">
+            <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+          </div>
+       </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="panel panel-default" ng-click="changeTopic($event,1)">
+         <div class="panel-body topic-box topic-city">
+         </div>
+         <div class="panel-footer text-center">
+            <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+         </div>
+     </div>
+  </div>
+  <div class="col-sm-3">
+     <div class="panel panel-default" ng-click="changeTopic($event, 2)">
+      <div class="panel-body topic-box topic-country">
+      </div>
+      <div class="panel-footer text-center">
+          <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+      </div>
+   </div>
+</div>
+<div class="col-sm-3">
+  <div class="panel panel-default" ng-click="changeTopic($event, 3)">
+     <div class="panel-body topic-box topic-beach">
+     </div>
+     <div class="panel-footer text-center">
+       <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+     </div>
+  </div>
+</div>
+</div>
+  </div>
+</div>
+ <div class="checkbox">
+    <label>
+        <input type="checkbox"> J'accepte les CGU.
+     </label>
+ </div>
+     <input type="submit" ng-click="update(user)" value="Chercher !" class="btn btn-success text-center"/>
+</form>
+ <pre>user = {{user | json}}</pre>

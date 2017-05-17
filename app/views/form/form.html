@@ -1,0 +1,33 @@
+<h1>Formulaire d'inscription</h1>
+<div class="row">
+   <div class="col-xs-8 col-xs-offset-2">
+      <form class="" action="http://localhost:8080/user" method="post">
+         <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" class="form-control" name="name" placeholder="nom">
+         </div>
+         <div class="form-group">
+            <label for="lastName">Prénom</label>
+            <input type="text" class="form-control" name="lastName" placeholder="prénom">
+         </div>
+         <div class="form-group">
+            <label for="lastName">Salaire annuel brut</label>
+            <input type="number" class="form-control" name="salary" placeholder="30000" min="0">
+         </div>
+         <div class="form-group">
+            <label for="lastName">Email</label>
+            <input type="email" class="form-control" name="email" placeholder="exemple@immoblint.eu">
+         </div>
+         <div class="form-group">
+            <label for="propretyId">Choix de la propriété</label>
+            <select class="form-control" name="propretyId">
+               <option value="0">Appartement n°1: 500€/mois</option>
+               <option value="1">Appartement n°2: 600€/mois</option>
+               <option value="2">Appartement n°3: 300€/mois</option>
+               <option value="3">Appartement n°4: 200€/mois</option>
+            </select>
+         </div>
+         <button type="submit" class="btn btn-success">Envoyer <span class="glyphicon glyphicon-ok"></span></button>
+      </form>
+   </div>
+</div>
