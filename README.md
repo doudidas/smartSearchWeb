@@ -8,7 +8,7 @@ version 0.16.0.
 1. Se placer dans le répertoire où le projet va être téléchargé.
 2. lancer la commande `git clone https://github.com/doudidas/smartSearchWeb.git`
 
-## Déploiement
+## Deployment
 
 Lancer `grunt serve` pour déployer le serveur. A défaut, le site est accessible à l'adresse suivante http://localhost:9000
 
