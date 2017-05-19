@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name activitiApp.controller:AboutCtrl
+ * @name smartSearchApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the activitiApp
+ * Controller of the smartSearchApp
  */
-angular.module('activitiApp')
+angular.module('smartSearchApp')
   .controller('AboutCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

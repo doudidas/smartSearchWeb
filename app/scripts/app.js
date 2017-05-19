@@ -2,17 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name activitiApp
+ * @name smartSearchApp
  * @description
- * # activitiApp
+ * # smartSearchApp
  *
  * Main module of the application.
  */
 angular
-  .module('activitiApp', [
-    'ngResource',
-    'ngRoute'
-  ])
+  .module('smartSearchApp', ['ngResource', 'ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -31,7 +28,7 @@ angular
         controllerAs: 'main'
       })
      .when('/form', {
-        templateUrl: 'views/form/form1.html',
+        templateUrl: 'views/form/form.html',
        controller: 'FormCtrl',
        controllerAs: 'form'
      })
