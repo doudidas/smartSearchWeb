@@ -1,4 +1,4 @@
-'use strict';
+/* global angular */
 
 /**
  * @ngdoc function
@@ -9,6 +9,7 @@
  */
 angular.module('smartSearchApp')
   .controller('AboutCtrl', function () {
+    'use strict';
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
