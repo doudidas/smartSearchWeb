@@ -1,3 +1,4 @@
+<!doctype html>
 <div class="alert alert-success alert-dismissible hidden" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> {{successMessage}}
 </div>
@@ -42,7 +43,7 @@
 
     <div class="row">
       <div class="col-sm-3">
-        <div class="panel panel-default" ng-click="changeTopic($event, 0)">
+        <div class="panel panel-default" ng-click="changeTopic($event, '0')">
           <div class="panel-body topic-box topic-ski">
           </div>
           <div class="panel-footer text-center">
@@ -51,7 +52,7 @@
         </div>
       </div>
       <div class="col-sm-3">
-        <div class="panel panel-default" ng-click="changeTopic($event,1)">
+        <div class="panel panel-default" ng-click="changeTopic($event,'1')">
           <div class="panel-body topic-box topic-city">
           </div>
           <div class="panel-footer text-center">
@@ -60,7 +61,7 @@
         </div>
       </div>
       <div class="col-sm-3">
-        <div class="panel panel-default" ng-click="changeTopic($event, 2)">
+        <div class="panel panel-default" ng-click="changeTopic($event, '2')">
           <div class="panel-body topic-box topic-country">
           </div>
           <div class="panel-footer text-center">
@@ -69,7 +70,7 @@
         </div>
       </div>
       <div class="col-sm-3">
-        <div class="panel panel-default" ng-click="changeTopic($event, 3)">
+        <div class="panel panel-default" ng-click="changeTopic($event, '3')">
           <div class="panel-body topic-box topic-beach">
           </div>
           <div class="panel-footer text-center">
@@ -79,7 +80,6 @@
       </div>
     </div>
   </div>
-  </div>
   <div class="checkbox">
     <label>
         <input type="checkbox"> J'accepte les CGU.
@@ -87,5 +87,13 @@
   </div>
   <input type="submit" ng-click="update(user)" value="Chercher !" class="btn btn-success text-center" />
 </form>
+<h4>Asynchronous results</h4>
+    <pre>Model: {{asyncSelected | json}}</pre>
+    <input type="text" ng-model="asyncSelected" class="form-control">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+
 <pre>user = {{user | json}}</pre>
 <pre>ServerResponse = {{serverResponse | json}}</pre>

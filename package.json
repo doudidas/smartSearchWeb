@@ -1,5 +1,5 @@
 {
-  "name": "activiti",
+  "name": "smartSearch",
   "private": true,
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
@@ -39,5 +39,6 @@
   },
   "scripts": {
     "test": "karma start test/karma.conf.js"
-  }
+  },
+  "dependencies": {}
 }
