@@ -9,11 +9,15 @@
         <p>
           Vous pouvez utiliser votre compte facebook ou votre compte SNCF afin d'avoir des propositions personalisées instantanées
         </p>
+
+        <div class="btn btn-success btn-lg" ng-click="getMyLastName">
+           Pouet
+        </div>
         <div class="row">
           <div class="col-sm-6">
-            <a class="btn btn-default" href="/#!form">je ne souhaite pas avoir de compte</a>
+            <a class="btn btn-default btn-lg" href="/#!form">je ne souhaite pas avoir de compte</a>
           </div>
-
+{{scope.facebook.status}}
           <div class="col-sm-6 border-left">
             <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
             </div>
@@ -22,4 +26,3 @@
       </div>
     </div>
   </div>
-</div>
