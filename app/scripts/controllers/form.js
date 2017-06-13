@@ -9,7 +9,7 @@
  */
 angular.module('smartSearchApp');
 
-angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, $location) {
+angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http) {
   $scope.user = {
     'topics': []
   };
@@ -38,13 +38,15 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
         'departure': $scope.user.departure,
         'topics': $scope.user.topics
       }, //forms user object
-    }).then(function(success) {
+    }).then(
+      function(success) {
       $('.alert-success').fadeIn().removeClass('hidden').delay(3000).fadeOut('slow');
       $scope.serverResponse = success;
       $scope.successMessage = 'Envoi effectué avec succès !';
-
+      $scope.userId = success.data.token;
     }, function(error) {
       var content;
+         $scope.serverResponse = error;
       if (error.status === -1) {
         content = 'Service indisponible : le serveur le répond pas...';
       } else {
