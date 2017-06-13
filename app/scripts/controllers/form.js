@@ -54,7 +54,6 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
       $('.alert-warning').fadeIn().removeClass('hidden').delay(3000).fadeOut('slow');
       $scope.serverResponse = error;
       $scope.warningMessage = content;
-         $location.path('/login');
     });
   };
 });

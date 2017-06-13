@@ -17,11 +17,16 @@
           <div class="col-sm-6">
             <a class="btn btn-default btn-lg" href="/#!form">je ne souhaite pas avoir de compte</a>
           </div>
-{{scope.facebook.status}}
+
           <div class="col-sm-6 border-left">
             <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
             </div>
           </div>
+          <div id="status">
+          </div>
+         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+         </fb:login-button>
+         <pre>facebookCallBack = {{facebookCallBack | json}}</pre>
         </div>
       </div>
     </div>
