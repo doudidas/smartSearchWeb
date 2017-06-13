@@ -3,9 +3,9 @@
   width:5px;
   border-left:3px solid gray;
 }
-.panel {
+/*.panel {
    border: 4px;
-}
+}*/
 .topic-box {
    height: 100px;
    background-size:cover;
@@ -23,4 +23,7 @@
 }
 .topic-ski {
    background-image: url("../images/topics/ski.jpg");
+}
+.topic-paris {
+   background-image: url("../images/cities/paris.jpg");
 }
