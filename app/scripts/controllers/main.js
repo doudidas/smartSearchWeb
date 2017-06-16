@@ -7,5 +7,5 @@
  * # MainCtrl
  * Controller of the smartSearchApp
  */
-angular.module('smartSearchApp').controller('MainCtrl', function($scope) {
- });
+angular.module('smartSearchApp').controller('MainCtrl', function ($scope) {
+});

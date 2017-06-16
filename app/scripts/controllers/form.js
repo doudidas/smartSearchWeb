@@ -9,13 +9,13 @@
  */
 angular.module('smartSearchApp');
 
-angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http) {
+angular.module('smartSearchApp').controller('FormCtrl', function ($scope, $http) {
   $scope.user = {
     'topics': []
   };
   $scope.serverResponse = {};
 
-  $scope.changeTopic = function(event, topicId) {
+  $scope.changeTopic = function (event, topicId) {
     var topicLogo = angular.element(event.target.parentNode).find('div:last i');
     if (topicLogo.hasClass('fa-times')) {
       $scope.user.topics.push(topicId);
@@ -26,7 +26,7 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http) 
     }
   };
 
-  $scope.submitForm = function() {
+  $scope.submitForm = function () {
     $http.defaults.headers.post['Content-Type'] = 'application/json';
     $http({
       method: 'POST',
@@ -39,23 +39,23 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http) 
         'topics': $scope.user.topics
       }, //forms user object
     }).then(
-      function(success) {
-      $('.alert-success').fadeIn().removeClass('hidden').delay(3000).fadeOut('slow');
-      $scope.serverResponse = success;
-      $scope.successMessage = 'Envoi effectué avec succès !';
-      $scope.userId = success.data.token;
-    }, function(error) {
-      var content;
-         $scope.serverResponse = error;
-      if (error.status === -1) {
-        content = 'Service indisponible : le serveur le répond pas...';
-      } else {
-        content = 'Cette adresse email existe déjà';
-      }
+      function (success) {
+        $('.alert-success').fadeIn().removeClass('hidden').delay(3000).fadeOut('slow');
+        $scope.serverResponse = success;
+        $scope.successMessage = 'Envoi effectué avec succès !';
+        $scope.userId = success.data.token;
+      }, function (error) {
+        var content;
+        $scope.serverResponse = error;
+        if (error.status === -1) {
+          content = 'Service indisponible : le serveur le répond pas...';
+        } else {
+          content = 'Cette adresse email existe déjà';
+        }
 
-      $('.alert-warning').fadeIn().removeClass('hidden').delay(3000).fadeOut('slow');
-      $scope.serverResponse = error;
-      $scope.warningMessage = content;
-    });
+        $('.alert-warning').fadeIn().removeClass('hidden').delay(3000).fadeOut('slow');
+        $scope.serverResponse = error;
+        $scope.warningMessage = content;
+      });
   };
 });

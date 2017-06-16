@@ -1,19 +1,22 @@
 <!doctype html>
 <div class="alert alert-success alert-dismissible hidden" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> {{successMessage}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+  </button>
+  {{successMessage}}
 </div>
 <div class="alert alert-warning alert-dismissible hidden" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-     {{warningMessage}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+  </button>
+  {{warningMessage}}
 </div>
 <form novalidate class="simple-form" ng-submit="submitForm()">
   <div class="row">
-     <div class="col-sm-6">
+    <div class="col-sm-6">
       <div class="form-group">
         <label for="firstName">First_name</label>
         <input type="text" class="form-control" id="firstName" ng-model="user.lastName" placeholder="First_name">
       </div>
-     </div>
+    </div>
     <div class="col-sm-6">
       <div class="form-group">
         <label for="name">Last_name</label>
@@ -45,7 +48,8 @@
     <div class="col-sm-6">
       <div class="form-group">
         <label for="location">Location</label>
-        <input type="text" class="form-control" id="location" ng-model="user.locale" placeholder="enter the name of your current location">
+        <input type="text" class="form-control" id="location" ng-model="user.locale"
+               placeholder="enter the name of your current location">
       </div>
     </div>
   </div>
@@ -118,27 +122,27 @@
   </div>
   <div class="checkbox">
     <label>
-        <input type="checkbox"> I accept the general terms and conditions.
-     </label>
+      <input type="checkbox"> I accept the general terms and conditions.
+    </label>
   </div>
-  <input type="submit" ng-click="update(user)" value="Chercher !" class="btn btn-success text-center" />
+  <input type="submit" ng-click="update(user)" value="Chercher !" class="btn btn-success text-center"/>
 </form>
 
 
 <br><br>
 <div class="panel panel-info">
-   <div class="panel-heading">
-      <h1 class="panel-title"> DEBUG</h1>
-   </div>
-   <div class="panel-body">
-      <h4>Asynchronous results</h4>
-          <pre>Response: {{serverResponse | json}}</pre>
-          <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-          <div ng-show="noResults">
-            <i class="glyphicon glyphicon-remove"></i> No Results Found
-          </div>
+  <div class="panel-heading">
+    <h1 class="panel-title"> DEBUG</h1>
+  </div>
+  <div class="panel-body">
+    <h4>Asynchronous results</h4>
+    <pre>Response: {{serverResponse | json}}</pre>
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
 
-      <pre>user = {{user | json}}</pre>
-      <pre>userId = {{userId | json}}</pre>
-   </div>
+    <pre>user = {{user | json}}</pre>
+    <pre>userId = {{userId | json}}</pre>
+  </div>
 </div>
