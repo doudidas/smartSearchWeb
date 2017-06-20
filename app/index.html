@@ -14,7 +14,7 @@
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
-  <link href="styles/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/custom.css">
   <!-- endbuild -->
@@ -22,112 +22,106 @@
 </head>
 
 <body ng-app="smartSearchApp">
-<div id="fb-root"></div>
-<script src="scripts/SDK/facebook.js"></script>
+  <div id="fb-root"></div>
+  <script src="scripts/SDK/facebook.js"></script>
 
 
-<!--[if lte IE 8]>
+  <!--[if lte IE 8]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
   your browser</a> to improve your experience.</p>
 <![endif]-->
 
-   <!-- Fixed navbar -->
-   <div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="navbarCtrl"  data-ng-init="init()">
-     <div class="container">
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="navbarCtrl" data-ng-init="init()">
+    <div class="container">
       <div class="navbar-header">
-         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
            <span class="sr-only">Toggle navigation</span>
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" ng-href="/#!" ng-click="setActive($event)">SmartSearch</a>
+        <a class="navbar-brand" ng-href="/#!" ng-click="setActive($event)">SmartSearch</a>
       </div>
       <div class="navbar-collapse collapse navbar-right">
-         <ul class="nav navbar-nav">
-           <li class="active"><a ng-href="/#!" ng-click="setActive($event)">HOME</a></li>
-           <li><a ng-href="/#!/login" ng-click="setActive($event)">Connexion</a></li>
-           <li><a ng-href="/#!/form" ng-click="setActive($event)">Rechercher</a></li>
-           <li><a ng-href="/#!/result" ng-click="setActive($event)">Précédent Résultat</a></li>
-         </ul>
-      </div><!--/.nav-collapse -->
-     </div>
-   </div>
-<div class="row">
-   <div ng-view=""></div>
-</div>
-<br>
+        <ul class="nav navbar-nav">
+          <li class="active"><a ng-href="/#!" ng-click="setActive($event)">HOME</a></li>
+          <li><a ng-href="/#!/login" ng-click="setActive($event)">Connexion</a></li>
+          <li><a ng-href="/#!/form" ng-click="setActive($event)">Rechercher</a></li>
+          <li><a ng-href="/#!/result" ng-click="setActive($event)">Précédent Résultat</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div ng-view=""></div>
+  </div>
+  <br>
 
-<div class="footer">
-   <!-- *****************************************************************************************************************
+  <div class="footer">
+    <!-- *****************************************************************************************************************
    FOOTER
    ***************************************************************************************************************** -->
-   <div id="footerwrap">
+    <div id="footerwrap">
       <div class="container">
-         <div class="row">
-            <div class="col-lg-4">
-               <h4>About</h4>
-               <div class="hline-w"></div>
-               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-            <div class="col-lg-4">
-               <h4>Social Links</h4>
-               <div class="hline-w"></div>
-               <p>
-                  <a href="#"><i class="fa fa-dribbble"></i></a>
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-instagram"></i></a>
-                  <a href="#"><i class="fa fa-tumblr"></i></a>
-               </p>
-            </div>
-            <div class="col-lg-4">
-               <h4>Contact</h4>
-               <div class="hline-w"></div>
-               <p>
-                  Some Ave, 987,<br/>
-                  23890, New York,<br/>
-                  United States.<br/>
-               </p>
-            </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <h4>About</h4>
+            <div class="hline-w"></div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="col-lg-4">
+            <h4>Social Links</h4>
+            <div class="hline-w"></div>
+            <p>
+              <a href="#"><i class="fa fa-dribbble"></i></a>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="#"><i class="fa fa-tumblr"></i></a>
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <h4>Contact</h4>
+            <div class="hline-w"></div>
+            <p>
+              Some Ave, 987,<br/> 23890, New York,<br/> United States.<br/>
+            </p>
+          </div>
 
-         </div><! --/row -->
-      </div><! --/container -->
-   </div><! --/footerwrap -->
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/js-cookie/src/js.cookie.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 
-</div>
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
-<!-- build:js(.) scripts/vendor.js -->
-<!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-<script src="bower_components/js-cookie/src/js.cookie.js"></script>
-<!-- endbower -->
-<!-- endbuild -->
-
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
-
-<script src="scripts/app.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/about.js"></script>
-<script src="scripts/controllers/form.js"></script>
-<script src="scripts/controllers/result.js"></script>
-<script src="scripts/controllers/navbar.js">
-
-</script>
-<script src="scripts/retina-1.1.0.js"></script>
-<script src="scripts/jquery.hoverdir.js"></script>
-<script src="scripts/jquery.hoverex.min.js"></script>
-<script src="scripts/jquery.prettyPhoto.js"></script>
-<script src="scripts/jquery.isotope.min.js"></script>
-<!-- endbuild -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/controllers/form.js"></script>
+  <script src="scripts/controllers/result.js"></script>
+  <script src="scripts/controllers/navbar.js">
+  </script>
+  <script src="scripts/retina-1.1.0.js"></script>
+  <script src="scripts/jquery.hoverdir.js"></script>
+  <script src="scripts/jquery.hoverex.min.js"></script>
+  <script src="scripts/jquery.prettyPhoto.js"></script>
+  <script src="scripts/jquery.isotope.min.js"></script>
+  <!-- endbuild -->
 </body>
 
 </html>

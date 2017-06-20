@@ -1,7 +1,7 @@
 <!doctype html>
 <div ng-controller="MainCtrl">
 
-<!-- *****************************************************************************************************************
+  <!-- *****************************************************************************************************************
 HEADERWRAP
 ***************************************************************************************************************** -->
   <div id="headerwrap">
@@ -11,18 +11,12 @@ HEADERWRAP
           <h1>Smart Search</h1>
           <h2 class="pull-right">Moteur de recherche inspirationel permettant d'avoir accès à vos destination favorites.</h2>
           <br>
-          <!-- Button trigger modal -->
-          <a class="btn btn-theme btn-lg" ng-href="/#!login">
-            Commencer
-         </a>
-          <!-- <a ng-href="/#!login" class="btn btn-lg btn-theme">Commencer</a> -->
+          <a class="btn btn-theme btn-lg" ng-href="/#!login">Commencer</a>
         </div>
       </div>
-      <!-- /row -->
     </div>
-    <!-- /container -->
   </div>
-  <!-- /headerwrap -->
+
   <!-- *****************************************************************************************************************
 SERVICE LOGOS
 ***************************************************************************************************************** -->
@@ -49,40 +43,35 @@ SERVICE LOGOS
         </div>
       </div>
     </div>
-    <! --/container -->
   </div>
-  <! --/service -->
 
   <!-- *****************************************************************************************************************
 PORTFOLIO SECTION
 ***************************************************************************************************************** -->
-<div id="portfoliowrap">
-  <div class="portfolio-centered">
-    <div class="recentitems portfolio">
-      <h4>Les villes</h4>
-      <div class="hline"></div>
-      <br><br>
-      <div class="row">
-        <div ng-repeat="city in cities">
-          <div class="col-sm-3 centered">
-             <div class="portfolio-item graphic-design">
-             <div class="he-wrap tpl6">
-                <img ng-src="../images/cities/{{city.id}}.jpg" alt="" height="100px">
-                <div class="he-view">
-                  <div class="bg a0" data-animate="fadeIn">
-                    <h3 class="a1" data-animate="fadeInDown">{{city.name}}</h3>
-                    <a data-rel="prettyPhoto" class="dmbutton a2" data-animate="fadeInUp" ng-href="/#!/city/{{city.id}}" target="_blank"><i class="fa fa-plus"></i></a>
+  <div id="portfoliowrap">
+    <div class="portfolio-centered">
+      <div class="recentitems portfolio">
+        <h4>Les villes</h4>
+        <div class="hline"></div>
+        <br><br>
+        <div class="row">
+          <div ng-repeat="city in cities">
+            <div class="col-sm-3 centered">
+              <div class="portfolio-item graphic-design">
+                <div class="he-wrap tpl6">
+                  <img ng-src="../images/cities/{{city.id}}.jpg" alt="" height="100px">
+                  <div class="he-view">
+                    <div class="bg a0" data-animate="fadeIn">
+                      <h3 class="a1" data-animate="fadeInDown">{{city.name}}</h3>
+                      <a data-rel="prettyPhoto" class="dmbutton a2" data-animate="fadeInUp" ng-href="/#!/city/{{city.id}}" target="_blank"><i class="fa fa-plus"></i></a>
+                    </div>
                   </div>
                 </div>
-             </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- portfolio -->
   </div>
-  <!-- portfolio container -->
-</div>
-<!--/Portfoliowrap -->
 </div>
