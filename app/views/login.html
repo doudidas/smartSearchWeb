@@ -1,28 +1,49 @@
 <!doctype html>
-<div class="row" ng-controller="MainCtrl">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h1 class="panel-title">Connexion</h1>
-      </div>
-      <div class="panel-body">
-        <p>
-          Vous pouvez utiliser votre compte facebook ou votre compte SNCF afin d'avoir des propositions personalisées
-          instantanées
-        </p>
-        <div class="row">
-          <div class="col-sm-6">
-            <a class="btn btn-default btn-lg" href="/#!form">je ne souhaite pas avoir de compte</a>
-          </div>
+<!-- *****************************************************************************************************************
+BLUE WRAP
+***************************************************************************************************************** -->
+<div id="blue">
+  <div class="container">
+    <div class="row">
+      <h3>Connexion</h3>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /blue -->
 
-          <div class="col-sm-6 border-left">
-            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with"
-                 data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-          </div>
-        </div>
-        <div id="status">
-        </div>
-      </div>
+
+
+<!-- *****************************************************************************************************************
+	 TITLE & CONTENT
+	 ***************************************************************************************************************** -->
+
+<div class="container mt">
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-2 ">
+      <div class="spacing"></div>
+      <h4>Pourquoi me connecter ?</h4>
+      <div class="hline"></div>
+      <p class="text-justify">Nous avons developpé ce site internet afin de vous permettre d'acceder rapidement à des itinéraires succéptibles de vous intéresser. Vous pouvez continuer et utiliser ce site sans connexions à un compte, mais la recherche sera moins pertinante car
+        moins personalisé.</p>
+    </div>
+
+    <div class="col-lg-4 col-lg-offset-1">
+      <div class="spacing"></div>
+      <h4>Où vont les données ? </h4>
+
+      <div class="hline"></div>
+      <p class="text-justify">Si vous utilisez la connexion via votre compte Voyage-SNCF ou Facebook, nous ne récupérons que le necessaire pour vous proposer des destinations adaptées. Ces informations ne seront pas divulgés ni utilisé à d'autres buts.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2 col-sm-6">
+      <a class="btn btn-theme" ng-href="/#!form">je ne souhaite pas avoir de compte</a>
+    </div>
+    <div class="col-md-4 col-md-offset-1 col-sm-6">
+      <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+      <div class="spacing"></div>
     </div>
   </div>
 </div>

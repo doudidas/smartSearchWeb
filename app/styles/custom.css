@@ -31,3 +31,9 @@
 .topic-paris {
   background-image: url("../images/cities/paris.jpg");
 }
+.topic-shopping {
+   background-image: url("../images/topics/shopping.jpg");
+}
+.modal-content {
+   border-radius: 0px;
+}

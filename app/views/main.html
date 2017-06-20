@@ -1,10 +1,88 @@
 <!doctype html>
-<div>
-  <h1><b style="color:#644e48;">TGV</b><span style="color: #00958b;">max</span></h1>
-  <p class="lead">
-    Bienvenue sur le portail de recherche SmartSearch cliquez en dessous pour commencer !
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="/#!login">Commencer <span class="glyphicon glyphicon-ok"></span></a></p>
+<div ng-controller="MainCtrl">
+
+<!-- *****************************************************************************************************************
+HEADERWRAP
+***************************************************************************************************************** -->
+  <div id="headerwrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-2">
+          <h1>Smart Search</h1>
+          <h2 class="pull-right">Moteur de recherche inspirationel permettant d'avoir accès à vos destination favorites.</h2>
+          <br>
+          <!-- Button trigger modal -->
+          <a class="btn btn-theme btn-lg" ng-href="/#!login">
+            Commencer
+         </a>
+          <!-- <a ng-href="/#!login" class="btn btn-lg btn-theme">Commencer</a> -->
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /headerwrap -->
+  <!-- *****************************************************************************************************************
+SERVICE LOGOS
+***************************************************************************************************************** -->
+  <div id="service">
+    <div class="container">
+      <div class="row centered">
+        <div class="col-md-4">
+          <i class="fa fa-heart-o"></i>
+          <h4>Handsomely Crafted</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p><br/><a href="#" class="btn btn-theme">More Info</a></p>
+        </div>
+        <div class="col-md-4">
+          <i class="fa fa-flask"></i>
+          <h4>Retina Ready</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p><br/><a href="#" class="btn btn-theme">More Info</a></p>
+        </div>
+        <div class="col-md-4">
+          <i class="fa fa-trophy"></i>
+          <h4>Quality Theme</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p><br/><a href="#" class="btn btn-theme">More Info</a></p>
+        </div>
+      </div>
+    </div>
+    <! --/container -->
+  </div>
+  <! --/service -->
+
+  <!-- *****************************************************************************************************************
+PORTFOLIO SECTION
+***************************************************************************************************************** -->
+<div id="portfoliowrap">
+  <div class="portfolio-centered">
+    <div class="recentitems portfolio">
+      <h4>Les villes</h4>
+      <div class="hline"></div>
+      <br><br>
+      <div class="row">
+        <div ng-repeat="city in cities">
+          <div class="col-sm-3 centered">
+             <div class="portfolio-item graphic-design">
+             <div class="he-wrap tpl6">
+                <img ng-src="../images/cities/{{city.id}}.jpg" alt="" height="100px">
+                <div class="he-view">
+                  <div class="bg a0" data-animate="fadeIn">
+                    <h3 class="a1" data-animate="fadeInDown">{{city.name}}</h3>
+                    <a data-rel="prettyPhoto" class="dmbutton a2" data-animate="fadeInUp" ng-href="/#!/city/{{city.id}}" target="_blank"><i class="fa fa-plus"></i></a>
+                  </div>
+                </div>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- portfolio -->
+  </div>
+  <!-- portfolio container -->
 </div>
-<div class="row marketing">
+<!--/Portfoliowrap -->
 </div>

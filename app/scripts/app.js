@@ -8,9 +8,10 @@
  *
  * Main module of the application.
  */
+
 angular
   .module('smartSearchApp', ['ngResource', 'ngRoute'])
-  .config(function ($routeProvider) {
+  .config(function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -32,20 +33,20 @@ angular
         controller: 'FormCtrl',
         controllerAs: 'form'
       })
-      .when('/ok', {
-        templateUrl: 'views/return_ok.html',
-        controller: 'FormCtrl',
-        controllerAs: 'form'
+      .when('/result/:id', {
+        templateUrl: 'views/result.html',
+        controller: 'ResultCtrl',
+        controllerAs: 'result'
       })
-      .when('/ko', {
-        templateUrl: 'views/return_ko.html',
-        controller: 'FormCtrl',
-        controllerAs: 'form'
+      .when('/result', {
+        templateUrl: 'views/result.html',
+        controller: 'ResultCtrl',
+        controllerAs: 'result'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/city/:id', {
+        templateUrl: 'views/city.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
       })
       .otherwise({
         redirectTo: '/'

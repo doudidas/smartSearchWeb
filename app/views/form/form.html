@@ -1,148 +1,148 @@
 <!doctype html>
-<div class="alert alert-success alert-dismissible hidden" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
-  </button>
-  {{successMessage}}
-</div>
-<div class="alert alert-warning alert-dismissible hidden" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
-  </button>
-  {{warningMessage}}
-</div>
-<form novalidate class="simple-form" ng-submit="submitForm()">
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="firstName">First_name</label>
-        <input type="text" class="form-control" id="firstName" ng-model="user.lastName" placeholder="First_name">
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="name">Last_name</label>
-        <input type="text" class="form-control" id="name" ng-model="user.firstName" placeholder="Last_name">
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="gender">gender</label>
-        <input type="text" class="form-control" id="gender" ng-model="user.gender" placeholder="M/F">
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="locale">Locale</label>
-        <input type="text" class="form-control" id="locale" ng-model="user.locale" placeholder="ex:Paris">
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="status">status</label>
-        <input type="text" class="form-control" id="status" ng-model="user.status" placeholder="ex: student">
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="location">Location</label>
-        <input type="text" class="form-control" id="location" ng-model="user.locale"
-               placeholder="enter the name of your current location">
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="email">email</label>
-        <input type="text" class="form-control" id="email" ng-model="user.email" placeholder="exemple@exemple.com">
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="departure">Hometown</label>
-        <input type="text" class="form-control" id="departure" ng-model="user.departure" placeholder="Ex. La Rochelle">
-      </div>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label for="topic">Topic</label>
-    <input type="text" class="form-control hidden" id="topic" ng-model="user.topics">
-
+<!-- *****************************************************************************************************************
+	 BLUE WRAP
+	 ***************************************************************************************************************** -->
+<div id="blue">
+  <div class="container">
     <div class="row">
-      <div class="col-sm-3">
-        <div class="panel panel-default" ng-click="changeTopic($event, '0')">
-          <div class="panel-body topic-box topic-ski">
-          </div>
-          <div class="panel-footer text-center">
-            <i class="fa fa-times fa-lg " aria-hidden="true"></i>
-          </div>
+      <h3>Mes préférences</h3>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /blue -->
+
+<!-- *****************************************************************************************************************
+	 CONTACT WRAP
+	 ***************************************************************************************************************** -->
+
+<!-- *****************************************************************************************************************
+	 CONTACT FORMS
+	 ***************************************************************************************************************** -->
+
+<div class="container mtb">
+  <div class="alert alert-warning alert-dismissible hidden" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button> {{warningMessage}}
+  </div>
+
+      <h4>Mes informations</h4>
+      <div class="hline"></div>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+
+  <form name="myForm" class="simple-form" ng-submit="submitForm()">
+    <div class="row">
+      <div class="col-sm-6">
+         <div class="form-group">
+          <label for="firstName">* Prénom</label>
+          <input type="text" class="form-control" id="name" ng-model="user.firstName" placeholder="Ex. Pierre" required>
+         </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="lastName">* Nom</label>
+          <input type="text" class="form-control" id="firstName" ng-model="user.lastName" placeholder="Ex. Dupont" required>
         </div>
       </div>
-      <div class="col-sm-3">
-        <div class="panel panel-default" ng-click="changeTopic($event,'1')">
-          <div class="panel-body topic-box topic-city">
-          </div>
-          <div class="panel-footer text-center">
-            <i class="fa fa-times fa-lg " aria-hidden="true"></i>
-          </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="gender">Genre</label>
+          <select class="form-control" id="gender" name="gender" ng-model="user.gender">
+             <option value=""> Ne pas communiquer</option>
+             <option value="men"> Homme</option>
+             <option value="female"> Femme</option>
+          </select>
         </div>
       </div>
-      <div class="col-sm-3">
-        <div class="panel panel-default" ng-click="changeTopic($event, '2')">
-          <div class="panel-body topic-box topic-country">
-          </div>
-          <div class="panel-footer text-center">
-            <i class="fa fa-times fa-lg " aria-hidden="true"></i>
-          </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="status">status</label>
+          <input type="text" class="form-control" id="status" ng-model="user.status" placeholder="Ex. étudiant">
         </div>
       </div>
-      <div class="col-sm-3">
-        <div class="panel panel-default" ng-click="changeTopic($event, '2')">
-          <div class="panel-body topic-box topic-shopping">
-          </div>
-          <div class="panel-footer text-center">
-            <i class="fa fa-times fa-lg " aria-hidden="true"></i>
-          </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="email">* email</label>
+          <input type="text" class="form-control" id="email" ng-model="user.email" placeholder="Ex. exemple@exemple.com" required>
         </div>
       </div>
-      <div class="col-sm-3">
-        <div class="panel panel-default" ng-click="changeTopic($event, '3')">
-          <div class="panel-body topic-box topic-beach">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="departure">* Départ</label>
+          <input type="text" class="form-control" id="departure" ng-model="user.departure" placeholder="ville de départ : Ex. Paris" required>
+        </div>
+      </div>
+    </div>
+    <h4>Les thèmes</h4>
+    <div class="hline"></div>
+    <p id="topic-warning">Veuillez cliquer sur le ou les thèmes désirés</p>
+    <div class="form-group">
+      <input type="text" class="form-control hidden" id="topic" ng-model="user.topics">
+
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="panel panel-default" ng-click="changeTopic($event, '0')">
+            <div class="panel-body topic-box topic-ski">
+            </div>
+            <div class="panel-footer text-center">
+              <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+            </div>
           </div>
-          <div class="panel-footer text-center">
-            <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-3">
+          <div class="panel panel-default" ng-click="changeTopic($event,'1')">
+            <div class="panel-body topic-box topic-city">
+            </div>
+            <div class="panel-footer text-center">
+              <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="panel panel-default" ng-click="changeTopic($event, '2')">
+            <div class="panel-body topic-box topic-country">
+            </div>
+            <div class="panel-footer text-center">
+              <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="panel panel-default" ng-click="changeTopic($event, '2')">
+            <div class="panel-body topic-box topic-shopping">
+            </div>
+            <div class="panel-footer text-center">
+              <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="panel panel-default" ng-click="changeTopic($event, '3')">
+            <div class="panel-body topic-box topic-beach">
+            </div>
+            <div class="panel-footer text-center">
+              <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> I accept the general terms and conditions.
-    </label>
-  </div>
-  <input type="submit" ng-click="update(user)" value="Chercher !" class="btn btn-success text-center"/>
-</form>
-
-
-<br><br>
-<div class="panel panel-info">
-  <div class="panel-heading">
-    <h1 class="panel-title"> DEBUG</h1>
-  </div>
-  <div class="panel-body">
-    <h4>Asynchronous results</h4>
-    <pre>Response: {{serverResponse | json}}</pre>
-    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-    <div ng-show="noResults">
-      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    <div class="checkbox">
+      <div role="alert">
+         <span class="error" ng-show="myForm.CGU.$error.required">
+            Required!
+         </span>
+      </div>
+      <label>
+         <input type="checkbox" required> I accept the general terms and conditions.
+      </label>
     </div>
-
-    <pre>user = {{user | json}}</pre>
-    <pre>userId = {{userId | json}}</pre>
-  </div>
+    <input type="submit" ng-click="update(user)" value="Chercher !" class="btn btn-theme btn-lg pull-right" />
+  </form>
 </div>

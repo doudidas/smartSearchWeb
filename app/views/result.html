@@ -1,0 +1,58 @@
+<!doctype html>
+<!-- *****************************************************************************************************************
+BLUE WRAP
+***************************************************************************************************************** -->
+<div id="blue">
+  <div class="container">
+    <div class="row">
+      <h3>Résultats</h3>
+    </div>
+  </div>
+</div>
+
+<!-- *****************************************************************************************************************
+TITLE & CONTENT
+***************************************************************************************************************** -->
+
+<div class="container mtb">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 centered">
+      <h2>Ces villes pourraient vous interesser !</h2>
+      <br>
+      <div class="hline"></div>
+    </div>
+  </div>
+</div>
+
+<!-- *****************************************************************************************************************
+PORTFOLIO SECTION
+***************************************************************************************************************** -->
+<div class="container mtb">
+  <div class="alert alert-warning alert-dismissible hidden" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button> {{warningMessage}}
+  </div>
+  <div ng-controller="ResultCtrl">
+    <img src="../images/no_results_found.png" class="noResult hidden">
+    <div id="portfoliowrap">
+      <div class="portfolio-centered">
+        <div class="recentitems portfolio">
+          <div ng-repeat="city in cities track by $index ">
+            <div class="portfolio-item">
+              <div class="he-wrap tpl6">
+                <img ng-src="../images/cities/{{city.id}}.jpg" alt="">
+                <div class="he-view">
+                  <div class="bg a0" data-animate="fadeIn">
+                    <h3 class="a1" data-animate="fadeInDown">{{city.name}}</h3>
+                    <p class="portfolio-description a1 text-center text-justify" data-animate="fadeInUp">{{city.description}}</p>
+                    <a data-rel="prettyPhoto" class="dmbutton a2" data-animate="fadeInUp" href="https://www.voyages-sncf.com/" target="_blank"><i class="fa fa-search"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
