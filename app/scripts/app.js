@@ -14,12 +14,7 @@ angular
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/loading', {
-        templateUrl: 'views/loading.html',
+        templateUrl: 'views/home.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
@@ -29,7 +24,7 @@ angular
         controllerAs: 'main'
       })
       .when('/form', {
-        templateUrl: 'views/form/form.html',
+        templateUrl: 'views/form.html',
         controller: 'FormCtrl',
         controllerAs: 'form'
       })

@@ -1,6 +1,5 @@
 <!doctype html>
 <div ng-controller="MainCtrl">
-
   <!-- *****************************************************************************************************************
 HEADERWRAP
 ***************************************************************************************************************** -->
@@ -25,21 +24,21 @@ SERVICE LOGOS
       <div class="row centered">
         <div class="col-md-4">
           <i class="fa fa-heart-o"></i>
-          <h4>Handsomely Crafted</h4>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <h4>Vos destinations</h4>
+          <p>Cette application vous permet d'acceder à une liste de destination adapté à vos choix et préférences.</p>
+          <p><br/><a href="#" class="btn btn-theme">More Info</a></p>
+        </div>
+        <div class="col-md-4">
+          <i class="fa fa-train"></i>
+          <h4>Allez où vous voulez</h4>
+          <p>Trouver en un instant les horaires de trains associé à chaque destination en fonction de vos préférences de départ</p>
           <p><br/><a href="#" class="btn btn-theme">More Info</a></p>
         </div>
         <div class="col-md-4">
           <i class="fa fa-flask"></i>
-          <h4>Retina Ready</h4>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-          <p><br/><a href="#" class="btn btn-theme">More Info</a></p>
-        </div>
-        <div class="col-md-4">
-          <i class="fa fa-trophy"></i>
-          <h4>Quality Theme</h4>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-          <p><br/><a href="#" class="btn btn-theme">More Info</a></p>
+          <h4>Api accessible</h4>
+          <p>Vous désirez exploiter le moteur de recherche pour votre application ? L'api associé est disponible en openSource.</p>
+          <p><br/><a href="https://github.com/doudidas/smartSearchEngine" class="btn btn-theme" target="_blank">More Info</a></p>
         </div>
       </div>
     </div>
@@ -59,11 +58,11 @@ PORTFOLIO SECTION
             <div class="col-sm-3 centered">
               <div class="portfolio-item graphic-design">
                 <div class="he-wrap tpl6">
-                  <img ng-src="../images/cities/{{city.id}}.jpg" alt="" height="100px">
+                  <img ng-src="../images/cities/{{city._id.$oid}}.jpg" alt="" height="100px">
                   <div class="he-view">
                     <div class="bg a0" data-animate="fadeIn">
                       <h3 class="a1" data-animate="fadeInDown">{{city.name}}</h3>
-                      <a data-rel="prettyPhoto" class="dmbutton a2" data-animate="fadeInUp" ng-href="/#!/city/{{city.id}}" target="_blank"><i class="fa fa-plus"></i></a>
+                      <a data-rel="prettyPhoto" class="dmbutton a2" data-animate="fadeInUp" ng-href="/#!/city/{{city.id}}"><i class="fa fa-plus"></i></a>
                     </div>
                   </div>
                 </div>

@@ -10,11 +10,11 @@
     "angular-animate": "^1.6.4",
     "font-awesome": "^4.7.0",
     "angular-bootstrap": "^2.5.0",
-    "js-cookie": "^2.1.4"
+    "js-cookie": "^2.x"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0",
-    "js-cookie": "^2.1.4"
+    "js-cookie": "^2.x"
   },
   "appPath": "app",
   "moduleName": "smartSearchApp",

@@ -356,6 +356,10 @@ a:focus {
 	color: #bfc9d3;
 	padding-right: 25px;
 }
+#footerwrap i .fa-xs {
+	font-size: 20px;
+	color: #bfc9d3;
+}
 
 #footerwrap i:hover {
 	color: #00b3fe

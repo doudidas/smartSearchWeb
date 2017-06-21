@@ -1,6 +1,9 @@
 'use strict';
 /* global $, Cookies */
 angular.module('smartSearchApp').controller('ResultCtrl', function($scope, $routeParams, $http) {
+  $('html,body').animate({
+    scrollTop: $("body").offset().top
+  }, 'slow');
   var userToken;
 
   if (!$routeParams.id) {
@@ -19,7 +22,7 @@ angular.module('smartSearchApp').controller('ResultCtrl', function($scope, $rout
       $scope.user = success.data[0];
       $scope.cities = success.data[1];
       if ($scope.cities.length === 0) {
-         $('.noResult').fadeIn().removeClass('hidden');
+        $('.noResult').fadeIn().removeClass('hidden');
       }
     },
     function(error) {

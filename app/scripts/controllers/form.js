@@ -1,5 +1,5 @@
 'use strict';
-/* global $ */
+/* global $, Cookies */
 /**
  * @ngdoc function
  * @name smartSearchApp.controller:FormCtrl
@@ -9,7 +9,9 @@
  */
 
 angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, $window) {
-
+  $('html,body').animate({
+    scrollTop: $("body").offset().top
+  }, 'slow');
   $scope.topics = ["beach", "city", "ski", "countryside", "shopping"];
   $scope.user = {
     'topics': []
@@ -43,7 +45,7 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
         data: {
           'firstName': $scope.user.firstName,
           'gender': $scope.user.gender,
-          'status':$scope.user.status,
+          'status': $scope.user.status,
           'lastName': $scope.user.lastName,
           'email': $scope.user.email,
           'departure': $scope.user.departure,
