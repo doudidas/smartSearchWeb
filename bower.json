@@ -1,36 +1,36 @@
 {
-  "name": "smartsearch",
-  "version": "0.0.0",
-  "dependencies": {
-    "angular": "^1.x",
-    "bootstrap": "^3.x",
-    "angular-resource": "^1.4.0",
-    "angular-route": "^1.4.0",
-    "angular-sanitize": "^1.6.4",
-    "angular-animate": "^1.6.4",
-    "font-awesome": "^4.7.0",
-    "angular-bootstrap": "^2.5.0",
-    "js-cookie": "^2.x"
-  },
-  "devDependencies": {
-    "angular-mocks": "^1.4.0",
-    "js-cookie": "^2.x"
-  },
-  "appPath": "app",
-  "moduleName": "smartSearchApp",
-  "overrides": {
-    "bootstrap": {
-      "main": [
-        "less/bootstrap.less",
-        "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
-      ]
-    },
-    "font-awesome": {
-      "main": [
-        "less/font-awesome.less",
-        "css/font-awesome.css"
-      ]
-    }
-  }
+   "name": "smartsearch",
+   "version": "0.0.0",
+   "dependencies": {
+      "angular": "^1.x",
+      "bootstrap": "^3.x",
+      "angular-resource": "^1.4.0",
+      "angular-route": "^1.4.0",
+      "angular-sanitize": "^1.6.4",
+      "angular-animate": "^1.6.4",
+      "font-awesome": "^4.7.0",
+      "angular-bootstrap": "^2.5.0",
+      "js-cookie": "^2.x"
+   },
+   "devDependencies": {
+      "angular-mocks": "^1.4.0",
+      "js-cookie": "^2.x"
+   },
+   "appPath": "app",
+   "moduleName": "smartSearchApp",
+   "overrides": {
+      "bootstrap": {
+         "main": [
+            "less/bootstrap.less",
+            "dist/css/bootstrap.css",
+            "dist/js/bootstrap.js"
+         ]
+      },
+      "font-awesome": {
+         "main": [
+            "less/font-awesome.less",
+            "css/font-awesome.css"
+         ]
+      }
+   }
 }
