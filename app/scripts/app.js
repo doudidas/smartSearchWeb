@@ -44,6 +44,8 @@ angular
         controllerAs: 'main'
       })
       .otherwise({
-        redirectTo: '/'
+        templateUrl: '404.html',
+      //   controller: 'MainCtrl',
+      //   controllerAs: 'main'
       });
   });
