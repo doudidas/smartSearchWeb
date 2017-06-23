@@ -14,7 +14,7 @@
 <div class="container mtb">
    <div class="alert alert-warning alert-dismissible hidden" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
-        </button> {{warningMessage}}
+      </button> {{warningMessage}}
    </div>
 
    <h4>Mes informations</h4>
@@ -73,50 +73,14 @@
       <p id="topic-warning">Veuillez cliquer sur le ou les thèmes désirés</p>
       <div class="form-group">
          <input type="text" class="form-control hidden" id="topic" ng-model="user.topics">
-
          <div class="row">
-            <div class="col-sm-3">
-               <div class="panel panel-default" ng-click="changeTopic($event, '0')">
-                  <div class="panel-body topic-box topic-ski">
-                  </div>
-                  <div class="panel-footer text-center">
-                     <i class="fa fa-times fa-lg " aria-hidden="true"></i>
-                  </div>
-               </div>
-            </div>
-            <div class="col-sm-3">
-               <div class="panel panel-default" ng-click="changeTopic($event,'1')">
-                  <div class="panel-body topic-box topic-city">
-                  </div>
-                  <div class="panel-footer text-center">
-                     <i class="fa fa-times fa-lg " aria-hidden="true"></i>
-                  </div>
-               </div>
-            </div>
-            <div class="col-sm-3">
-               <div class="panel panel-default" ng-click="changeTopic($event, '2')">
-                  <div class="panel-body topic-box topic-country">
-                  </div>
-                  <div class="panel-footer text-center">
-                     <i class="fa fa-times fa-lg " aria-hidden="true"></i>
-                  </div>
-               </div>
-            </div>
-            <div class="col-sm-3">
-               <div class="panel panel-default" ng-click="changeTopic($event, '2')">
-                  <div class="panel-body topic-box topic-shopping">
-                  </div>
-                  <div class="panel-footer text-center">
-                     <i class="fa fa-times fa-lg " aria-hidden="true"></i>
-                  </div>
-               </div>
-            </div>
-            <div class="col-sm-3">
-               <div class="panel panel-default" ng-click="changeTopic($event, '3')">
-                  <div class="panel-body topic-box topic-beach">
-                  </div>
-                  <div class="panel-footer text-center">
-                     <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+            <div ng-repeat="topic in topics">
+               <div class="col-sm-3">
+                  <div class="panel panel-default" ng-click="changeTopic($event, topic.id)">
+                     <div class="panel-body topic-box topic-{{topic.name}}"></div>
+                     <div class="panel-footer text-center">
+                        <i class="fa fa-times fa-lg " aria-hidden="true"></i>
+                     </div>
                   </div>
                </div>
             </div>
@@ -124,13 +88,11 @@
       </div>
       <div class="checkbox">
          <div role="alert">
-            <span class="error" ng-show="myForm.CGU.$error.required">
-            Required!
-         </span>
+            <span class="error" ng-show="myForm.CGU.$error.required">Required!</span>
          </div>
          <label>
-         <input type="checkbox" required> I accept the general terms and conditions.
-      </label>
+            <input type="checkbox" required> I accept the general terms and conditions.
+         </label>
       </div>
       <input type="submit" ng-click="update(user)" value="Chercher !" class="btn btn-theme btn-lg pull-right" />
    </form>

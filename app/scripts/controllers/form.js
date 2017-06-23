@@ -9,14 +9,22 @@
  */
 
 angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, $window) {
-   $('html,body').animate({
-      scrollTop: $("body").offset().top
-   }, 'slow');
-   $scope.topics = ["beach", "city", "ski", "countryside", "shopping"];
    $scope.user = {
       'topics': []
    };
-   $scope.serverResponse = {};
+
+   $('html,body').animate({
+      scrollTop: $("body").offset().top
+   }, 'slow');
+
+   $http({
+      method: 'GET',
+      crossDomain: true,
+      url: 'http://localhost:8080/api/topic',
+   }).then(
+      function(success) {
+         $scope.topics = success.data;
+      });
 
    $scope.changeTopic = function(event, topicId) {
       var topicLogo = angular.element(event.target.parentNode).find('div:last i');
@@ -80,6 +88,5 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
                $scope.warningMessage = content;
             });
       }
-
    };
 });
