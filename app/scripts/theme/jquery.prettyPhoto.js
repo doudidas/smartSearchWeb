@@ -1,3 +1,4 @@
+// jshint ignore: start
 /* ------------------------------------------------------------------------
 	Class: prettyPhoto
 	Use: Lightbox clone for jQuery
