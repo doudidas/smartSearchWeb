@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 # Get the entrypoint script to connect containers
 COPY ./docker-entrypoint.sh /
-
+RUN chmod u+x /docker-entrypoint.sh
 # Name creator
 MAINTAINER spaceLama
 
