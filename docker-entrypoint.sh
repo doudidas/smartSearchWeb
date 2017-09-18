@@ -4,7 +4,7 @@
 
 # 1st parameter is ip
 # 2nd parameter is port
-if [ "$1" ! '' && "$2" = '']; then
+if ["$2" = '']; then
   exec export ip_adress_engine=$1:$2
   exec "grunt serve"
 fi
