@@ -4,6 +4,9 @@ FROM digitallyseamless/nodejs-bower-grunt:latest
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+# Get the entrypoint script to connect containers
+COPY ./docker-entrypoint.sh /
+
 # Name creator
 MAINTAINER spaceLama
 
@@ -19,5 +22,8 @@ RUN bower install
 # Bundle app source
 COPY . /usr/src/app
 
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 EXPOSE 9000
+
 CMD [ "grunt", "serve" ]
