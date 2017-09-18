@@ -7,6 +7,7 @@
  * # FormCtrl
  * Controller of the smartSearchApp
  */
+var ipEngine   = process.env.ip_adress_engine;
 
 angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, $window) {
    $scope.user = {
@@ -20,7 +21,7 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
    $http({
       method: 'GET',
       crossDomain: true,
-      url: 'http://0.0.0.0:8080/api/topic',
+      url: "http://"+ipEngine+"/api/topic",
    }).then(
       function(success) {
          $scope.topics = success.data;
@@ -49,7 +50,7 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
          $http({
             method: 'POST',
             crossDomain: true,
-            url: 'http://0.0.0.0:8080/api/users',
+            url: "http://"+ipEngine+"e/api/users",
             data: {
                'firstName': $scope.user.firstName,
                'gender': $scope.user.gender,

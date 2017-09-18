@@ -8,6 +8,8 @@
  * # MainCtrl
  * Controller of the smartSearchApp
  */
+ var ipEngine   = process.env.ip_adress_engine;
+
 angular.module('smartSearchApp').controller('MainCtrl', function($scope, $http, $routeParams) {
    $('html,body').animate({
       scrollTop: $("body").offset().top
@@ -18,7 +20,7 @@ angular.module('smartSearchApp').controller('MainCtrl', function($scope, $http, 
       $http({
          method: 'GET',
          crossDomain: true,
-         url: 'http://0.0.0.0:80/api/destination/random',
+         url: "http://"+ipEngine+"/api/destination/random",
       }).then(
          function(success) {
             $scope.cities = success.data.retval._batch;
@@ -27,7 +29,7 @@ angular.module('smartSearchApp').controller('MainCtrl', function($scope, $http, 
       $http({
          method: 'GET',
          crossDomain: true,
-         url: 'http://0.0.0.0:8080/api/destination/' + id,
+         url: "http://"+ipEngine+"/api/destination/" + id,
       }).then(
          function(success) {
             $scope.city = success.data;
