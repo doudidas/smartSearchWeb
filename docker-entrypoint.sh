@@ -8,6 +8,6 @@ if [ $2 = '' ]
 then
   echo "docker run spacelama/api [mongo ip] [mongo port]"
 else
-  export ip_adress_engine=$1:$2
-  grunt serve
+  export ip_adress_engine=$1:$2;
+  grunt serve &;
 fi

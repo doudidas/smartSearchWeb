@@ -8,7 +8,7 @@
  * # MainCtrl
  * Controller of the smartSearchApp
  */
- var ipEngine   = process.env.ip_adress_engine;
+ var ipEngine   = "172.17.0.3:8080";
 
 angular.module('smartSearchApp').controller('MainCtrl', function($scope, $http, $routeParams) {
    $('html,body').animate({
