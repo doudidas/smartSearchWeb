@@ -18,7 +18,7 @@ angular.module('smartSearchApp').controller('MainCtrl', function($scope, $http, 
       $http({
          method: 'GET',
          crossDomain: true,
-         url: 'http://localhost:8080/api/destination/random',
+         url: 'http://0.0.0.0:80/api/destination/random',
       }).then(
          function(success) {
             $scope.cities = success.data.retval._batch;
@@ -27,7 +27,7 @@ angular.module('smartSearchApp').controller('MainCtrl', function($scope, $http, 
       $http({
          method: 'GET',
          crossDomain: true,
-         url: 'http://localhost:8080/api/destination/' + id,
+         url: 'http://0.0.0.0:8080/api/destination/' + id,
       }).then(
          function(success) {
             $scope.city = success.data;

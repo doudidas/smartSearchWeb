@@ -20,7 +20,7 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
    $http({
       method: 'GET',
       crossDomain: true,
-      url: 'http://localhost:8080/api/topic',
+      url: 'http://0.0.0.0:8080/api/topic',
    }).then(
       function(success) {
          $scope.topics = success.data;
@@ -49,7 +49,7 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
          $http({
             method: 'POST',
             crossDomain: true,
-            url: 'http://localhost:8080/api/users',
+            url: 'http://0.0.0.0:8080/api/users',
             data: {
                'firstName': $scope.user.firstName,
                'gender': $scope.user.gender,
