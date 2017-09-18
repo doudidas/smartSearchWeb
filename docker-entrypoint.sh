@@ -4,8 +4,10 @@
 
 # 1st parameter is ip
 # 2nd parameter is port
-if ["$2" = '']; then
-  exec export ip_adress_engine=$1:$2
-  exec "grunt serve"
+if [ $2 = '' ]
+then
+  echo "export ip_adress_engine=$1:$2"
+   grunt serve
+else
+  echo "docker run spacelama/api [mongo ip] [mongo port]"
 fi
-echo "docker run spacelama/api [mongo ip] [mongo port]"
