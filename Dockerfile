@@ -22,8 +22,7 @@ RUN bower install
 # Bundle app source
 COPY . /usr/src/app
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
 
-EXPOSE 9000
+EXPOSE 80
 
 CMD [ "grunt", "serve" ]
