@@ -9,6 +9,8 @@
 
 module.exports = function(grunt) {
 
+  var serveStatic = require('serve-static');
+
    // Time how long tasks take. Can help when optimizing build times
    require('time-grunt')(grunt);
 
@@ -70,7 +72,7 @@ module.exports = function(grunt) {
       // The actual grunt server settings
       connect: {
          options: {
-            port: 9000,
+            port: 8082,
             // Change this to '0.0.0.0' to access the server from outside.
             hostname: '0.0.0.0',
             livereload: 35729
@@ -80,16 +82,16 @@ module.exports = function(grunt) {
                open: true,
                middleware: function(connect) {
                   return [
-                     connect.static('.tmp'),
+                     serveStatic('.tmp'),
                      connect().use(
                         '/bower_components',
-                        connect.static('./bower_components')
+                        serveStatic('./bower_components')
                      ),
                      connect().use(
                         '/app/styles',
-                        connect.static('./app/styles')
+                        serveStatic('./app/styles')
                      ),
-                     connect.static(appConfig.app)
+                     serveStatic(appConfig.app)
                   ];
                }
             }
@@ -99,13 +101,13 @@ module.exports = function(grunt) {
                port: 9001,
                middleware: function(connect) {
                   return [
-                     connect.static('.tmp'),
-                     connect.static('test'),
+                     serveStatic('.tmp'),
+                     serveStatic('test'),
                      connect().use(
                         '/bower_components',
-                        connect.static('./bower_components')
+                        serveStatic('./bower_components')
                      ),
-                     connect.static(appConfig.app)
+                     serveStatic(appConfig.app)
                   ];
                }
             }
@@ -142,7 +144,6 @@ module.exports = function(grunt) {
       jscs: {
          options: {
             config: '.jscsrc',
-            verbose: true
          },
          all: {
             src: [
@@ -278,27 +279,31 @@ module.exports = function(grunt) {
       // By default, your `index.html`'s <!-- Usemin block --> will take care of
       // minification. These next options are pre-configured if you do not wish
       // to use the Usemin blocks.
-      // cssmin: {
-      //   dist: {
-      //     files: {
-      //       '<%= yeoman.dist %>/styles/main.css': [
-      //         '.tmp/styles/{,*/}*.css'
-      //       ]
-      //     }
-      //   }
-      // },
-      // uglify: {
-      //   dist: {
-      //     files: {
-      //       '<%= yeoman.dist %>/scripts/scripts.js': [
-      //         '<%= yeoman.dist %>/scripts/scripts.js'
-      //       ]
-      //     }
-      //   }
-      // },
-      // concat: {
-      //   dist: {}
-      // },
+      cssmin: {
+        dist: {
+          files: {
+            '<%= yeoman.dist %>/styles/main.css': [
+              '.tmp/styles/{,*/}*.css'
+            ]
+          }
+        }
+      },
+      uglify: {
+        dist: {
+          files: {
+            '<%= yeoman.dist %>/scripts/scripts.js': [
+              '<%= yeoman.dist %>/scripts/scripts.js'
+            ]
+          }
+        }
+      },
+      options: {
+        mangle: true,
+        compress : true
+      },
+      concat: {
+        dist: {}
+      },
 
       imagemin: {
          dist: {
@@ -462,7 +467,7 @@ module.exports = function(grunt) {
       'concurrent:test',
       'postcss',
       'connect:test',
-      'karma'
+
    ]);
 
    grunt.registerTask('build', [
@@ -473,11 +478,10 @@ module.exports = function(grunt) {
       'postcss',
       'ngtemplates',
       'concat',
-      'ngAnnotate',
       'copy:dist',
       'cdnify',
       'cssmin',
-      'uglify',
+      //'uglify',
       'filerev',
       'usemin',
       'htmlmin'
@@ -486,7 +490,6 @@ module.exports = function(grunt) {
    grunt.registerTask('default', [
       'newer:jshint',
       'newer:jscs',
-      'test',
       'build'
    ]);
 };
