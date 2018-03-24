@@ -8,9 +8,11 @@
  * # MainCtrl
  * Controller of the smartSearchApp
  */
- var ipEngine   = "172.17.0.3:8080";
 
 angular.module('smartSearchApp').controller('MainCtrl', function($scope, $http, $routeParams) {
+  require('dotenv').load();
+  var ipEngine = process.env.API_PORT_9000_TCP_ADDR + ":" + process.env.API_PORT_9000_TCP_PORT;
+
    $('html,body').animate({
       scrollTop: $("body").offset().top
    }, 'slow');

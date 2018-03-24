@@ -7,8 +7,9 @@ WORKDIR /usr/src/app
 # Get the entrypoint script to connect containers
 COPY ./docker-entrypoint.sh /
 RUN chmod u+x /docker-entrypoint.sh
-# Name creator
-MAINTAINER spaceLama
+
+# label
+LABEL author="Edouard Topin"
 
 # Install app dependencies
 COPY package.json /usr/src/app/
