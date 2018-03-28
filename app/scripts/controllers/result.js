@@ -1,8 +1,10 @@
 'use strict';
 /* global $, Cookies */
 angular.module('smartSearchApp').controller('ResultCtrl', function($scope, $routeParams, $http) {
+    var ipEngine = 'backend.lab.local:9000';
+
    $('html,body').animate({
-      scrollTop: $("body").offset().top
+      scrollTop: $('body').offset().top
    }, 'slow');
    var userToken;
 
@@ -16,7 +18,7 @@ angular.module('smartSearchApp').controller('ResultCtrl', function($scope, $rout
    $http({
       method: 'GET',
       crossDomain: true,
-      url: 'http://localhost:8080/api/destination/user/' + userToken,
+      url: 'http://'+ ipEngine + '/api/destination/user/' + userToken,
    }).then(
       function(success) {
          $scope.user = success.data[0];
@@ -27,7 +29,7 @@ angular.module('smartSearchApp').controller('ResultCtrl', function($scope, $rout
       },
       function(error) {
          $('html,body').animate({
-            scrollTop: $("#blue").offset().top
+            scrollTop: $('#blue').offset().top
          }, 'slow');
          var content;
          $scope.serverResponse = error;

@@ -7,7 +7,7 @@
  * # FormCtrl
  * Controller of the smartSearchApp
  */
- var ipEngine   = "172.17.0.3:8080";
+ var ipEngine = 'backend.lab.local:9000';
 
 angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, $window) {
    $scope.user = {
@@ -15,13 +15,13 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
    };
 
    $('html,body').animate({
-      scrollTop: $("body").offset().top
+      scrollTop: $('body').offset().top
    }, 'slow');
 
    $http({
       method: 'GET',
       crossDomain: true,
-      url: "http://"+ipEngine+"/api/topic",
+      url: 'http://'+ipEngine+'/api/topic',
    }).then(
       function(success) {
          $scope.topics = success.data;
@@ -41,7 +41,7 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
    $scope.submitForm = function() {
       if (!$scope.user.topics[0]) {
          $('html,body').animate({
-            scrollTop: $("form").offset().top
+            scrollTop: $('form').offset().top
          }, 'slow');
          $('#topic-warning').addClass('text-danger');
       } else {
@@ -50,7 +50,7 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
          $http({
             method: 'POST',
             crossDomain: true,
-            url: "http://"+ipEngine+"e/api/users",
+            url: 'http://'+ipEngine+'e/api/users',
             data: {
                'firstName': $scope.user.firstName,
                'gender': $scope.user.gender,
@@ -75,7 +75,7 @@ angular.module('smartSearchApp').controller('FormCtrl', function($scope, $http, 
             function(error) {
 
                $('html,body').animate({
-                  scrollTop: $("#blue").offset().top
+                  scrollTop: $('#blue').offset().top
                }, 'slow');
                var content;
                $scope.serverResponse = error;

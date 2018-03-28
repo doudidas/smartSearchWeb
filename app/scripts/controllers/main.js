@@ -10,11 +10,11 @@
  */
 
 angular.module('smartSearchApp').controller('MainCtrl', function($scope, $http, $routeParams) {
-  require('dotenv').load();
-  var ipEngine = process.env.API_PORT_9000_TCP_ADDR + ":" + process.env.API_PORT_9000_TCP_PORT;
+
+  var ipEngine = 'backend.lab.local:9000';
 
    $('html,body').animate({
-      scrollTop: $("body").offset().top
+      scrollTop: $('body').offset().top
    }, 'slow');
    $http.defaults.headers.post['Content-Type'] = 'application/json';
    var id = $routeParams.id;
@@ -22,7 +22,7 @@ angular.module('smartSearchApp').controller('MainCtrl', function($scope, $http, 
       $http({
          method: 'GET',
          crossDomain: true,
-         url: "http://"+ipEngine+"/api/destination/random",
+         url: 'http://'+ipEngine+'/api/destination/random',
       }).then(
          function(success) {
             $scope.cities = success.data.retval._batch;
@@ -31,7 +31,7 @@ angular.module('smartSearchApp').controller('MainCtrl', function($scope, $http, 
       $http({
          method: 'GET',
          crossDomain: true,
-         url: "http://"+ipEngine+"/api/destination/" + id,
+         url: 'http://' + ipEngine + '/api/destination/random' + id,
       }).then(
          function(success) {
             $scope.city = success.data;
