@@ -1,31 +1,27 @@
-# SmartSearch WEB
+# SmartSearchWeb
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.16.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
-## Installation
+## Development server
 
-1. Se placer dans le répertoire où le projet va être téléchargé.
-2. lancer la commande `git clone https://github.com/doudidas/smartSearchWeb.git`
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Deployment
+## Code scaffolding
 
-Lancer `grunt serve` pour déployer le serveur. A défaut, le site est accessible à l'adresse suivante http://localhost:9000
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Testing
+## Build
 
-Lancer `grunt test` déclance les tests avec l'outil Karma.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Issues on OS X
+## Running unit tests
 
-1. Assurez-vous d'avoir node, bower, grunt et grunt-cli sur votre ordinateur en vérifier avec les commandes `node -v`, `bower -v` ou `grunt --version`
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-2. Si vous ne possédez pas ces derniers, veuillez lancer la commande suivante: `brew install node`, `brew install bower`, `brew install grunt`.
+## Running end-to-end tests
 
-3. Si vous ne possédez pas brew, veuillez vous référer au site web pour l'installation https://brew.sh.
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Issues on Linux
+## Further help
 
-1. Assurez-vous d'avoir node, bower, grunt et grunt-cli sur votre ordinateur en vérifier avec les commandes `node -v`, `bower -v` ou `grunt --version`
-
-2. Si vous ne possédez pas ces derniers, veuillez les récuperer avec la commande `apt-get`
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
