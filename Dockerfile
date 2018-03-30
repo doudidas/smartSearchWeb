@@ -1,4 +1,4 @@
-FROM digitallyseamless/nodejs-bower-grunt:latest
+FROM digitallyseamless/node-yarn:latest
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -18,7 +18,7 @@ RUN npm install
 
 COPY bower.json /usr/src/app/
 
-RUN bower install
+RUN yarn
 
 # Bundle app source
 COPY . /usr/src/app
