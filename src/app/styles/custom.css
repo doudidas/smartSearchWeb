@@ -1,0 +1,38 @@
+.border-left {
+   width: 5px;
+   border-left: 3px solid gray;
+}
+
+.topic-box {
+   height: 100px;
+   background-size: cover;
+   background-repeat: no-repeat;
+}
+
+.topic-beach {
+   background-image: url("../images/topics/beach.png");
+}
+
+.topic-city {
+   background-image: url("../images/topics/city.jpg");
+}
+
+.topic-countryside {
+   background-image: url("../images/topics/countryside.png");
+}
+
+.topic-ski {
+   background-image: url("../images/topics/ski.jpg");
+}
+
+.topic-paris {
+   background-image: url("../images/cities/paris.jpg");
+}
+
+.topic-shopping {
+   background-image: url("../images/topics/shopping.jpg");
+}
+
+.modal-content {
+   border-radius: 0px;
+}
