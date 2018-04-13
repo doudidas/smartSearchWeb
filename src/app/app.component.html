@@ -3,12 +3,15 @@
     <div class="branding">
       <a href="#" class="nav-link">
         <span class="clr-icon clr-clarity-logo"></span>
-        <span class="title">Clarity</span>
+        <span class="title">Smart Search</span>
       </a>
     </div>
       <div class="header-nav" [clr-nav-level]="1">
           <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
           <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/login']" routerLinkActive="active"><span class="nav-text">Connexion</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/form']" routerLinkActive="active"><span class="nav-text">Rechercher</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/result']" routerLinkActive="active"><span class="nav-text">Précédent Résultat</span></a>
       </div>
     <div class="header-actions">
     </div>
@@ -18,4 +21,16 @@
       <router-outlet></router-outlet>
     </div>
   </div>
+      <div class="alert alert-app-level alert-info">
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-text" >
+                <p style="color:white">Ce site web a été <clr-icon shape="code"></clr-icon> avec <clr-icon shape="heart"></clr-icon> par Edouard Topin. Le code source est disponible à l'adresse suivante <a style="color:white" href="https://github.com/doudidas/smart-search-web">GitHub</a></p>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="close" aria-label="Close">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
 </clr-main-container>
