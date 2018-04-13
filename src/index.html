@@ -7,7 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
 </head>
-<body>
-<my-app>Loading...</my-app>
+<style>
+div.center {
+    position:absolute;
+    left: 50%;
+    top: 50%;
+}
+</style>
+<body style="background:rgb(250,250,250)">
+<my-app>
+    <div class="center">
+        <span style="top:50%,left:50%"class="spinner">
+            Loading...
+        </span>
+    </div>
+
+</my-app>
 </body>
 </html>

@@ -9,13 +9,15 @@ import { ROUTING } from "./app.routing";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { LoginComponent } from './login/login.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         AboutComponent,
         HomeComponent,
-        LoginComponent
+        LoginComponent,
+        UsersComponent
     ],
     imports: [
         BrowserAnimationsModule,
