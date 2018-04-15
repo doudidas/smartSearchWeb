@@ -11,7 +11,7 @@
           <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
           <a class="nav-link" href="#" [routerLink]="['/login']" routerLinkActive="active"><span class="nav-text">Connexion</span></a>
           <a class="nav-link" href="#" [routerLink]="['/form']" routerLinkActive="active"><span class="nav-text">Rechercher</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/result']" routerLinkActive="active"><span class="nav-text">Précédent Résultat</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/users']" routerLinkActive="active"><span class="nav-text">Users</span></a>
       </div>
     <div class="header-actions">
     </div>
@@ -21,16 +21,15 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-      <div class="alert alert-app-level alert-info">
-    <div class="alert-items">
-        <div class="alert-item static">
-            <div class="alert-text" >
-                <p style="color:white">Ce site web a été <clr-icon shape="code"></clr-icon> avec <clr-icon shape="heart"></clr-icon> par Edouard Topin. Le code source est disponible à l'adresse suivante <a style="color:white" href="https://github.com/doudidas/smart-search-web">GitHub</a></p>
-            </div>
-        </div>
+
+<clr-alert>
+    <div class="alert-item">
+        <span class="alert-text text-center">
+            Ce site web a été <clr-icon shape="code"></clr-icon> avec <clr-icon shape="heart"></clr-icon> par Edouard Topin. Le code source est disponible à l'adresse suivante <a href="https://github.com/doudidas/smart-search-web">GitHub</a>
+        </span>
     </div>
-    <button type="button" class="close" aria-label="Close">
-        <clr-icon aria-hidden="true" shape="close"></clr-icon>
-    </button>
-</div>
+</clr-alert>
+
+
+
 </clr-main-container>
