@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'my-app',
@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+    public alertAppError: string;
     constructor(private router: Router) {
+        this.alertAppError = "";
     }
 }

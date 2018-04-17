@@ -1,15 +1,16 @@
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { ClarityModule } from '@clr/angular';
-import { AppComponent } from './app.component';
-import { ROUTING } from "./app.routing";
-import { HomeComponent } from "./home/home.component";
-import { AboutComponent } from "./about/about.component";
-import { LoginComponent } from './login/login.component';
-import { UsersComponent } from './users/users.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {ClarityModule} from '@clr/angular';
+import {AppComponent} from './app.component';
+import {ROUTING} from "./app.routing";
+import {HomeComponent} from "./home/home.component";
+import {AboutComponent} from "./about/about.component";
+import {LoginComponent} from './login/login.component';
+import {UsersComponent} from './users/users.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -26,7 +27,7 @@ import { UsersComponent } from './users/users.component';
         ClarityModule,
         ROUTING
     ],
-    providers: [],
+    providers: [HttpClient],
     bootstrap: [AppComponent]
 })
 export class AppModule {

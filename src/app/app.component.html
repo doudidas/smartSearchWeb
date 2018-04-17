@@ -1,32 +1,44 @@
 <clr-main-container>
-  <clr-header>
-    <div class="branding">
-      <a href="#" class="nav-link">
-        <span class="clr-icon clr-clarity-logo"></span>
-        <span class="title">Smart Search</span>
-      </a>
-    </div>
-      <div class="header-nav" [clr-nav-level]="1">
-          <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/login']" routerLinkActive="active"><span class="nav-text">Connexion</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/form']" routerLinkActive="active"><span class="nav-text">Rechercher</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/users']" routerLinkActive="active"><span class="nav-text">Users</span></a>
-      </div>
-    <div class="header-actions">
-    </div>
-  </clr-header>
-  <div class="content-container">
-    <div class="content-area">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-
-    <clr-alert>
-        <div class="alert-item">
-            <span class="alert-text text-center">
-                Ce site web a été <clr-icon shape="code"></clr-icon> avec <clr-icon shape="heart"></clr-icon> par Edouard Topin. Le code source est disponible à l'adresse suivante <a href="https://github.com/doudidas/smart-search-web">GitHub</a>
-            </span>
+    <div class="main-container">
+        <div class="alert alert-app-level alert-warning">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="download"></clr-icon>
+                    </div>
+                    <div class="alert-text">
+                        {{alertAppError}}
+                    </div>
+                    <div class="alert-actions">
+                        <button class="btn alert-action">Install Update</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="close" aria-label="Close">
+                <clr-icon aria-hidden="true" shape="close"></clr-icon>
+            </button>
         </div>
-    </clr-alert>
+        <clr-header>
+            <div class="branding">
+                <a href="#" class="nav-link">
+                    <span class="clr-icon clr-clarity-logo"></span>
+                    <span class="title">Smart Search</span>
+                </a>
+            </div>
+            <div class="header-nav" [clr-nav-level]="1">
+                <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
+                <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
+                <a class="nav-link" href="#" [routerLink]="['/login']" routerLinkActive="active"><span class="nav-text">Connexion</span></a>
+                <a class="nav-link" href="#" [routerLink]="['/form']" routerLinkActive="active"><span class="nav-text">Rechercher</span></a>
+                <a class="nav-link" href="#" [routerLink]="['/users']" routerLinkActive="active"><span class="nav-text">Users</span></a>
+            </div>
+            <div class="header-actions">
+            </div>
+        </clr-header>
+        <div class="content-container">
+            <div class="content-area">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
 </clr-main-container>

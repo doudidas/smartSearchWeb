@@ -20,9 +20,9 @@
             "node_modules/@types"
         ],
         "types": [
-          "jasmine",
-          "core-js",
-          "node"
+            "jasmine",
+            "core-js",
+            "node"
         ]
     },
     "exclude": [

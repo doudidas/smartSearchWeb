@@ -1,13 +1,13 @@
-import { browser, element, by } from 'protractor';
+import {browser, element, by} from 'protractor';
 
 
 export class ClaritySeedAppHome {
 
-  navigateTo() {
-    return browser.get('/');
-  }
+    navigateTo() {
+        return browser.get('/');
+    }
 
-  getParagraphText() {
-    return element(by.css('my-app p')).getText();
-  }
+    getParagraphText() {
+        return element(by.css('my-app p')).getText();
+    }
 }

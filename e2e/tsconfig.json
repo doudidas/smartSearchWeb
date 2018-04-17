@@ -15,8 +15,8 @@
             "node_modules/@types"
         ],
         "types": [
-          "jasmine",
-          "jasminewd2"
+            "jasmine",
+            "jasminewd2"
         ]
     },
     "exclude": [
