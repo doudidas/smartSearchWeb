@@ -1,29 +1,57 @@
-<p>
-    liste des users
-</p>
-     <div class="row" >
-         <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12" *ngFor="let user of users">
-             <div class="card">
-                 <div class="card-header">
+<h1>Liste des utilisateurs</h1>
+<button (click)="addUser = true" class="btn btn-success-outline"><clr-icon shape="plus" class="is-success"></clr-icon> Ajouter un utilisateur</button>
+<div class="row" >
+ <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12" *ngFor="let user of users">
+	 <div class="card">
+		 <div class="card-header">
 
-                 </div>
-                 <div class="card-block">
-                     <div class="card-title">
-                         <clr-icon shape="user" [ngStyle]="{'color':user.gender === null ? null : (user.gender === 'men' ? '#343DAC' : '#F1428A') }"></clr-icon>
-                         {{user.firstName}} - {{user.lastName}}
-                     </div>
-                     <div class="card-text">
-                         <ul>
-                              <li>id : {{user.id}}</li>
-                             <li>Email : {{user.email}}</li>
+		 </div>
+		 <div class="card-block">
+			 <div class="card-title">
+				 <clr-icon shape="user" [ngStyle]="{'color':user.gender === null ? null : (user.gender === 'men' ? '#343DAC' : '#F1428A') }"></clr-icon>
+				 {{user.firstName}} - {{user.lastName}}
+			 </div>
+			 <div class="card-text">
+				 <ul>
+					  <li>id : {{user.id}}</li>
+					 <li>Email : {{user.email}}</li>
 
-                         </ul>
-                     </div>
-                 </div>
-                 <div class="card-footer">
-                     <button class="btn btn-sm btn-link">Modifier</button>
-                     <button class="btn btn-sm btn-warning-outline ">Supprimer</button>
-                 </div>
-             </div>
-         </div>
-     </div>
+				 </ul>
+			 </div>
+		 </div>
+		 <div class="card-footer">
+			 <button class="btn btn-sm btn-link">Modifier</button>
+			 <button class="btn btn-sm btn-warning-outline ">Supprimer</button>
+		 </div>
+	 </div>
+ </div>
+</div>
+<clr-modal [(clrModalOpen)]="addUser">
+  <h3 class="modal-title">Ajout d'un utilisateur</h3>
+  <div class="modal-body">
+		<form class="compact">
+    <section class="form-block">
+        <label>Informations</label>
+        <div class="form-group">
+            <label for="aForm_1">FirstName</label>
+            <input type="text" id="aForm_1" placeholder="Enter value here" size="45">
+        </div>
+        <div class="form-group">
+            <label for="aForm_2">LastName</label>
+            <input type="password" id="aForm_2" placeholder="Enter another value here" size="35">
+        </div>
+        <div class="form-group">
+            <label for="aForm_3">gender</label>
+            <div class="select">
+                <select id="aForm_3">
+                    <option>men</option>
+                    <option>woman</option>
+                    <option>other</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </section>
+</form>
+  </div>
+</clr-modal>
