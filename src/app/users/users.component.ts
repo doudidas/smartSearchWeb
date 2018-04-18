@@ -1,8 +1,7 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import {User} from "../user";
-import {by} from "protractor";
+import {User} from "../class/user";
 
 @Component({
     selector: 'app-users',
@@ -11,32 +10,20 @@ import {by} from "protractor";
 })
 
 @Injectable()
-export class UsersComponent {
-    public addUser: Boolean = false;
+export class UsersComponent implements OnInit{
+    public addUser: boolean = false;
     public users: User[];
     public form_firstName: string;
     public form_lastName: string;
     public form_gender: string;
     public form_email: string;
-
+    private errorForm: boolean;
     constructor(private http: HttpClient) {
-        http.get('http://0.0.0.0:9000/api/user').subscribe(users => {
-            console.log(users);
-            let i;
-            this.users = [];
-            for (i in users) {
-                let tempUser = users[i];
-                let user: User;
-                user = new User(tempUser.firstName, tempUser.lastName, tempUser.gender,
-                    tempUser.id, tempUser.departure, tempUser.email, tempUser.topics);
-                this.users.push(user);
-            }
-        }, error => {
-            console.log(error)
-        });
     };
-
-    sendUser(): void {
+    ngOnInit() {
+        this.getAllUsers();
+    }
+    sendUser(): boolean {
         console.log("Sending users…");
         this.http.post("http://0.0.0.0:9000/api/user", {
             firstName: this.form_firstName,
@@ -47,20 +34,44 @@ export class UsersComponent {
             topics: []
         }).subscribe(
             res => {
+                this.users.push(new User(this.form_firstName, this.form_lastName, this.form_gender,  null,
+                    '', this.form_email, []));
+                this.form_firstName = "";
+                this.form_gender = "";
+                this.form_lastName = "";
+                this.form_email = "";
+                this.errorForm = false;
                 console.log("Done ! " + res);
+                this.addUser = false;
             },
             error => {
                 console.log(error)
+                this.errorForm = true;
+                this.addUser = true;
             });
+        return this.addUser;
     }
 
     deleteUser(user: User) {
         console.log("Deleting user :" + user.id);
-        this.http.delete("http://0.0.0.0:9000/api/user/" + user.id).subscribe(response => {
+        this.http.delete("http://0.0.0.0:9000/api/user/" + user.id).toPromise().then(response => {
             console.log(response);
             this.users.splice(this.users.indexOf(user), 1);
         });
     }
-
+    getAllUsers() {
+        this.http.get('http://0.0.0.0:9000/api/user').toPromise().then(users => {
+            console.log(users);
+            let i;
+            this.users = [];
+            for (i in users) {
+                let user: User;
+                user = users[i];
+                this.users.push(user);
+            }
+        }, error => {
+            console.log(error)
+        });
+    }
 
 };
