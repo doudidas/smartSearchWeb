@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
 
     private helloAPI() {
         this.loading = true;
-        this.http.get('http://0.0.0.0:9000/api/user').toPromise().then(response => {
+        this.http.get('http://0.0.0.0:9000/api/').toPromise().then(response => {
             this.showError = false;
             this.loading   = false;
             return true;
