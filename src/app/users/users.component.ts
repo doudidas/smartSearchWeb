@@ -25,7 +25,7 @@ export class UsersComponent implements OnInit{
     }
     sendUser(): boolean {
         console.log("Sending users…");
-        this.http.post("http://api:9000/api/user", {
+        this.http.post("http://spacelama-api:9000/api/user", {
             firstName: this.form_firstName,
             gender: this.form_gender,
             lastName: this.form_lastName,
@@ -54,13 +54,13 @@ export class UsersComponent implements OnInit{
 
     deleteUser(user: User) {
         console.log("Deleting user :" + user.id);
-        this.http.delete("http://api:9000/api/user/" + user.id).toPromise().then(response => {
+        this.http.delete("http://spacelama-api:9000/api/user/" + user.id).toPromise().then(response => {
             console.log(response);
             this.users.splice(this.users.indexOf(user), 1);
         });
     }
     getAllUsers() {
-        this.http.get('http://api:9000/api/user').toPromise().then(users => {
+        this.http.get('http://spacelama-api:9000/api/user').toPromise().then(users => {
             console.log(users);
             let i;
             this.users = [];
