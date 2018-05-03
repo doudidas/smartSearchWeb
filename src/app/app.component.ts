@@ -1,38 +1,36 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from "@angular/common/http";
 import {User} from "./class/user";
+import { ApiService } from './services/api.service';
 
 @Component({
     selector: 'my-app',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-    public showError: boolean;
-    public alertAppError: string;
-    private http;
-    private loading: boolean;
 
-    constructor(private router: Router, http: HttpClient) {
-        this.http = http;
+@Injectable()
+export class AppComponent implements OnInit{
+     public showError: boolean;
+     public alertAppError: string;
+     private loading: boolean;
+
+    constructor(private router: Router, private api: ApiService) {
     }
     ngOnInit() {
-        this.helloAPI();
+        this.checkServer();
     }
 
-    private helloAPI() {
-        this.loading = true;
-        this.http.get('http://spacelama-api:9000/api/').toPromise().then(response => {
+     private checkServer(): void {
+        let accessible = this.api.helloAPI();
+        if (accessible) {
             this.showError = false;
             this.loading   = false;
-            return true;
-        }, error => {
-            this.loading = false;
-            this.showError = true;
-            console.log(error);
+        } else {
+            this.loading       = false;
+            this.showError     = true;
             this.alertAppError = "Impossible de se Connecter au serveur !";
-            return false;
-        });
+        }
     }
 }

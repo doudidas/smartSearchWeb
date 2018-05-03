@@ -10,6 +10,7 @@ import {HomeComponent} from "./home/home.component";
 import {AboutComponent} from "./about/about.component";
 import {LoginComponent} from './login/login.component';
 import {UsersComponent} from './users/users.component';
+import { ApiService } from './services/api.service';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,7 @@ import {UsersComponent} from './users/users.component';
         ClarityModule,
         ROUTING
     ],
-    providers: [HttpClient],
+    providers: [HttpClient, ApiService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
