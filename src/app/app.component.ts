@@ -1,8 +1,6 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {HttpClient} from "@angular/common/http";
-import {User} from "./class/user";
-import { ApiService } from './services/api.service';
+import {ApiService} from './services/api.service';
 
 @Component({
     selector: 'my-app',
@@ -11,7 +9,7 @@ import { ApiService } from './services/api.service';
 })
 
 @Injectable()
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
      public showError: boolean;
      public alertAppError: string;
      private loading: boolean;
@@ -24,13 +22,16 @@ export class AppComponent implements OnInit{
 
      private checkServer(): void {
         let accessible = this.api.helloAPI();
-        if (accessible) {
-            this.showError = false;
-            this.loading   = false;
-        } else {
-            this.loading       = false;
-            this.showError     = true;
-            this.alertAppError = "Impossible de se Connecter au serveur !";
+         this.showError = false;
+         this.loading   = false;
+        if (! accessible) {
+            this.api.changeAPIUrl("localhost:9000/api/");
+
+            if (! this.api.helloAPI()) {
+                this.loading       = false;
+                this.showError     = true;
+                this.alertAppError = "Impossible de se Connecter au serveur !";
+            }
         }
     }
 }

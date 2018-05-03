@@ -2,6 +2,7 @@ import {Injectable, OnInit} from '@angular/core';
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import {User} from "../class/user";
+import {ApiService} from "../services/api.service";
 
 @Component({
     selector: 'app-users',
@@ -18,11 +19,14 @@ export class UsersComponent implements OnInit{
     public form_gender: string;
     public form_email: string;
     private errorForm: boolean;
-    constructor(private http: HttpClient) {
+
+    constructor(private http: HttpClient, private api: ApiService) {
     };
+
     ngOnInit() {
         this.getAllUsers();
     }
+
     sendUser(): boolean {
         console.log("Sending users…");
         this.http.post("http://spacelama-api:9000/api/user", {
@@ -60,18 +64,10 @@ export class UsersComponent implements OnInit{
         });
     }
     getAllUsers() {
-        this.http.get('http://spacelama-api:9000/api/user').toPromise().then(users => {
-            console.log(users);
-            let i;
-            this.users = [];
-            for (i in users) {
-                let user: User;
-                user = users[i];
-                this.users.push(user);
-            }
-        }, error => {
-            console.log(error)
-        });
+        let users: User[];
+        users = this.api.get("user");
+        for (let user of users) {
+            this.users.push(user);
+        }
     }
-
 };
