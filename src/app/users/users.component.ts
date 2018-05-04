@@ -11,7 +11,7 @@ import {ApiService} from "../services/api.service";
 })
 
 @Injectable()
-export class UsersComponent implements OnInit{
+export class UsersComponent implements OnInit {
     public addUser: boolean = false;
     public users: User[];
     public form_firstName: string;
@@ -20,54 +20,54 @@ export class UsersComponent implements OnInit{
     public form_email: string;
     private errorForm: boolean;
 
-    constructor(private http: HttpClient, private api: ApiService) {
-    };
+    constructor(private http: HttpClient, private api: ApiService) {};
 
     ngOnInit() {
-        this.getAllUsers();
+        this.users = this.getAllUsers();
     }
-
     sendUser(): boolean {
-        console.log("Sending users…");
-        this.http.post("http://spacelama-api:9000/api/user", {
+
+        let body = {
             firstName: this.form_firstName,
             gender: this.form_gender,
             lastName: this.form_lastName,
             email: this.form_email,
             departure: null,
             topics: []
-        }).subscribe(
-            res => {
-                this.users.push(new User(this.form_firstName, this.form_lastName, this.form_gender,  null,
-                    '', this.form_email, []));
-                this.form_firstName = "";
-                this.form_gender = "";
-                this.form_lastName = "";
-                this.form_email = "";
-                this.errorForm = false;
-                console.log("Done ! " + res);
-                this.addUser = false;
-            },
-            error => {
-                console.log(error)
-                this.errorForm = true;
-                this.addUser = true;
-            });
+        };
+        try {
+            let response = this.api.post("user", body);
+            this.users.push(new User(this.form_firstName, this.form_lastName, this.form_gender,  null,
+                '', this.form_email, []));
+            this.resetFormValues();
+            this.errorForm = false;
+            console.log("Done ! " + response);
+            this.addUser = false;
+        } catch (e) {
+            console.log(e);
+            this.errorForm = true;
+            this.addUser = true;
+        }
         return this.addUser;
     }
-
     deleteUser(user: User) {
         console.log("Deleting user :" + user.id);
-        this.http.delete("http://spacelama-api:9000/api/user/" + user.id).toPromise().then(response => {
-            console.log(response);
-            this.users.splice(this.users.indexOf(user), 1);
-        });
+        let response = this.api.delete('user/' + user.id);
+        console.log(response);
+        this.users.splice(this.users.indexOf(user), 1);
     }
-    getAllUsers() {
+    getAllUsers(): User[] {
         let users: User[];
-        users = this.api.get("user");
+        users = this.api.get("user", null);
         for (let user of users) {
             this.users.push(user);
         }
+        return users;
     }
-};
+    resetFormValues(): void {
+        this.form_firstName = "";
+        this.form_gender = "";
+        this.form_lastName = "";
+        this.form_email = "";
+    }
+}

@@ -23,10 +23,17 @@ export class ApiService {
         this.url = newUrl;
     }
 
-    public get(uri: string): any {
-        this.http.get(API_URL + uri).toPromise().then(output => output, error => error);
+    public get(uri: string, options: object): any {
+        if (options == null) {
+            return this.http.get(API_URL + uri).toPromise().then(output => output, error => {throw error; });
+        }  else {
+            return this.http.get(API_URL + uri, options).toPromise().then(output => output, error => {throw error; });
+        }
     }
     public post(uri: string, body: Object): any {
-        return this.http.post(API_URL + uri, body).subscribe(error => error, res => res);
+        return this.http.post(API_URL + uri, body).subscribe(res => res, error => {throw error; });
+    }
+    public delete(uri: string) {
+        return this.http.delete(API_URL + uri).toPromise().then(output => output, error => {throw error; });
     }
 }
