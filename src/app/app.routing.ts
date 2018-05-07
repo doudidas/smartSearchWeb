@@ -4,18 +4,20 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {ModuleWithProviders} from '@angular/core/src/metadata/ng_module';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 import {AboutComponent} from './about/about.component';
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
 import {UsersComponent} from './users/users.component';
+import {VroComponent} from "./vro/vro.component";
 
 export const ROUTES: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'about', component: AboutComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'vro', component: VroComponent},
     {path: 'users', component: UsersComponent}
 ];
 

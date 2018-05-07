@@ -1,17 +1,12 @@
 <clr-main-container>
     <div class="main-container">
-        <div *ngIf="showError" class="alert alert-app-level alert-danger">
-            <div class="alert-items">
-                <div class="alert-item static">
-                    <div class="alert-text">
-                        {{alertAppError}}
-                    </div>
-                </div>
-            </div>
-            <button type="button" class="close" aria-label="Close">
-                <clr-icon aria-hidden="true" shape="close"></clr-icon>
-            </button>
-        </div>
+        <clr-alert *ngIf="showError" [clrAlertType]="'alert-danger'" [clrAlertAppLevel]="true">
+            <clr-alert-item>
+        <span class="alert-text">
+              {{alertAppError}}
+        </span>
+            </clr-alert-item>
+        </clr-alert>
         <clr-header>
             <div class="branding">
                 <a href="#" class="nav-link">
@@ -21,6 +16,7 @@
             </div>
             <div class="header-nav" [clr-nav-level]="1">
                 <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
+                <a class="nav-link" href="#" [routerLink]="['/vro']" routerLinkActive="active"><span class="nav-text">Vro</span></a>
                 <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
                 <a class="nav-link" href="#" [routerLink]="['/login']" routerLinkActive="active"><span class="nav-text">Connexion</span></a>
                 <a class="nav-link" href="#" [routerLink]="['/form']" routerLinkActive="active"><span class="nav-text">Rechercher</span></a>

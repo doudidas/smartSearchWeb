@@ -10,7 +10,8 @@ import {HomeComponent} from "./home/home.component";
 import {AboutComponent} from "./about/about.component";
 import {LoginComponent} from './login/login.component';
 import {UsersComponent} from './users/users.component';
-import { ApiService } from './services/api.service';
+import {ApiService} from './services/api.service';
+import {VroComponent} from './vro/vro.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { ApiService } from './services/api.service';
         AboutComponent,
         HomeComponent,
         LoginComponent,
-        UsersComponent
+        UsersComponent,
+        VroComponent
     ],
     imports: [
         BrowserAnimationsModule,

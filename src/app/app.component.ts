@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
             if (! this.api.helloAPI()) {
                 this.loading       = false;
                 this.showError     = true;
-                this.alertAppError = "Impossible de se Connecter au serveur !";
+                this.alertAppError = "Limited access to ressources : Impossible to connect on  the API server ! ";
             }
         }
     }

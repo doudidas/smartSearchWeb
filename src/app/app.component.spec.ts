@@ -1,7 +1,6 @@
-///<reference path="../../node_modules/@clr/angular/clr-angular.module.d.ts"/>
 /* tslint:disable:no-unused-variable */
 
-import {TestBed, async, ComponentFixture} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {HomeComponent} from "./home/home.component";
 import {AboutComponent} from "./about/about.component";
