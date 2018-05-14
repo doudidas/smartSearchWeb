@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {User} from "../class/user";
 
-const API_URL = environment.apiUrl;
+const API_URL = "http://spacelama-api:9000/api";
 @Injectable()
 export class ApiService {
     private url: string;
