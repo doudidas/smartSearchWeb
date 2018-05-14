@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
-const API_URL = "http://spacelama-api:9000/api";
+const API_URL = "http://spacelama-api.smartsearch_front-tier:9000/api";
 @Injectable()
 export class ApiService {
     private url: string;

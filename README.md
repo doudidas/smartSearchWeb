@@ -1,16 +1,8 @@
 ![Clarity](logo.png)
 
-Clarity Seed
+Clarity fork
 ============
-This is a seed project for Angular 2 applications using [Clarity](https://github.com/vmware/clarity). For more information on the Clarity Design System, visit the [Clarity website](https://vmware.github.io/clarity/).
-
-We offer this seed project in three different build systems:
-
-1. **Angular-CLI version (branch: master)**
-
-2. Webpack 2 version (branch: webpack)
-
-3. SystemJS version (branch: systemjs)
+This is the front part of the 3-tier application SmartSearch
 
 Getting started
 ----------------------------------
