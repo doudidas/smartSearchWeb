@@ -1,6 +1,9 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ApiService} from './services/api.service';
+import {System} from "typescript";
+import {delay} from "rxjs/operator/delay";
+import {createAwait} from "typescript/lib/tsserverlibrary";
 
 @Component({
     selector: 'my-app',
@@ -22,16 +25,21 @@ export class AppComponent implements OnInit {
 
      private checkServer(): void {
         let accessible = this.api.helloAPI();
-         this.showError = false;
-         this.loading   = false;
+        this.togglePanel(accessible);
         if (! accessible) {
-            this.api.changeAPIUrl("localhost:9000/api/");
-
             if (! this.api.helloAPI()) {
-                this.loading       = false;
-                this.showError     = true;
-                this.alertAppError = "Limited access to ressources : Impossible to connect on  the API server ! ";
+               this.togglePanel(accessible);
             }
+        }
+    }
+    private togglePanel(show: boolean) {
+        if (show) {
+            this.showError     = false;
+            this.loading       = false;
+        } else {
+            this.loading       = false;
+            this.showError     = true;
+            this.alertAppError = "Limited access to resources : Impossible to connect on  the API server ! ";
         }
     }
 }

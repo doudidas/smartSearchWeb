@@ -1,7 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http'
 import {User} from "../class/user";
 import {ApiService} from "../services/api.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
     selector: 'app-users',
@@ -45,14 +45,18 @@ export class UsersComponent implements OnInit {
     }
     getAllUsers(): User[] {
         let users: User[];
-        users = this.api.get("user", null);
-        if (users.length == null) {
-            users = [];
-        } else {
-            for (let user of users) {
-                this.users.push(user);
+        this.api.get("user", null).then((success: User[]) => {
+            users = success;
+            if (users.length == null) {
+                users = [];
+            } else {
+                for (let user of users) {
+                    this.users.push(user);
+                }
             }
-        }
+        }, (fail: User[]) => {
+            users = null;
+        });
         return users;
     }
     onSubmit() {

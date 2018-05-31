@@ -1,37 +1,68 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs/Observable";
+import {of} from "rxjs/observable/of";
 
-const API_URL = "http://spacelama-api.smartsearch_front-tier:9000/api";
+const API_URL = "http://spacelama-api.smartsearch_front-tier:9000/api/";
 @Injectable()
 export class ApiService {
-    private url: string;
+    public reachable: boolean;
 
-    constructor(
-        private http: HttpClient
-    ) {
+    constructor (private http: HttpClient) {}
+
+    public helloAPI(): boolean {
+        try {
+            this.http.get(API_URL).toPromise().then(() => {
+                this.reachable = true;
+            }, error => {
+                console.log(error);
+                this.reachable = false;
+            });
+        } catch (error) {
+            this.reachable = false;
+        }
+         return this.reachable;
     }
 
-    public helloAPI() {
-        this.http.get(API_URL).toPromise().then(() => true, error => {
-            console.log(error);
-            return false;
-        });
-    }
-    public changeAPIUrl(newUrl: string) {
-        this.url = newUrl;
-    }
 
-    public get(uri: string, options: object): any {
+    public async get(uri: string, options: object): Promise<any> {
+        try {
+            return await this.http.get(API_URL + uri).toPromise().then(
+                output => output,
+                error => {throw error; }
+                );
+        } catch (error) {
+            await this.handleError(error);
+        }
         if (options == null) {
             return this.http.get(API_URL + uri).toPromise().then(output => output, error => {throw error; });
         }  else {
             return this.http.get(API_URL + uri, options).toPromise().then(output => output, error => {throw error; });
         }
     }
+
     public post(uri: string, body: Object): any {
         return this.http.post(API_URL + uri, body).subscribe(res => res, error => {throw error; });
     }
+
     public delete(uri: string) {
         return this.http.delete(API_URL + uri).toPromise().then(output => output, error => {throw error; });
+    }
+
+    /**
+     * Handle Http operation that failed.
+     * Let the app continue.
+     * @param operation - name of the operation that failed
+     * @param result - optional value to return as the observable result
+     */
+    private handleError<T> (operation = 'operation', result?: T) {
+        return (error: any): Observable<T> => {
+
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+
+            // Let the app keep running by returning an empty result.
+            return of(result as T);
+        };
     }
 }
