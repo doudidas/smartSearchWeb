@@ -3,25 +3,23 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {of} from "rxjs/observable/of";
 
-const API_URL = "http://spacelama-api.smartsearch_front-tier:9000/api/";
+const API_URL = "http://localhost:9000/api/";
 @Injectable()
 export class ApiService {
     public reachable: boolean;
 
-    constructor (private http: HttpClient) {}
+    constructor (private http: HttpClient) {
+      this.reachable = false;
+    }
 
     public helloAPI(): boolean {
-        try {
-            this.http.get(API_URL).toPromise().then(() => {
-                this.reachable = true;
+      let output: boolean;
+            this.http.get(API_URL+"user").toPromise().then(() => {
+                output =  true;
             }, error => {
-                console.log(error);
-                this.reachable = false;
+                output = false;
             });
-        } catch (error) {
-            this.reachable = false;
-        }
-         return this.reachable;
+            return output;
     }
 
 

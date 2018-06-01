@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
 
      private checkServer(): void {
         let accessible = this.api.helloAPI();
+        console.log(accessible);
         this.togglePanel(accessible);
         if (! accessible) {
             if (! this.api.helloAPI()) {
