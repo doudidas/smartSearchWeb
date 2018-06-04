@@ -42,7 +42,7 @@
                 <label>Informations</label>
                 <div class="form-group">
                     <label for="firstName">FirstName</label>
-                    <input [(ngModel)]="user.firstName" name="firstName" type="text" id="firstName"
+                    <input [(ngModel)]="user.firstName"  autocomplete='given-name' name="firstName" type="text" id="firstName"
                            placeholder="Enter value here" size="45">
                 </div>
                 <div class="form-group">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group">
                     <label for="lastName">Email</label>
-                    <input [(ngModel)]="user.email" name="email" type="email" id="email"
+                    <input [(ngModel)]="user.email" autocomplete='email' name="email" type="email" id="email"
                            placeholder="Enter another value here" size="35">
                 </div>
                 <div class="form-group">

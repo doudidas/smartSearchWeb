@@ -12,6 +12,8 @@ import {LoginComponent} from './login/login.component';
 import {UsersComponent} from './users/users.component';
 import {ApiService} from './services/api.service';
 import {VroComponent} from './vro/vro.component';
+import { GeneralService } from "./services/general.service";
+import { SnakeComponent } from './snake/snake.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,8 @@ import {VroComponent} from './vro/vro.component';
         HomeComponent,
         LoginComponent,
         UsersComponent,
-        VroComponent
+        VroComponent,
+        SnakeComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -30,7 +33,7 @@ import {VroComponent} from './vro/vro.component';
         ClarityModule,
         ROUTING
     ],
-    providers: [HttpClient, ApiService],
+    providers: [HttpClient, ApiService, GeneralService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -3,3 +3,4 @@ export class User {
                 public email: string, public topics: string[]) {
     }
 }
+

@@ -11,6 +11,7 @@ import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
 import {UsersComponent} from './users/users.component';
 import {VroComponent} from "./vro/vro.component";
+import { SnakeComponent } from './snake/snake.component';
 
 export const ROUTES: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -18,6 +19,7 @@ export const ROUTES: Routes = [
     {path: 'about', component: AboutComponent},
     {path: 'login', component: LoginComponent},
     {path: 'vro', component: VroComponent},
+    {path: "snake", component: SnakeComponent},
     {path: 'users', component: UsersComponent}
 ];
 
