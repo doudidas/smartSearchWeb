@@ -7,16 +7,15 @@
     <div class="text-center">
         <p class="lead" *ngIf="loading">Loading...</p>
     </div>
-    <div *ngFor="let user of users;let i = index" [class.offset-md-1]="i % 2 == 0"
-         class=" col-md-5 col-sm-12 col-xs-12">
+    <div *ngFor="let user of users;let i = index" [class.offset-md-1]="i % 2 == 0" class=" col-md-5 col-sm-12 col-xs-12" (click)="showCard(user)">
+
         <div class="card">
             <div class="card-header">
                 <b>Utilisateur</b>
             </div>
             <div class="card-block">
                 <div class="card-title">
-                    <clr-icon shape="user"
-                              [ngStyle]="{'color':user.gender === 'men' ? '#343DAC' : (user.gender === 'woman' ? '#F1428A' : null) }"></clr-icon>
+                    <clr-icon shape="user" [ngStyle]="{'color':user.gender === 'men' ? '#343DAC' : (user.gender === 'woman' ? '#F1428A' : null) }"></clr-icon>
                     {{user.firstName}} - {{user.lastName}}
                 </div>
                 <div class="card-text">
@@ -35,25 +34,24 @@
     </div>
 </div>
 <clr-modal [(clrModalOpen)]="addUser">
-    <h3  [class.text-danger]="userForm" class="modal-title text-danger">Ajout d'un utilisateur </h3>
+    <h3 [class.text-danger]="userForm" class="modal-title text-danger">Ajout d'un utilisateur </h3>
     <div class="modal-body">
         <form class="compact">
             <section class="form-block">
                 <label>Informations</label>
                 <div class="form-group">
                     <label for="firstName">FirstName</label>
-                    <input [(ngModel)]="user.firstName"  autocomplete='given-name' name="firstName" type="text" id="firstName"
-                           placeholder="Enter value here" size="45">
+                    <input [(ngModel)]="user.firstName" autocomplete='given-name' name="firstName" type="text" id="firstName" placeholder="Enter value here"
+                        size="45">
                 </div>
                 <div class="form-group">
                     <label for="lastName">LastName</label>
-                    <input [(ngModel)]="user.lastName" name="lastName" type="text" id="lastName"
-                           placeholder="Enter another value here" size="35">
+                    <input [(ngModel)]="user.lastName" name="lastName" type="text" id="lastName" placeholder="Enter another value here" size="35">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Email</label>
-                    <input [(ngModel)]="user.email" autocomplete='email' name="email" type="email" id="email"
-                           placeholder="Enter another value here" size="35">
+                    <input [(ngModel)]="user.email" autocomplete='email' name="email" type="email" id="email" placeholder="Enter another value here"
+                        size="35">
                 </div>
                 <div class="form-group">
                     <label for="gender">gender</label>
@@ -66,12 +64,38 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <div *ngIf="errorForm" class="text-danger text-left"><clr-icon shape="error-standard" class="is-danger"></clr-icon> User already exist!
-                    </div>
                     <button type="submit" (click)="addUser = sendUser(user)" class="btn btn-primary">Submit</button>
                 </div>
-
             </section>
         </form>
+    </div>
+</clr-modal>
+<clr-modal [(clrModalOpen)]="showUser" [clrModalSize]="'xl'">
+    <div class="modal-title">
+        <clr-icon shape="user" [ngStyle]="{'color':focusUser.gender === 'men' ? '#343DAC' : (focusUser.gender === 'woman' ? '#F1428A' : null) }"></clr-icon>
+        {{focusUser.firstName}} - {{focusUser.lastName}}
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li>id : {{focusUser.id}}</li>
+            <li>Email : {{focusUser.email}}</li>
+        </ul>
+        <h2>Topics</h2>
+        <div class="topic-list">
+            <div class="row">
+                <div *ngFor="let topicId of focusUser.topics" class="col-md-4">
+                    <a href="/" class="card clickable">
+                        <div class="card-img">
+                            <img [src]="getTopicUrlById(topicId)" onError="this.src='http://via.placeholder.com/800x600?text=Image+not+found'">
+                        </div>
+                        <div class="card-block">
+                            <p class="card-text">
+                                lorem ipsum - {{topicId}}
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </clr-modal>

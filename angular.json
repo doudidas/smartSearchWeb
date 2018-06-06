@@ -18,7 +18,8 @@
             "assets": [
               "src/images",
               "src/images/vro",
-              "src/images/favicon.io"
+              "src/images/favicon.io",
+              "src/images/topics/full"
             ],
             "styles": [
               "node_modules/@clr/icons/clr-icons.min.css",
@@ -30,7 +31,7 @@
               "node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
               "node_modules/@clr/icons/clr-icons.min.js",
-              "node_modules/web-animations-js/web-animations.min.js",
+              "node_modules/web-animations-js/web-animations.min.js"
             ]
           },
           "configurations": {
@@ -90,7 +91,8 @@
             "assets": [
               "src/images",
               "src/images/vro",
-              "src/images/images/favicon.io"
+              "src/images/images/favicon.io",
+              "src/images/topics/full"
             ]
           }
         },

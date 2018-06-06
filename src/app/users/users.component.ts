@@ -13,7 +13,9 @@ import { AppComponent } from '..';
 @Injectable()
 export class UsersComponent implements OnInit {
     public addUser: boolean = false;
+    public showUser: boolean = false;
     public user: User;
+    public focusUser: User;
     public users: User[];
     public errorForm: boolean;
     public userForm: any;
@@ -22,6 +24,7 @@ export class UsersComponent implements OnInit {
     constructor(private http: HttpClient, private api: ApiService) {};
 
     ngOnInit() {
+        this.focusUser = new User(null, null, null, null, null , null , null);
         this.loading = false;
         this.user = new User(null, null, null, null, null , null , null);
         this.users = new Array<User>(0);
@@ -74,5 +77,14 @@ export class UsersComponent implements OnInit {
     resetForm() {
         this.userForm.reset();
         this.submitted = false;
+    }
+
+    showCard(user: User) {
+        this.focusUser = user;
+        console.log(this.focusUser);
+        this.showUser = true;
+    }
+    getTopicUrlById(topicId: string) {
+        return "images/topics/full/" + topicId + ".jpg";
     }
 }
