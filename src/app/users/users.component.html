@@ -84,7 +84,7 @@
         <div class="topic-list">
             <div class="row">
                 <div *ngFor="let topicId of focusUser.topics" class="col-md-4">
-                    <a href="/" class="card clickable">
+                    <a routerLink="/topic" class="card clickable">
                         <div class="card-img">
                             <img [src]="getTopicUrlById(topicId)" onError="this.src='http://via.placeholder.com/800x600?text=Image+not+found'">
                         </div>

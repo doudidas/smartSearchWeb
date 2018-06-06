@@ -14,6 +14,7 @@ import {ApiService} from './services/api.service';
 import {VroComponent} from './vro/vro.component';
 import { GeneralService } from "./services/general.service";
 import { SnakeComponent } from './snake/snake.component';
+import { TopicComponent } from './topic/topic.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { SnakeComponent } from './snake/snake.component';
         LoginComponent,
         UsersComponent,
         VroComponent,
-        SnakeComponent
+        SnakeComponent,
+        TopicComponent
     ],
     imports: [
         BrowserAnimationsModule,
