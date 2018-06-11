@@ -22,6 +22,7 @@ export class TopicComponent implements OnInit {
   public async getAllTopics() {
     this.topics = await this.api.get("topic", null);
     this.topics.forEach(topic => {
+      console.log(topic);
     });
   }
   getTopicUrlById(topicId: number) {
