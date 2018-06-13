@@ -28,10 +28,9 @@ export class TopicComponent implements OnInit {
         success => {
           return success;
         }, error => {
-            return error.error.text;
+          return error.error.text;
         }
       );
-      console.log(this.topics[index].description);
     }
   }
   getTopicUrlById(topicId: number) {

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { of } from "rxjs/observable/of";
-import { RequestOptions } from 'http';
 
 
 @Injectable()
@@ -14,7 +13,7 @@ export class ApiService {
     }
 
     public async helloAPI(): Promise<boolean> {
-        return this.http.get("api/user").toPromise().then(users => {
+        return this.http.get("api/hello").toPromise().then(success => {
             return true;
         }, error => {
             return false;
@@ -25,7 +24,6 @@ export class ApiService {
 
         let headers = new HttpHeaders();
         headers.set('Content-Type', 'text/plain');
-        // headers.set('Access-Control-Allow-Origin', '*');
         return this.get('/lorem', headers);
     }
 

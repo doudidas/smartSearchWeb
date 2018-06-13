@@ -2,8 +2,6 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from './services/api.service';
 import { GeneralService } from "./services/general.service";
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
 
 @Component({
     selector: 'my-app',
@@ -21,8 +19,12 @@ export class AppComponent implements OnInit {
     }
 
     public async ngOnInit() {
-        let before = Date.now();
-        await this.checkServer();
+        while (true) {
+            this.checkServer();
+            console.log(Date.now());
+            await this.service._delay(10000);
+            console.log(Date.now());
+        }
     }
 
     private async checkServer(): Promise<void> {
