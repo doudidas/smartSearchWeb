@@ -22,7 +22,7 @@ export const ROUTES: Routes = [
     { path: 'vro', component: VroComponent },
     { path: "snake", component: SnakeComponent },
     { path: "topic", component: TopicComponent },
-    { path: 'users', component: UsersComponent }
+    { path: 'users', component: UsersComponent },
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);

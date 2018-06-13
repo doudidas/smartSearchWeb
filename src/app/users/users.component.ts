@@ -36,7 +36,7 @@ export class UsersComponent implements OnInit {
         user.departure = null;
         let response: User;
         try {
-            response = this.api.post("user", user);
+            response = this.api.post("api/user", user);
             this.users.push(user);
             this.errorForm = false;
             this.addUser = false;
@@ -48,13 +48,13 @@ export class UsersComponent implements OnInit {
 
     deleteUser(user: User) {
         console.log("Deleting user :" + user.id);
-        let response = this.api.delete('user/' + user.id);
+        let response = this.api.delete('api/user/' + user.id);
         console.log(response);
         this.users.splice(this.users.indexOf(user), 1);
     }
     getAllUsers(): User[] {
         let users: User[];
-        this.api.get("user", null).then((success: User[]) => {
+        this.api.get("api/user", null).then((success: User[]) => {
             users = success;
             if (users.length == null) {
                 users = [];

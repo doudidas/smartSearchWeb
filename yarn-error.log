@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/Cellar/node/10.2.1/bin/node /Users/etopin/.yarn/bin/yarn.js add codelyser 4.3.0
+  /usr/local/Cellar/node/10.2.1/bin/node /Users/etopin/.yarn/bin/yarn.js upgrade
 
 PATH: 
-  /Users/etopin/.yarn/bin:/Users/etopin/.config/yarn/global/node_modules/.bin:/usr/local/opt/sphinx-doc/bin:/usr/local/opt/icu4c/sbin:/Users/etopin/bin:/usr/local/bin:.:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/MacGPG2/bin:/opt/X11/bin:/usr/local/opt/sphinx-doc/bin:/usr/local/opt/icu4c/sbin:/Users/etopin/bin:.:/Library/Frameworks/Python.framework/Versions/3.6/bin
+  /Users/etopin/.yarn/bin:/Users/etopin/.config/yarn/global/node_modules/.bin:/usr/local/opt/sphinx-doc/bin:/usr/local/opt/icu4c/sbin:/Users/etopin/bin:/usr/local/bin:.:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/MacGPG2/bin:/opt/X11/bin:/Users/etopin/.yarn/bin:/Users/etopin/.config/yarn/global/node_modules/.bin:/usr/local/opt/sphinx-doc/bin:/usr/local/opt/icu4c/sbin:/Users/etopin/bin:.:/Library/Frameworks/Python.framework/Versions/3.6/bin
 
 Yarn version: 
   1.7.0
@@ -14,17 +14,8 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/codelyser: Not found
-      at Request.params.callback [as _callback] (/Users/etopin/.yarn/lib/cli.js:65656:18)
-      at Request.self.callback (/Users/etopin/.yarn/lib/cli.js:134675:22)
-      at Request.emit (events.js:182:13)
-      at Request.<anonymous> (/Users/etopin/.yarn/lib/cli.js:135658:10)
-      at Request.emit (events.js:182:13)
-      at IncomingMessage.<anonymous> (/Users/etopin/.yarn/lib/cli.js:135578:12)
-      at Object.onceWrapper (events.js:273:13)
-      at IncomingMessage.emit (events.js:187:15)
-      at endReadableNT (_stream_readable.js:1090:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:50:26)
 
 npm manifest: 
   {
@@ -46,30 +37,31 @@ npm manifest:
           "@angular/animations": "^5.2.11",
           "@angular/cli": "^6.0.7",
           "@angular/common": "^5.2.11",
-          "@angular/compiler": "^5.2.11",
-          "@angular/compiler-cli": "^5.2.11",
+          "@angular/compiler": "6.0.3",
+          "@angular/compiler-cli": "^6.0.3",
           "@angular/core": "5.2.11",
           "@angular/forms": "^5.2.11",
-          "@angular/platform-browser": "^5.2.11",
-          "@angular/platform-browser-dynamic": "^5.2.11",
+          "@angular/platform-browser": "^5.2",
+          "@angular/platform-browser-dynamic": "^5.2",
           "@angular/router": "^5.2.11",
           "@clr/angular": "^0.11.20",
-          "@clr/icons": "0.11.20",
+          "@clr/icons": "0.11.0",
           "@clr/ui": "0.11.20",
           "@types/core-js": "^0.9.46",
           "@types/node": "~8.0.24",
           "@webcomponents/custom-elements": "1.0.0",
           "bootstrap": "4.0.0-alpha.5",
-          "codelyzer": "~3.1.2",
-          "enhanced-resolve": "~3.4.1",
+          "codelyzer": "4.3.0",
+          "enhanced-resolve": "^4.0.0",
           "jquery": "3",
           "mutationobserver-shim": "~0.3.2",
+          "ngx-lorem-ipsum": "^0.1.1",
           "node-sass": "^4.9.0",
           "npm-check": "^5.7.1",
           "popper.js": "^1.14.3",
           "protractor": "~5.1.2",
-          "rxjs": "^5.5.11",
-          "typescript": ">=2.4.2 <2.7.0",
+          "rxjs": "^5.5",
+          "typescript": "2.7.2",
           "web-animations-js": "~2.3.1",
           "webdriver-manager": "~12.0.6",
           "zone.js": "^0.8.26"
@@ -78,7 +70,7 @@ npm manifest:
           "@angular-devkit/build-angular": "^0.7.0-beta.1",
           "@types/jasmine": "^2.8.7",
           "@types/jasminewd2": "~2.0.2",
-          "jasmine-core": "~2.6.2",
+          "jasmine-core": "^3.1.0",
           "jasmine-spec-reporter": "~4.2.1",
           "karma": "~1.7.0",
           "karma-chrome-launcher": "~2.2.0",
@@ -86,7 +78,7 @@ npm manifest:
           "karma-jasmine": "~1.0.2",
           "karma-mocha-reporter": "~2.2.1",
           "karma-remap-istanbul": "~0.6.0",
-          "ts-node": "~3.0.4",
+          "ts-node": "^6.1.0",
           "tslint": "^5.10.0"
       }
   }
@@ -229,20 +221,20 @@ Lockfile:
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/compiler-cli@^5.2.11":
-    version "5.2.11"
-    resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-5.2.11.tgz#71a2885ac394a3c7a407c6ba0b920b52d73add99"
+  "@angular/compiler-cli@^6.0.3":
+    version "6.0.3"
+    resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-6.0.3.tgz#4cdda9f28e3387811423c980f3e195ac2322057d"
     dependencies:
       chokidar "^1.4.2"
       minimist "^1.2.0"
       reflect-metadata "^0.1.2"
       tsickle "^0.27.2"
   
-  "@angular/compiler@^5.2.11":
-    version "5.2.11"
-    resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-5.2.11.tgz#ca2c38cda6ddde52b5948b8cff6551ff19d5e9de"
+  "@angular/compiler@6.0.3":
+    version "6.0.3"
+    resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-6.0.3.tgz#47e988012e94f9e3477a4c5557c997d7910a3b2d"
     dependencies:
-      tslib "^1.7.1"
+      tslib "^1.9.0"
   
   "@angular/core@5.2.11":
     version "5.2.11"
@@ -256,13 +248,13 @@ Lockfile:
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/platform-browser-dynamic@^5.2.11":
+  "@angular/platform-browser-dynamic@^5.2":
     version "5.2.11"
     resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-5.2.11.tgz#1b2a9de4af207bee7040400f61c01a44e929c308"
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/platform-browser@^5.2.11":
+  "@angular/platform-browser@^5.2":
     version "5.2.11"
     resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-5.2.11.tgz#5be379f96d74b4ebe84a447633ed5279cb7e641e"
     dependencies:
@@ -280,9 +272,9 @@ Lockfile:
     dependencies:
       tslib "^1.7.1"
   
-  "@clr/icons@0.11.20":
-    version "0.11.20"
-    resolved "https://registry.yarnpkg.com/@clr/icons/-/icons-0.11.20.tgz#30f676fe4ce7e1e05a6f254edfd234faac52beb9"
+  "@clr/icons@0.11.0":
+    version "0.11.0"
+    resolved "https://registry.yarnpkg.com/@clr/icons/-/icons-0.11.0.tgz#be1da8aadedfa7af959aaa9442a753b49be79403"
   
   "@clr/ui@0.11.20":
     version "0.11.20"
@@ -1294,15 +1286,15 @@ Lockfile:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   
-  codelyzer@~3.1.2:
-    version "3.1.2"
-    resolved "https://registry.yarnpkg.com/codelyzer/-/codelyzer-3.1.2.tgz#9ff1f041fb9b5ee5dbeb45ba866dfaf04983af04"
+  codelyzer@4.3.0:
+    version "4.3.0"
+    resolved "https://registry.yarnpkg.com/codelyzer/-/codelyzer-4.3.0.tgz#6bf3ba68efd9d655a451ecaa14a2852001a43dfb"
     dependencies:
       app-root-path "^2.0.1"
       css-selector-tokenizer "^0.7.0"
       cssauron "^1.4.0"
       semver-dsl "^1.0.1"
-      source-map "^0.5.6"
+      source-map "^0.5.7"
       sprintf-js "^1.0.3"
   
   collection-visit@^1.0.0:
@@ -2035,15 +2027,6 @@ Lockfile:
       graceful-fs "^4.1.2"
       memory-fs "^0.4.0"
       tapable "^1.0.0"
-  
-  enhanced-resolve@~3.4.1:
-    version "3.4.1"
-    resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-3.4.1.tgz#0421e339fd71419b3da13d129b3979040230476e"
-    dependencies:
-      graceful-fs "^4.1.2"
-      memory-fs "^0.4.0"
-      object-assign "^4.0.1"
-      tapable "^0.2.7"
   
   ent@~2.2.0:
     version "2.2.0"
@@ -3585,9 +3568,9 @@ Lockfile:
       which "^1.1.1"
       wordwrap "^1.0.0"
   
-  jasmine-core@~2.6.2:
-    version "2.6.4"
-    resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-2.6.4.tgz#dec926cd0a9fa287fb6db5c755fa487e74cecac5"
+  jasmine-core@^3.1.0:
+    version "3.1.0"
+    resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.1.0.tgz#a4785e135d5df65024dfc9224953df585bd2766c"
   
   jasmine-core@~2.99.0:
     version "2.99.1"
@@ -4350,6 +4333,10 @@ Lockfile:
   next-tick@1:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
+  
+  ngx-lorem-ipsum@^0.1.1:
+    version "0.1.1"
+    resolved "https://registry.yarnpkg.com/ngx-lorem-ipsum/-/ngx-lorem-ipsum-0.1.1.tgz#9ef39f328c0e9edb180b4089eb179481d7ab6cfd"
   
   no-case@^2.2.0:
     version "2.3.2"
@@ -5617,7 +5604,7 @@ Lockfile:
     version "3.1.2"
     resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
   
-  rxjs@^5.5.11:
+  rxjs@^5.5:
     version "5.5.11"
     resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.11.tgz#f733027ca43e3bec6b994473be4ab98ad43ced87"
     dependencies:
@@ -6012,18 +5999,18 @@ Lockfile:
       source-map-url "^0.4.0"
       urix "^0.1.0"
   
-  source-map-support@^0.4.0, source-map-support@~0.4.0:
-    version "0.4.18"
-    resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.18.tgz#0286a6de8be42641338594e97ccea75f0a2c585f"
-    dependencies:
-      source-map "^0.5.6"
-  
-  source-map-support@^0.5.0, source-map-support@^0.5.5:
+  source-map-support@^0.5.0, source-map-support@^0.5.5, source-map-support@^0.5.6:
     version "0.5.6"
     resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.6.tgz#4435cee46b1aab62b8e8610ce60f788091c51c13"
     dependencies:
       buffer-from "^1.0.0"
       source-map "^0.6.0"
+  
+  source-map-support@~0.4.0:
+    version "0.4.18"
+    resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.18.tgz#0286a6de8be42641338594e97ccea75f0a2c585f"
+    dependencies:
+      source-map "^0.5.6"
   
   source-map-url@^0.4.0:
     version "0.4.0"
@@ -6263,7 +6250,7 @@ Lockfile:
     dependencies:
       get-stdin "^4.0.1"
   
-  strip-json-comments@^2.0.0, strip-json-comments@~2.0.1:
+  strip-json-comments@~2.0.1:
     version "2.0.1"
     resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   
@@ -6316,10 +6303,6 @@ Lockfile:
   symbol-observable@^1.2.0:
     version "1.2.0"
     resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
-  
-  tapable@^0.2.7:
-    version "0.2.8"
-    resolved "https://registry.yarnpkg.com/tapable/-/tapable-0.2.8.tgz#99372a5c999bf2df160afc0d74bed4f47948cd22"
   
   tapable@^1.0.0:
     version "1.0.0"
@@ -6483,27 +6466,17 @@ Lockfile:
     dependencies:
       glob "^6.0.4"
   
-  ts-node@~3.0.4:
-    version "3.0.6"
-    resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-3.0.6.tgz#55127ff790c7eebf6ba68c1e6dde94b09aaa21e0"
+  ts-node@^6.1.0:
+    version "6.1.0"
+    resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-6.1.0.tgz#a2c37a11fdb58e60eca887a1269b025cf4d2f8b8"
     dependencies:
       arrify "^1.0.0"
-      chalk "^1.1.1"
       diff "^3.1.0"
       make-error "^1.1.1"
       minimist "^1.2.0"
       mkdirp "^0.5.1"
-      source-map-support "^0.4.0"
-      tsconfig "^6.0.0"
-      v8flags "^2.0.11"
+      source-map-support "^0.5.6"
       yn "^2.0.0"
-  
-  tsconfig@^6.0.0:
-    version "6.0.0"
-    resolved "https://registry.yarnpkg.com/tsconfig/-/tsconfig-6.0.0.tgz#6b0e8376003d7af1864f8df8f89dd0059ffcd032"
-    dependencies:
-      strip-bom "^3.0.0"
-      strip-json-comments "^2.0.0"
   
   tsickle@^0.27.2:
     version "0.27.5"
@@ -6576,11 +6549,7 @@ Lockfile:
     version "0.0.6"
     resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   
-  "typescript@>=2.4.2 <2.7.0":
-    version "2.6.2"
-    resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.6.2.tgz#3c5b6fd7f6de0914269027f03c0946758f7673a4"
-  
-  "typescript@>=2.6.2 <2.8", typescript@~2.7.2:
+  typescript@2.7.2, "typescript@>=2.6.2 <2.8", typescript@~2.7.2:
     version "2.7.2"
     resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
   
@@ -6747,10 +6716,6 @@ Lockfile:
     dependencies:
       kind-of "^6.0.2"
   
-  user-home@^1.1.1:
-    version "1.1.1"
-    resolved "https://registry.yarnpkg.com/user-home/-/user-home-1.1.1.tgz#2b5be23a32b63a7c9deb8d0f28d485724a3df190"
-  
   useragent@^2.1.12:
     version "2.3.0"
     resolved "https://registry.yarnpkg.com/useragent/-/useragent-2.3.0.tgz#217f943ad540cb2128658ab23fc960f6a88c9972"
@@ -6796,12 +6761,6 @@ Lockfile:
   uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
     version "3.2.1"
     resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
-  
-  v8flags@^2.0.11:
-    version "2.1.1"
-    resolved "https://registry.yarnpkg.com/v8flags/-/v8flags-2.1.1.tgz#aab1a1fa30d45f88dd321148875ac02c0b55e5b4"
-    dependencies:
-      user-home "^1.1.1"
   
   validate-npm-package-license@^3.0.1:
     version "3.0.3"

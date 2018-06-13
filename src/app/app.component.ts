@@ -1,9 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from './services/api.service';
-import { System } from "typescript";
 import { GeneralService } from "./services/general.service";
-import { createAwait } from "typescript/lib/tsserverlibrary";
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 

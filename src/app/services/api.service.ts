@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { of } from "rxjs/observable/of";
+import { RequestOptions } from 'http';
 
-const API_URL = "http://localhost:9000/api/";
+
 @Injectable()
 export class ApiService {
     public reachable: boolean;
@@ -13,19 +14,27 @@ export class ApiService {
     }
 
     public async helloAPI(): Promise<boolean> {
-        return this.http.get(API_URL + "user").toPromise().then(users => {
+        return this.http.get("api/user").toPromise().then(users => {
             return true;
         }, error => {
             return false;
         });
     }
 
-    public async get(uri: string, options: object): Promise<any> {
+    public async getLoremIpsum(): Promise<string> {
+
+        let headers = new HttpHeaders();
+        headers.set('Content-Type', 'text/plain');
+        // headers.set('Access-Control-Allow-Origin', '*');
+        return this.get('/lorem', headers);
+    }
+
+    public async get(uri: string, headers: HttpHeaders): Promise<any> {
         try {
-            if (options == null) {
-                return this.http.get(API_URL + uri).toPromise();
+            if (headers == null) {
+                return this.http.get(uri).toPromise();
             } else {
-                return this.http.get(API_URL + uri, options).toPromise();
+                return this.http.get(uri, { 'headers': headers }).toPromise();
             }
         } catch (error) {
             await this.handleError(error);
@@ -33,11 +42,11 @@ export class ApiService {
     }
 
     public post(uri: string, body: Object): any {
-        return this.http.post(API_URL + uri, body).subscribe(res => res, error => { throw error; });
+        return this.http.post(uri, body).subscribe(res => res, error => { throw error; });
     }
 
     public delete(uri: string) {
-        return this.http.delete(API_URL + uri).toPromise().then(output => output, error => { throw error; });
+        return this.http.delete(uri).toPromise().then(output => output, error => { throw error; });
     }
 
     /**

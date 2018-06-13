@@ -4,8 +4,8 @@
     "description": "Angular-CLI starter for a Clarity project",
     "angular-cli": {},
     "scripts": {
-        "start": "ng serve --host 0.0.0.0",
-        "start_prod": "ng serve --prod --host 0.0.0.0",
+        "start": "ng serve --host 0.0.0.0 --proxy-config proxy.conf.json",
+        "start_prod": "ng serve --prod --host 0.0.0.0 --proxy-config proxy.conf.json",
         "deploy": "./deploy.sh",
         "lint": "tslint \"src/**/*.ts\"",
         "test": "ng test --single-run",
