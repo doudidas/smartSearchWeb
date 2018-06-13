@@ -4,7 +4,7 @@
         "secure": false
     },
     "/lorem/*": {
-    "target": "http://loripsum.net",
+    "target": "https://loripsum.net",
     "secure": false,
     "pathRewrite": {
       "/lorem": "api/5/short/plaintext"
