@@ -17,4 +17,4 @@ COPY . /usr/src/app/
 
 EXPOSE 4200
 
-CMD [ "yarn", "start_prod"]
+CMD [ "yarn", "start_ssl"]
