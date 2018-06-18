@@ -19,7 +19,7 @@ export const ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'vro', component: VroComponent },
+  //  { path: 'vro', component: VroComponent },
     { path: "snake", component: SnakeComponent },
     { path: "topic", component: TopicComponent },
     { path: 'users', component: UsersComponent },
