@@ -18,7 +18,7 @@ export class TopicComponent implements OnInit {
   }
 
   async ngOnInit() {
-    let id = +this.route.snapshot.paramMap.get('id');
+    let id = this.route.snapshot.paramMap.get('id');
     if (id != null) {
       this.focusTopic = this.getTopicById(id);
       this.showCard = true;
@@ -32,7 +32,7 @@ export class TopicComponent implements OnInit {
     this.topics = await this.api.get("api/topic", null);
   }
 
-  public getTopicById(topicId: number) {
+  public getTopicById(topicId: string) {
     let output: Topic;
     for (let i = 0; i < this.topics.length; i++) {
       if (this.topics[i].hasOwnProperty('id') && this.topics[i].id === topicId) {
