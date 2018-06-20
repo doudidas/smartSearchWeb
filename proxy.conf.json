@@ -2,14 +2,5 @@
     "/api/*": {
         "target": "http://spacelama-api:9000",
         "secure": false
-    },
-    "/lorem/*": {
-    "target": "https://loripsum.net",
-    "secure": false,
-    "pathRewrite": {
-      "/lorem": "/api/5/short/plaintext"
-    },
-    "changeOrigin": true,
-    "logLevel": "debug"
-  }
+    }
 }

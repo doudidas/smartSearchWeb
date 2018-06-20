@@ -31,15 +31,6 @@ export class TopicComponent implements OnInit {
 
   public async getAllTopics() {
     this.topics = await this.api.get("api/topic", null);
-    for (let index = 0; index < this.topics.length; index++) {
-      this.topics[index].description = await this.api.getLoremIpsum().then(
-        success => {
-          return success;
-        }, error => {
-          return error.error.text;
-        }
-      );
-    }
   }
 
   public getTopicById(topicId: number) {
@@ -53,16 +44,12 @@ export class TopicComponent implements OnInit {
     return output;
   }
 
-  getTopicUrlById(topicId: number) {
-    let uri = "images/topics/full/" + Math.floor(topicId) + ".jpg";
+  getTopicUrlById(topicId: string) {
+    let uri = "images/topics/full/" + topicId + ".jpg";
     return uri;
   }
   showTopic(topic: Topic) {
     this.focusTopic = topic;
     this.showCard = true;
-  }
-
-  public async setRandomDesription() {
-
   }
 }
