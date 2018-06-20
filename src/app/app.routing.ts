@@ -21,6 +21,7 @@ export const ROUTES: Routes = [
     { path: 'login', component: LoginComponent },
   //  { path: 'vro', component: VroComponent },
     { path: "snake", component: SnakeComponent },
+    { path: 'topic/:id', component: TopicComponent },
     { path: "topic", component: TopicComponent },
     { path: 'users', component: UsersComponent },
 ];
