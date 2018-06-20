@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Topic } from '../class/topic';
 import { ApiService } from '../services/api.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-topic',
   templateUrl: './topic.component.html',
