@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
         }
         while (true) {
             await this.checkServer();
-            await this.service._delay(10000);
+            await this.service._delay(1000 * 60);
         }
     }
 
