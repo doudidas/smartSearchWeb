@@ -10,12 +10,11 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
-import { VroComponent } from "./vro/vro.component";
 import { SnakeComponent } from './snake/snake.component';
 import { TopicComponent } from './topic/topic.component';
 
 export const ROUTES: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'login', component: LoginComponent },

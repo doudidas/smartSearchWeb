@@ -13,7 +13,8 @@ export class ApiService {
     }
 
     public async helloAPI(): Promise<boolean> {
-        return this.http.get("api/hello").toPromise().then(success => {
+        return this.http.get("api/hello").toPromise().then(
+            success => {
             return true;
         }, error => {
             return false;

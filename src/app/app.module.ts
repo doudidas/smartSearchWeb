@@ -15,7 +15,7 @@ import { VroComponent } from './vro/vro.component';
 import { GeneralService } from "./services/general.service";
 import { SnakeComponent } from './snake/snake.component';
 import { TopicComponent } from './topic/topic.component';
-
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -35,7 +35,7 @@ import { TopicComponent } from './topic/topic.component';
         ClarityModule,
         ROUTING
     ],
-    providers: [HttpClient, ApiService, GeneralService],
+    providers: [HttpClient, ApiService, GeneralService, CookieService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
