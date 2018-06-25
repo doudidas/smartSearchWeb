@@ -18,33 +18,24 @@ export class AppComponent implements OnInit {
     public logged: boolean;
     public displayForm: boolean;
     public currentUser: string;
-    public submitted = false;
+    public submitted: boolean;
+
     public form: object;
-    constructor(private router: Router, private api: ApiService, private service: GeneralService, private cookieService: CookieService) {
+    constructor(private router: Router, public api: ApiService, private service: GeneralService, private cookieService: CookieService) {
+        this.submitted = false;
+        this.displayForm = false;
     }
 
     public async ngOnInit() {
-        this.displayForm = false;
-        this.logged = this.cookieService.check("login");
-        if (!this.logged) {
-            this.form = {"username": "", "password": "", userType : ""};
-            this.router.navigate(['']);
-        } else {
-            this.currentUser = this.cookieService.get("login");
-            this.router.navigate(['home']);
-        }
-        while (true) {
-            await this.checkServer();
-            await this.service._delay(1000 * 60);
-        }
+        this.init();
     }
 
     private async checkServer(): Promise<void> {
-        let check = await this.api.helloAPI();
-        console.log(new Date() + " API healthcheck: " + check);
-        await this.togglePanel(check);
+        console.log(new Date() + "Running healthcheck: ");
+        let check = await this.api.checkHealth();
+        this.togglePanel(check);
     }
-    private async togglePanel(show: boolean) {
+    public togglePanel(show: boolean) {
         console.log("show: " + show);
         if (show) {
             this.loading = false;
@@ -81,5 +72,20 @@ export class AppComponent implements OnInit {
         console.log(this.form);
         this.submitted = true;
         console.log("click! ");
+    }
+
+    private async init() {
+        this.logged = this.cookieService.check("login");
+        if (!this.logged) {
+            this.form = {"username": "", "password": "", userType : ""};
+            this.router.navigate(['']);
+        } else {
+            this.currentUser = this.cookieService.get("login");
+            this.router.navigate(['home']);
+        }
+        while (true) {
+            await this.checkServer();
+            await this.service._delay(1000 * 60);
+        }
     }
 }
