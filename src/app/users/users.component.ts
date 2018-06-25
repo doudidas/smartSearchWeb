@@ -1,7 +1,7 @@
-import {Component, Injectable, OnInit} from '@angular/core';
-import {User} from "../class/user";
-import {ApiService} from "../services/api.service";
-import {HttpClient} from "@angular/common/http";
+import { Component, Injectable, OnInit } from '@angular/core';
+import { User } from "../class/user";
+import { ApiService } from "../services/api.service";
+import { HttpClient } from "@angular/common/http";
 import { AppComponent } from '..';
 
 @Component({
@@ -21,12 +21,12 @@ export class UsersComponent implements OnInit {
     public userForm: any;
     private submitted: boolean;
     public loading: boolean;
-    constructor(private http: HttpClient, private api: ApiService) {};
+    constructor(private http: HttpClient, private api: ApiService) { };
 
     ngOnInit() {
-        this.focusUser = new User(null, null, null, null, null , null , null);
+        this.focusUser = new User(null, null, null, null, null, null, null);
         this.loading = false;
-        this.user = new User(null, null, null, null, null , null , null);
+        this.user = new User(null, null, null, null, null, null, null);
         this.users = new Array<User>(0);
         this.getAllUsers();
     }
@@ -73,6 +73,16 @@ export class UsersComponent implements OnInit {
         });
         return users;
     }
+    getUserById(userId: string) {
+        let output: User;
+        for (let i = 0; i < this.users.length; i++) {
+            if (this.users[i].hasOwnProperty('id') && this.users[i].id === userId) {
+                output = this.users[i];
+                break;
+            }
+        }
+        return output;
+    }
     onSubmit() {
         let successful = this.sendUser(this.user);
         if (successful) {
@@ -91,5 +101,15 @@ export class UsersComponent implements OnInit {
     }
     getTopicUrlById(topicId: string) {
         return "images/topics/full/" + topicId + ".jpg";
+    }
+    public removeTopicFromUser(topicId, userId) {
+        let user: User;
+        user = this.getUserById(userId);
+        user.topics.splice(user.topics.indexOf(topicId), 1);
+        this.updateUser(user);
+        this.showCard(user);
+    }
+    private updateUser(user: User) {
+        this.api.put("api/user", user);
     }
 }

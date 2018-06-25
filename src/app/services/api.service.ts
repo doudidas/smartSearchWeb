@@ -50,6 +50,10 @@ export class ApiService {
         return this.http.post(uri, body).subscribe(res => res, error => { throw error; });
     }
 
+    public put(uri: string, body: Object): any {
+        return this.http.put(uri, body).subscribe(res => res, error => { throw error; });
+    }
+
     public delete(uri: string) {
         return this.http.delete(uri).toPromise().then(output => output, error => { throw error; });
     }
