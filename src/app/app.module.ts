@@ -16,6 +16,7 @@ import { GeneralService } from "./services/general.service";
 import { SnakeComponent } from './snake/snake.component';
 import { TopicComponent } from './topic/topic.component';
 import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -25,7 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
         UsersComponent,
         VroComponent,
         SnakeComponent,
-        TopicComponent
+        TopicComponent,
     ],
     imports: [
         BrowserAnimationsModule,

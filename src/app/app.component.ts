@@ -21,9 +21,12 @@ export class AppComponent implements OnInit {
     public submitted: boolean;
 
     public form: object;
-    constructor(private router: Router, public api: ApiService, private service: GeneralService, private cookieService: CookieService) {
-        this.submitted = false;
-        this.displayForm = false;
+    constructor(private router: Router,
+        public api: ApiService,
+        private service: GeneralService,
+        private cookieService: CookieService) {
+            this.submitted = false;
+            this.displayForm = false;
     }
 
     public async ngOnInit() {
@@ -50,15 +53,14 @@ export class AppComponent implements OnInit {
         this.displayForm = true;
     }
     public logAsGuest() {
-        this.cookieService.set("login", "guest");
+        this.cookieService.set("login", "guest", 0.5, "/", "localhost");
         this.logged = true;
         this.currentUser = "guest";
         this.router.navigate(['home']);
     }
 
     public logAsUser(user) {
-
-        this.cookieService.set("login", user.name);
+        this.cookieService.set("login", user.id);
         this.logged = true;
         this.currentUser = user.name;
         this.router.navigate(['home']);
@@ -76,7 +78,7 @@ export class AppComponent implements OnInit {
 
     private async init() {
         this.logged = this.cookieService.check("login");
-        if (!this.logged) {
+        if (! this.logged) {
             this.form = {"username": "", "password": "", userType : ""};
             this.router.navigate(['']);
         } else {

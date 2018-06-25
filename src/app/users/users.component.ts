@@ -52,14 +52,19 @@ export class UsersComponent implements OnInit {
         console.log(response);
         this.users.splice(this.users.indexOf(user), 1);
     }
-    getAllUsers(): User[] {
+    async getAllUsers(): Promise<User[]> {
         let users: User[];
-        this.api.get("api/user", null).then((success: User[]) => {
+        await this.api.get("api/user", null).then((success: User[]) => {
             users = success;
             if (users.length == null) {
                 users = [];
             } else {
                 for (let user of users) {
+                    for (let i = 0; i < user.topics.length; i++) {
+                        if (user.topics[i] != null || user.topics[i] !== "0") {
+                            user.topics.splice(i, 1);
+                        }
+                    }
                     this.users.push(user);
                 }
             }
