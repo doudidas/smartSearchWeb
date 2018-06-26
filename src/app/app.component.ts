@@ -35,18 +35,20 @@ export class AppComponent implements OnInit {
 
     private async checkServer(): Promise<void> {
         console.log(new Date() + "Running healthcheck: ");
-        let check = await this.api.checkHealth();
-        this.togglePanel(check);
+        let message = await this.api.checkHealth();
+        this.togglePanel((message == null), message);
     }
-    public togglePanel(show: boolean) {
-        console.log("show: " + show);
+    public userCheck(): void {
+        this.checkServer();
+    }
+    public togglePanel(show: boolean, message: string) {
         if (show) {
             this.loading = false;
             this.showError = false;
         } else {
             this.loading = false;
             this.showError = true;
-            this.alertAppError = "Limited access to resources : Impossible to connect on  the API server ! ";
+            this.alertAppError = message;
         }
     }
     public showForm() {
@@ -87,7 +89,8 @@ export class AppComponent implements OnInit {
         }
         while (true) {
             await this.checkServer();
-            await this.service._delay(1000 * 60);
+            let timer = (this.showError) ? 1000 * 5 : 1000 * 60;
+            await this.service._delay(timer);
         }
     }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { of } from "rxjs/observable/of";
-import {MongoHealth} from "../class/MongoHealth";
+
 @Injectable()
 export class ApiService {
     public reachable: boolean;
@@ -10,28 +10,31 @@ export class ApiService {
     constructor(private http: HttpClient) {
         this.reachable = false;
     }
-    public async checkHealth(): Promise<boolean> {
+    public async checkHealth(): Promise<string> {
         console.log("checking api health...");
-        let result = await this.http.get("ping", {responseType: 'text'} ).toPromise().then(
+        let errors = await this.http.get("ping", {responseType: 'text'} ).toPromise().then(
             success => {
                 let reg = new RegExp("pong");
                 console.log("api: ok");
-                return (reg.test(success));
+                return reg.test(success) ? null : "invalid return ! " + success;
             }, error => {
                 console.error("api: ko");
-                throw error;
+                return "Limited access to resources : Impossible to connect on  the API server ! ";
             });
-            if (result === true) {
+            if (errors === null) {
                 return await this.http.get("healthcheck").toPromise().then(
                     success => {
                         console.log("mongoDB: ok");
-                        let response = success as MongoHealth;
-                        return response.mongo.healthy;
+                        return null;
+                    },
+                    response => {
+                        console.error("mongoDB: ko");
+                        console.error(response.error.mongo.message);
+                        return "Limited access to resources : No DB connection on API side !! more details on log ";
                     }
                 )
             } else {
-                console.error("mongoDB: ko");
-                return false;
+                return "unexpected error !";
             }
     }
     public async get(uri: string, headers: HttpHeaders): Promise<any> {
@@ -39,7 +42,7 @@ export class ApiService {
             if (headers == null) {
                 return this.http.get(uri).toPromise();
             } else {
-                return this.http.get(uri, { 'headers': headers }).toPromise();
+                return this.http.get(uri, { 'headers': headers}).toPromise();
             }
         } catch (error) {
             await this.handleError(error);
