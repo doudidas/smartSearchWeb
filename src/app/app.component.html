@@ -1,11 +1,11 @@
 <clr-main-container *ngIf="logged==true">
-    <div class="main-container" >
+    <div class="main-container">
         <clr-alert *ngIf="showError" [clrAlertType]="'alert-danger'" [clrAlertAppLevel]="true">
             <clr-alert-item>
-        <span class="alert-text">
-              {{alertAppError}}
-        </span>
-        <button class="btn btn-sm btn-warning-outline" (click)="checkServer()">check</button>
+                <span class="alert-text">
+                    {{alertAppError}}
+                </span>
+                <button class="btn btn-sm btn-warning-outline" (click)="checkServer()">check</button>
             </clr-alert-item>
         </clr-alert>
         <clr-header>
@@ -16,26 +16,37 @@
                 </a>
             </div>
             <div class="header-nav" [clr-nav-level]="1">
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/vro']" routerLinkActive="active"><span class="nav-text">Vro</span></a>
-                <!-- <a class="nav-link" href="#" [routerLink]="['/login']" routerLinkActive="active"><span class="nav-text">Connexion</span></a> -->
-                <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/snake']" routerLinkActive="active"><span class="nav-text">Snake</span></a>
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/users']" routerLinkActive="active"><span class="nav-text">Users</span></a>
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/topic']" routerLinkActive="active"><span class="nav-text">Topics</span></a>
+                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active">
+                    <span class="nav-text">Home</span>
+                </a>
+                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/vro']" routerLinkActive="active">
+                    <span class="nav-text">Vro</span>
+                </a>
+                <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active">
+                    <span class="nav-text">About</span>
+                </a>
+                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/snake']" routerLinkActive="active">
+                    <span class="nav-text">Snake</span>
+                </a>
+                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/users']" routerLinkActive="active">
+                    <span class="nav-text">Users</span>
+                </a>
+                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/topic']" routerLinkActive="active">
+                    <span class="nav-text">Topics</span>
+                </a>
             </div>
             <div class="header-actions">
-                    <clr-dropdown>
-                        <button class="nav-text" clrDropdownTrigger>
-                            {{currentUser}}
-                            <clr-icon shape="caret down"></clr-icon>
-                        </button>
-                        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-                            <a href="..." clrDropdownItem>Preferences</a>
-                            <a (click)="logOut()" clrDropdownItem>Log out</a>
-                        </clr-dropdown-menu>
-                    </clr-dropdown>
-                </div>
+                <clr-dropdown>
+                    <button class="nav-text" clrDropdownTrigger>
+                        {{currentUser}}
+                        <clr-icon shape="caret down"></clr-icon>
+                    </button>
+                    <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                        <a href="..." clrDropdownItem>Preferences</a>
+                        <a (click)="logOut()" clrDropdownItem>Log out</a>
+                    </clr-dropdown-menu>
+                </clr-dropdown>
+            </div>
         </clr-header>
         <div class="content-container">
             <div class="content-area">
@@ -45,7 +56,7 @@
     </div>
 </clr-main-container>
 <div *ngIf="logged==false" class="login-wrapper">
-    <form class="login" (ngSubmit)="onSubmit()">
+    <div class="login">
         <label class="title">
             <h3 class="welcome">Welcome to my website</h3>
             <h5 class="hint">Log as guest or as user for full access</h5>
@@ -53,26 +64,38 @@
         <br>
         <button (click)="logAsGuest()" class="btn btn-outline center">Guest mode</button>
         <button (click)="showForm()" *ngIf="! displayForm" class="btn btn-outline center">Log as User</button>
-        <div *ngIf="displayForm" class="login-group">
-            <div [(ngModel)]="form.userType" class="auth-source select">
-                <select id="login-auth-source-1">
-                    <option>Local Users</option>
-                    <option>Administrator</option>
-                </select>
-            </div>
-            <input [(ngModel)]="form.username" class="username" type="text" id="login_username" placeholder="Username">
-            <input [(ngModel)]="form.password" class="password" type="password" id="login_password" placeholder="Password">
-            <div class="checkbox">
-                <input type="checkbox" id="rememberme">
-                <label [(ngModel)]="form.remember" for="rememberme">
-                    Remember me
+        <form (change)="formError = null">
+            <div class="login-group">
+                <div class="auth-source select">
+                    <select [(ngModel)]=form.userType id="login-auth-source-1" name="userType">
+                        <option value="user" selected>Local Users</option>
+                        <option value="admin">Administrator</option>
+                    </select>
+                </div>
+                <label [class.invalid]="isEmpty(form.username)" for="validInput1" aria-haspopup="true" role="tooltip" class="required tooltip tooltip-validation tooltip-sm">
+                    <input [(ngModel)]=form.username type="text" id="username" name="username" placeholder="Username" class="username">
+                    <span class="tooltip-content">
+                        This field cannot be empty!
+                    </span>
                 </label>
+                <label [class.invalid]="isEmpty(form.password)" for="validInput1" aria-haspopup="true" role="tooltip" class="password required tooltip tooltip-validation tooltip-sm">
+                    <input [(ngModel)]=form.password type="password" id="password" name="password" placeholder="Password" class="password">
+                    <span class="tooltip-content">
+                        This field cannot be empty!
+                    </span>
+                </label>
+                <div class="checkbox">
+                    <input [(ngModel)]=form.remember type="checkbox" id="rememberme" name="rememberme">
+                    <label>
+                        Remember me
+                    </label>
+                </div>
+                <div *ngIf="formError != null && formError != '' " class="error active">
+                    {{formError}}
+                </div>
+                <button (click)="onSubmit(form)" type="submit" class="btn btn-primary">Connexion</button>
+                <a href="" class="signup">Create account (not available yet)</a>
             </div>
-            <div *ngIf="formError" class="error active">
-                Invalid user name or password
-            </div>
-            <button type="submit" class="btn btn-primary">Connexion</button>
-            <a href="javascript://" class="signup">Create account (not available yet)</a>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

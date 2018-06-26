@@ -2,7 +2,6 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { User } from "../class/user";
 import { ApiService } from "../services/api.service";
 import { HttpClient } from "@angular/common/http";
-import { AppComponent } from '..';
 
 @Component({
     selector: 'app-users',

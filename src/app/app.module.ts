@@ -26,7 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
         UsersComponent,
         VroComponent,
         SnakeComponent,
-        TopicComponent,
+        TopicComponent
     ],
     imports: [
         BrowserAnimationsModule,

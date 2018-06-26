@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from './services/api.service';
 import { GeneralService } from "./services/general.service";
 import { CookieService } from 'ngx-cookie-service';
+import { UUID } from 'angular2-uuid';
 
 @Component({
     selector: 'my-app',
@@ -12,25 +13,37 @@ import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class AppComponent implements OnInit {
-    public showError: boolean;
-    public alertAppError: string;
-    public loading: boolean;
-    public logged: boolean;
-    public displayForm: boolean;
-    public currentUser: string;
-    public submitted: boolean;
-
-    public form: object;
-    constructor(private router: Router,
-        public api: ApiService,
-        private service: GeneralService,
-        private cookieService: CookieService) {
-            this.submitted = false;
-            this.displayForm = false;
+    showError: boolean;
+    alertAppError: string;
+    loading: boolean;
+    logged: boolean;
+    displayForm: boolean;
+    currentUser: string;
+    submitted: boolean;
+    form: any;
+    formError: string;
+    errorUser: boolean;
+    errorPassword: boolean;
+    constructor(private router: Router, private api: ApiService, private service: GeneralService, private cookieService: CookieService) {
+        this.submitted = false;
+        this.displayForm = false;
     }
 
-    public async ngOnInit() {
-        this.init();
+    private async init() {
+        this.logged = this.cookieService.check("login");
+        if (!this.logged) {
+            this.form = { "username": null, "password": null, userType: "user", rememberme: false };
+            this.router.navigate(['']);
+        } else {
+            let cookie = this.cookieService.get("login");
+            this.currentUser = JSON.parse(cookie).username;
+            this.router.navigate(['home']);
+        }
+        while (true) {
+            await this.checkServer();
+            let timer = (this.showError) ? 1000 * 5 : 1000 * 60;
+            await this.service._delay(timer);
+        }
     }
 
     private async checkServer(): Promise<void> {
@@ -38,10 +51,17 @@ export class AppComponent implements OnInit {
         let message = await this.api.checkHealth();
         this.togglePanel((message == null), message);
     }
-    public userCheck(): void {
+
+    async ngOnInit() {
+        this.init();
+    }
+
+
+
+    userCheck(): void {
         this.checkServer();
     }
-    public togglePanel(show: boolean, message: string) {
+    togglePanel(show: boolean, message: string) {
         if (show) {
             this.loading = false;
             this.showError = false;
@@ -51,46 +71,36 @@ export class AppComponent implements OnInit {
             this.alertAppError = message;
         }
     }
-    public showForm() {
+    showForm() {
         this.displayForm = true;
     }
-    public logAsGuest() {
-        this.cookieService.set("login", "guest", 0.5, "/", "localhost");
+    logAsGuest() {
+        this.logAsUser("guest");
+    }
+
+    logAsUser(username) {
+        let cookie = JSON.stringify({ username: username, id: UUID.UUID() });
+        this.cookieService.set("login", cookie, 0.5, "/", "localhost");
         this.logged = true;
-        this.currentUser = "guest";
+        this.currentUser = username;
+        this.logged = true;
         this.router.navigate(['home']);
     }
 
-    public logAsUser(user) {
-        this.cookieService.set("login", user.id);
-        this.logged = true;
-        this.currentUser = user.name;
-        this.router.navigate(['home']);
-    }
-
-    public logOut() {
+    logOut() {
         this.logged = false;
         this.cookieService.delete("login");
     }
     onSubmit() {
-        console.log(this.form);
-        this.submitted = true;
         console.log("click! ");
-    }
 
-    private async init() {
-        this.logged = this.cookieService.check("login");
-        if (! this.logged) {
-            this.form = {"username": "", "password": "", userType : ""};
-            this.router.navigate(['']);
+        if (this.form.username == null || this.form.password == null || this.form.username === "" || this.form.password === "") {
+            this.formError = "Invalid user name or password";
         } else {
-            this.currentUser = this.cookieService.get("login");
-            this.router.navigate(['home']);
+            this.logAsUser(this.form.username);
         }
-        while (true) {
-            await this.checkServer();
-            let timer = (this.showError) ? 1000 * 5 : 1000 * 60;
-            await this.service._delay(timer);
-        }
+    }
+    isEmpty(input: any) {
+        return (input != null && input === "");
     }
 }

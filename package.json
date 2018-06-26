@@ -33,6 +33,7 @@
         "@types/core-js": "^0.9.46",
         "@types/node": "~8.0.24",
         "@webcomponents/custom-elements": "1.0.0",
+        "angular2-uuid": "^1.1.1",
         "bootstrap": "4.0.0-alpha.5",
         "codelyzer": "4.3.0",
         "enhanced-resolve": "^4.0.0",
