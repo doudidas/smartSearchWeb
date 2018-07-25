@@ -28,7 +28,7 @@
         "@angular/platform-browser-dynamic": "6.x",
         "@angular/router": "6.x",
         "@clr/angular": "^0.12.x",
-        "@clr/icons": "0.10.x",
+        "@clr/icons": "0.111.x",
         "@clr/ui": "0.12.x",
         "@types/core-js": "2.x",
         "@types/node": "10.x",
