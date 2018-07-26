@@ -12,7 +12,6 @@ import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { SnakeComponent } from './snake/snake.component';
 import { TopicComponent } from './topic/topic.component';
-
 export const ROUTES: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },

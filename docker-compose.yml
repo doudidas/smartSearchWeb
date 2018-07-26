@@ -1,0 +1,27 @@
+version: '3'
+services:
+  spacelama-api:
+    container_name: spacelama-api
+    image: 'spacelama/api:latest'
+    depends_on:
+      - mongo
+    ports:
+      - '9000:9000'
+    networks:
+      - front-tier
+      - back-tier
+    deploy:
+      replicas: 3
+  mongo:
+    image: 'mongo:latest'
+    container_name: mongo
+    ports:
+      - '27017:27017'
+    networks:
+      - back-tier
+    volumes:
+      - './mongo/configdb:/data/configdb'
+      - './mongo/db:/data/db'
+networks:
+  front-tier: null
+  back-tier: null

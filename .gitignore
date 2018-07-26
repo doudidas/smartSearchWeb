@@ -9,3 +9,5 @@ typings/
 .DS_Store
 .npmrc
 package-lock.json
+mongo
+.vscode/

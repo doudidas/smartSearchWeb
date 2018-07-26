@@ -59,7 +59,6 @@ export class ApiService {
     public delete(uri: string) {
         return this.http.delete(uri).toPromise().then(output => output, error => { throw error; });
     }
-
     /**
      * Handle Http operation that failed.
      * Let the app continue.
