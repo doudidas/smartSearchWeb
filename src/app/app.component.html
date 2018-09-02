@@ -19,21 +19,22 @@
                 <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active">
                     <span class="nav-text">Home</span>
                 </a>
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/vro']" routerLinkActive="active">
+                <!-- <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/vro']" routerLinkActive="active">
                     <span class="nav-text">Vro</span>
-                </a>
+                </a> -->
                 <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active">
-                    <span class="nav-text">About</span>
+                    <span class="nav-text">Kubernetes</span>
                 </a>
                 <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/snake']" routerLinkActive="active">
                     <span class="nav-text">Snake</span>
                 </a>
+                
                 <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/users']" routerLinkActive="active">
-                    <span class="nav-text">Users</span>
+                    <span class="nav-text">Voyage SNCF</span>
                 </a>
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/topic']" routerLinkActive="active">
+                <!-- <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/topic']" routerLinkActive="active">
                     <span class="nav-text">Topics</span>
-                </a>
+                </a> -->
             </div>
             <div class="header-actions">
                 <clr-dropdown>
@@ -48,6 +49,22 @@
                 </clr-dropdown>
             </div>
         </clr-header>
+        <!-- <nav class="subnav">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" [ngClass]="{'active': activeColum === 1 }" (click)=switchTo(1)>Front-End</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': activeColum === 2 }" (click)=switchTo(2)>Back-End</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': activeColum === 3 }" (click)=switchTo(3)>Database</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': activeColum === 4 }" (click)=switchTo(4)>Infrastructure</a>
+                </li>
+            </ul>
+        </nav> -->
         <div class="content-container">
             <div class="content-area">
                 <router-outlet></router-outlet>
@@ -72,14 +89,18 @@
                         <option value="admin">Administrator</option>
                     </select>
                 </div>
-                <label [class.invalid]="isEmpty(form.username)" for="validInput1" aria-haspopup="true" role="tooltip" class="required tooltip tooltip-validation tooltip-sm">
-                    <input [(ngModel)]=form.username type="text" id="username" name="username" placeholder="Username" class="username">
+                <label [class.invalid]="isEmpty(form.username)" for="validInput1" aria-haspopup="true" role="tooltip"
+                    class="required tooltip tooltip-validation tooltip-sm">
+                    <input [(ngModel)]=form.username type="text" id="username" name="username" placeholder="Username"
+                        class="username">
                     <span class="tooltip-content">
                         This field cannot be empty!
                     </span>
                 </label>
-                <label [class.invalid]="isEmpty(form.password)" for="validInput1" aria-haspopup="true" role="tooltip" class="password required tooltip tooltip-validation tooltip-sm">
-                    <input [(ngModel)]=form.password type="password" id="password" name="password" placeholder="Password" class="password">
+                <label [class.invalid]="isEmpty(form.password)" for="validInput1" aria-haspopup="true" role="tooltip"
+                    class="password required tooltip tooltip-validation tooltip-sm">
+                    <input [(ngModel)]=form.password type="password" id="password" name="password" placeholder="Password"
+                        class="password">
                     <span class="tooltip-content">
                         This field cannot be empty!
                     </span>

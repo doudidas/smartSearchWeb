@@ -13,6 +13,8 @@ import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class AppComponent implements OnInit {
+    columns;
+    activeColum: number;
     showError: boolean;
     alertAppError: string;
     loading: boolean;
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit {
     formError: string;
     errorUser: boolean;
     errorPassword: boolean;
+
     constructor(private router: Router, private api: ApiService, private service: GeneralService, private cookieService: CookieService) {
         this.submitted = false;
         this.displayForm = false;
@@ -102,5 +105,8 @@ export class AppComponent implements OnInit {
     }
     isEmpty(input: any) {
         return (input != null && input === "");
+    }
+    switchTo(activeColum: number) {
+        this.activeColum = activeColum;
     }
 }

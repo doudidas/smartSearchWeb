@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {Component} from '@angular/core';
+import { AppComponent } from '..';
 
 @Component({
     styleUrls: ['./about.component.scss'],
@@ -12,4 +13,8 @@ import {Component} from '@angular/core';
 export class AboutComponent {
     // open: Boolean = false;
     type: String;
+    columns = [
+        {id: 0, name: "Front-End"},
+        {id: 1, name: "Back-End"},
+    ]
 }
