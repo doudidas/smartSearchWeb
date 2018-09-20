@@ -11,6 +11,3 @@ typings/
 package-lock.json
 mongo
 .vscode/
-ssl/server.key
-ssl/server.crt
-.gitignore
