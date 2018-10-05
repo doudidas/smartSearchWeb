@@ -8,11 +8,12 @@ WORKDIR /usr/src/app
 LABEL author="Edouard Topin"
 
 # Install app dependencies
+#COPY node_modules /usr/src/app
 COPY package.json /usr/src/app/
-# COPY yarn.lock /usr/src/app/
-RUN npm install
+COPY yarn.lock /usr/src/app/
+# RUN npm install -g yarn
 RUN yarn install
-# RUN yarn
+RUN yarn
 
 # Bundle app source
 COPY . /usr/src/app/
