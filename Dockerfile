@@ -1,4 +1,4 @@
-FROM library/node:alpine
+FROM library/node:latest
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -9,8 +9,10 @@ LABEL author="Edouard Topin"
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-COPY yarn.lock /usr/src/app/
-RUN yarn
+# COPY yarn.lock /usr/src/app/
+RUN npm install
+RUN yarn install
+# RUN yarn
 
 # Bundle app source
 COPY . /usr/src/app/
