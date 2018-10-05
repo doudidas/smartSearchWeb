@@ -1,6 +1,6 @@
 {
     "name": "clarity-seed",
-    "version": "0.10.0",
+    "version": "1.10.1",
     "description": "Angular-CLI starter for a Clarity project",
     "angular-cli": {},
     "scripts": {
