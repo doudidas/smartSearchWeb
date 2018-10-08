@@ -11,3 +11,4 @@ typings/
 package-lock.json
 mongo
 .vscode/
+yarn.lock

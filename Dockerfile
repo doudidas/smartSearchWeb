@@ -8,16 +8,14 @@ WORKDIR /usr/src/app
 LABEL author="Edouard Topin"
 
 # Install app dependencies
-#COPY node_modules /usr/src/app
+
 COPY package.json /usr/src/app/
-COPY yarn.lock /usr/src/app/
-# RUN npm install -g yarn
+
 RUN yarn install
-RUN yarn
 
 # Bundle app source
-COPY . /usr/src/app/
-
+COPY node_module /usr/src/app/
+COPY src /usr/src/app/
 EXPOSE 4200
 
 CMD [ "yarn", "start_ssl_container"]
