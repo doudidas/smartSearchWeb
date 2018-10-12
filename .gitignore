@@ -12,6 +12,3 @@ package-lock.json
 mongo
 .vscode/
 yarn.lock
-.certificate/server.crt
-.certificate/server.csr
-.certificate/server.key
