@@ -50,7 +50,8 @@
         "typescript": ">=2.7.0 <2.8.0",
         "web-animations-js": "~2.3.1",
         "webdriver-manager": "12.x",
-        "zone.js": "^0.8.26"
+        "zone.js": "^0.8.26",
+        "yarn": "1.10.x"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^0.8",
