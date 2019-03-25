@@ -11,7 +11,7 @@ export class ApiService {
     }
     public async checkHealth(): Promise<string> {
         console.log("checking api health...");
-        let errors = await this.http.get("ping", {responseType: 'text'} ).toPromise().then(
+        let errors = await this.http.get("api/ping", {responseType: 'text'} ).toPromise().then(
             success => {
                 let reg = new RegExp("pong");
                 console.log("api: ok");
@@ -21,7 +21,7 @@ export class ApiService {
                 return "Limited access to resources : Impossible to connect on  the API server ! ";
             });
             if (errors === null) {
-                return await this.http.get("healthcheck").toPromise().then(
+                return await this.http.get("api/healthcheck").toPromise().then(
                     success => {
                         console.log("mongoDB: ok");
                         return null;

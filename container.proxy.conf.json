@@ -3,12 +3,8 @@
         "target": "http://spacelama-api:9000",
         "secure": false
     },
-    "/ping": {
-        "target": "http://spacelama-api:8082",
-        "changeOrigin": true
-    },
     "/healthcheck": {
-        "target": "http://0.0.0.0:8082",
+        "target": "http://0.0.0.0:9000",
         "secure": false
     }
 }
