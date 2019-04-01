@@ -12,3 +12,4 @@ package-lock.json
 mongo
 .vscode/
 yarn.lock
+yarn-error.log
