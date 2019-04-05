@@ -2,6 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { User } from "../class/user";
 import { ApiService } from "../services/api.service";
 import { HttpClient } from "@angular/common/http";
+import { MapType } from '@angular/compiler';
 
 @Component({
     selector: 'app-users',
@@ -34,23 +35,29 @@ export class UsersComponent implements OnInit {
         user.topics = [];
         user.departure = null;
         let response: User;
-        try {
-            response = this.api.post("api/user", user);
-            this.users.push(user);
-            this.errorForm = false;
-            this.addUser = false;
-        } catch (e) {
-            this.addUser = true;
-        }
+            response = this.api.post("api/user", user).then(
+                success => {
+                    this.users.push(user);
+                    this.errorForm = false;
+                    this.addUser = false;
+                }, error => {
+                    this.addUser = true;
+                }
+            );
         return this.addUser;
     }
 
     deleteUser(user: User) {
-        console.log("Deleting user :" + user.id);
-        let response = this.api.delete('api/user/' + user.id);
-        console.log(response);
-        this.users.splice(this.users.indexOf(user), 1);
+        console.log("Deleting user :" + user._id);
+        let response = this.api.delete('api/user/' + user._id).then(success => {
+            console.log(success.toString)
+            this.users.splice(this.users.indexOf(user), 1);
+        }, fail => {
+            console.error(fail.toString)
+        }
+        )
     }
+
     async getAllUsers(): Promise<User[]> {
         let users: User[];
         await this.api.get("api/user", null).then((success: User[]) => {
@@ -59,11 +66,17 @@ export class UsersComponent implements OnInit {
                 users = [];
             } else {
                 for (let user of users) {
-                    for (let i = 0; i < user.topics.length; i++) {
-                        if (user.topics[i] != null || user.topics[i] !== "0") {
-                            user.topics.splice(i, 1);
+                    console.log(user)
+                    if (user.hasOwnProperty("topics")) {
+                        for (let i = 0; i < user.topics.length; i++) {
+                            if (user.topics[i] != null || user.topics[i] !== "0") {
+                                user.topics.splice(i, 1);
+                            }
                         }
+                    } else {
+                        user.topics = []
                     }
+
                     this.users.push(user);
                 }
             }
@@ -75,7 +88,7 @@ export class UsersComponent implements OnInit {
     getUserById(userId: string) {
         let output: User;
         for (let i = 0; i < this.users.length; i++) {
-            if (this.users[i].hasOwnProperty('id') && this.users[i].id === userId) {
+            if (this.users[i].hasOwnProperty('id') && this.users[i]._id === userId) {
                 output = this.users[i];
                 break;
             }
@@ -101,12 +114,11 @@ export class UsersComponent implements OnInit {
     getTopicUrlById(topicId: string) {
         return "images/topics/full/" + topicId + ".jpg";
     }
-    public removeTopicFromUser(topicId, userId) {
+    public removeTopicFromUser(topicId: string, userId: string) {
         let user: User;
         user = this.getUserById(userId);
         user.topics.splice(user.topics.indexOf(topicId), 1);
-        this.updateUser(user);
-        this.showCard(user);
+        // this.updateUser(user);
     }
     private updateUser(user: User) {
         this.api.put("api/user", user);
