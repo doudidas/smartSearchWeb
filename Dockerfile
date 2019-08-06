@@ -1,5 +1,6 @@
-### STAGE 2: Build ###
-
+###################################################
+# STEP 1 build website 
+###################################################
 FROM library/node:10-alpine as builder
 
 # Create app directory
@@ -10,7 +11,9 @@ WORKDIR /ng-app
 COPY . .
 RUN npm install --global yarn @angular/cli && yarn install && ng build --prod
 
-### STAGE 2: Setup ###
+###################################################
+# STEP 2 Setup nginx container with minimal code
+###################################################
 
 FROM nginx:alpine
 
