@@ -1,9 +1,13 @@
-[![Known Vulnerabilities](https://snyk.io/test/github/doudidas/SmartSearchWeb/badge.svg)](https://snyk.io/test/github/doudidas/smartSearchWeb)
 ![Clarity](logo.png)
 
 Clarity fork
 ============
 This is the front part of the 3-tier application SmartSearch
+
+Badges
+--------------
+[![Known Vulnerabilities](https://snyk.io/test/github/doudidas/SmartSearchWeb/badge.svg)](http://snyk.io/test/github/doudidas/smartSearchWeb)
+![Docker Build Status](https://img.shields.io/docker/build/spacelama/web)
 
 Getting started
 ----------------------------------
