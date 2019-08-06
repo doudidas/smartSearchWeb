@@ -1,3 +1,4 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/doudidas/SmartSearchWeb/badge.svg)](https://snyk.io/test/github/doudidas/smartSearchWeb)
 ![Clarity](logo.png)
 
 Clarity fork
