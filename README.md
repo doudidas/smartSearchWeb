@@ -1,70 +1,27 @@
-![Clarity](logo.png)
+# SmartSearchWeb
 
-Clarity fork
-============
-This is the front part of the 3-tier application SmartSearch
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
 
-Badges
---------------
-[![Known Vulnerabilities](https://snyk.io/test/github/doudidas/SmartSearchWeb/badge.svg)](http://snyk.io/test/github/doudidas/smartSearchWeb)
-![Docker Build Status](https://img.shields.io/docker/build/spacelama/web)
+## Development server
 
-Getting started
-----------------------------------
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-#### Installation
-*Prerequisite*: 
-    Please install Angular-CLI by following [these instructions](https://github.com/angular/angular-cli#installation) and [yarn](https://yarnpkg.com/).
-    
-*Note*: For API call please deploy the [api server](https://github.com/doudidas/SmartSearchEngine) 
+## Code scaffolding
 
-```bash
-git clone https://github.com/doudidas/Smart-Search-Web
-cd Smart-Search-Web
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-# install the project's dependencies
-yarn # or run "npm install"
+## Build
 
-# starts the application in dev mode and watches your files for livereload
-yarn start # dev run
-yarn start_ssl  # prod run
-```
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+## Running unit tests
 
-## Documentation
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-For documentation on the Clarity Design System, including a list of components and example usage, see [our website](https://vmware.github.io/clarity).
+## Running end-to-end tests
 
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-#### Directory structure
-```
-.
-├── README.md
+## Further help
 
-├── karma.conf.js              <- configuration of the test runner
-├── package.json               <- dependencies of the project
-├── protractor.config.js       <- e2e tests configuration
-├── src/                       <- source code of the application
-│   ├── app/
-│   │   └── component/
-│   │       └── <component>.component.html
-│   │       └── <component>.component.scss
-│   │       └── <component>.component.spec.ts
-│   │       └── <component>.component.ts
-│   │   └── app.component.html
-│   │   └── app.component.scss
-│   │   └── app.component.ts
-│   │   └── app.e2e-spec.js    <- sample e2e spec file
-│   │   └── app.module.ts
-│   │   └── app.routing.ts
-│   │   └── main.ts            <- boostrap file for the angular app
-│   └── index.html
-├── angular-cli.json           <- configuration of the angular-cli
-├── tsconfig.json              <- configuration of the typescript project
-├── tslint.json                <- sample configuration file for tslint
-└── yarn.lock
-```
-
-## License
-
-The clarity-seed project is licensed under the MIT license.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
