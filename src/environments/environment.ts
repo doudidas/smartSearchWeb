@@ -6,5 +6,5 @@
 export const environment = {
     production: false,
     // URL of development API
-    apiUrl: 'http://spacelama-api:9000/api/'
+    apiUrl: 'http://spacelama-api:9000'
 };
