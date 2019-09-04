@@ -27,7 +27,7 @@ ADD .certificate/* /etc/ssl/
 RUN rm -rf /usr/share/nginx/html/index.html
 
 ## From ‘builder’ stage copy over the artifacts in dist folder to default nginx public folder
-COPY --from=builder /ng-app/dist /usr/share/nginx/html
+COPY --from=builder /ng-app/dist/smartSearchWeb/ /usr/share/nginx/html
 
 # label
 LABEL author="Edouard Topin"
