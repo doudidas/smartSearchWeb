@@ -3,7 +3,7 @@ export class LoginForm {
         public username: string,
         public password: string,
         public type: string,
-        public rememberMe: string
+        public rememberMe: boolean
     ) {
     }
 }

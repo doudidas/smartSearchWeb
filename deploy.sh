@@ -8,7 +8,7 @@ then
 else
     tag="dev"
 fi
-
+echo "Deploying into $tag branch…"
 docker build -t spacelama/web:$tag .;
 docker push spacelama/web:$tag;
 docker rmi spacelama/web:$tag;

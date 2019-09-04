@@ -15,7 +15,7 @@ import { LoginForm } from '../class/loginForm';
 export class LoginComponent implements OnInit {
     public form: LoginForm;
     ngOnInit() {
-        this.form = new LoginForm(null, null, null);
+        this.form = new LoginForm(null, null, null, false);
     }
     submit() {
         console.log(this.form);
