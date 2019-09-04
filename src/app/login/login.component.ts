@@ -18,6 +18,6 @@ export class LoginComponent implements OnInit {
         this.form = new LoginForm(null, null, null);
     }
     submit() {
-        console.log(this.form)
+        console.log(this.form);
     }
 }
