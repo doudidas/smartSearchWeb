@@ -1,0 +1,35 @@
+<div class="topic-list">
+    <div class="row">
+        <div *ngFor="let topic of topics" class="col-sm-6 col-md-4 col-lg-3" (click)="showTopic(topic)">
+            <a [routerLink]="['/topic']" class="card clickable">
+                <div class="card-text text-center">
+                    <h1>{{topic.name}}</h1>
+                </div>
+                <div class="card-img">
+                    <img [src]="getTopicUrlById(topic.id)"
+                        onError="this.src='https://via.placeholder.com/800x600?text=Image+not+found'"
+                        class="img-responsive">
+                </div>
+                <div class="card-block">
+                    <h2>Description</h2>
+                    <p class="card-text description" style="text-overflow: ellipsis">
+                        {{topic.description}}
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<clr-modal [(clrModalOpen)]="showCard" [clrModalSize]="'lg'">
+    <div class="modal-title">
+        <h1>{{focusTopic.name}}</h1>
+    </div>
+    <div class="modal-body">
+        <img class="modal-img" [src]="getTopicUrlById(focusTopic.id)"
+            onError="this.src='https://via.placeholder.com/800x600?text=Image+not+found'">
+        <h2>Description</h2>
+        <p class="card-text">
+            {{focusTopic.description}}
+        </p>
+    </div>
+</clr-modal>

@@ -1,7 +1,7 @@
 ###################################################
 # STEP 1 build website 
 ###################################################
-FROM library/node:12-alpine as builder
+FROM library/node:latest as builder
 
 # Create app directory
 RUN mkdir -p /ng-app
@@ -9,7 +9,9 @@ WORKDIR /ng-app
 
 # Install all
 COPY . .
-RUN npm install --global yarn @angular/cli && yarn install && ng build --prod
+RUN yarn global add @angular/cli
+RUN yarn
+RUN ng build --prod
 
 ###################################################
 # STEP 2 Setup nginx container with minimal code

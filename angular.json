@@ -21,7 +21,9 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/images",
+              "src/images/vro",
+              "src/images/topics/full"
             ],
             "styles": [
               "node_modules/@clr/icons/clr-icons.min.css",
