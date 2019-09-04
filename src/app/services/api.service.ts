@@ -19,7 +19,7 @@ export class ApiService {
         return await this.http.get('api/healthcheck', { headers: this.defaultHeaders }).toPromise().then(
             (response: HealthResponse) => {
                 console.log(response);
-                if (response.mongo === true) {
+                if (response.mongo === 'true') {
                     console.log('mongoDB: ok');
                     return null;
                 } else {
@@ -79,6 +79,6 @@ export class ApiService {
 
 class HealthResponse {
     constructor(
-        public api: boolean,
-        public mongo: boolean) { }
+        public api: string,
+        public mongo: string) { }
 }

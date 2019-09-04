@@ -3,11 +3,21 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginForm } from '../class/loginForm';
 
 @Component({
     styleUrls: ['./login.component.scss'],
     templateUrl: './login.component.html',
 })
-export class LoginComponent {
+
+export class LoginComponent implements OnInit {
+    public form: LoginForm;
+    ngOnInit() {
+        this.form = new LoginForm(null, null, null);
+    }
+    submit() {
+        console.log(this.form)
+    }
 }
