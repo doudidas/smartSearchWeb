@@ -35,6 +35,13 @@ services:
     networks:
       - frontend
       - middleware
+  smartsearch-blog:
+    container_name: smartsearch-blog
+    image: "ghost:latest"
+    ports:
+      - 2368:2368
+    networks:
+      - frontend
 networks:
   frontend:
     driver: bridge
