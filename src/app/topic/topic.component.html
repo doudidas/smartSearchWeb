@@ -6,7 +6,9 @@
                     <h1>{{topic.name}}</h1>
                 </div>
                 <div class="card-img">
-                    <img [src]="getTopicUrlById(topic.id)" onError="this.src='https://via.placeholder.com/800x600?text=Image+not+found'" class="img-responsive">
+                    <img [src]="getTopicUrlById(topic.id)"
+                        onError="this.src='https://via.placeholder.com/800x600?text=Image+not+found'"
+                        class="img-responsive">
                 </div>
                 <div class="card-block">
                     <h2>Description</h2>
@@ -23,7 +25,8 @@
         <h1>{{focusTopic.name}}</h1>
     </div>
     <div class="modal-body">
-        <img class="modal-img" [src]="getTopicUrlById(focusTopic.id)" onError="this.src='https://via.placeholder.com/800x600?text=Image+not+found'">
+        <img class="modal-img" [src]="getTopicUrlById(focusTopic.id)"
+            onError="this.src='https://via.placeholder.com/800x600?text=Image+not+found'">
         <h2>Description</h2>
         <p class="card-text">
             {{focusTopic.description}}

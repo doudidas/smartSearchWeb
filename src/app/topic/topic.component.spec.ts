@@ -8,9 +8,9 @@ describe('TopicComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopicComponent ]
+      declarations: [TopicComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

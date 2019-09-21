@@ -8,9 +8,9 @@ describe('SnakeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SnakeComponent ]
+      declarations: [SnakeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

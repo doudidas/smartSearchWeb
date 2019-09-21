@@ -1,27 +1,58 @@
-version: '3'
+version: "3.3"
 services:
-  spacelama-api:
-    container_name: spacelama-api
-    image: 'spacelama/api:latest'
+  smartsearch-api:
+    container_name: smartsearch-api
+    image: "spacelama/api-go:dev"
     depends_on:
-      - mongo
+      - smartsearch-db
     ports:
-      - '9000:9000'
+      - "9000:9000"
     networks:
-      - front-tier
-      - back-tier
-    deploy:
-      replicas: 3
-  mongo:
-    image: 'mongo:latest'
-    container_name: mongo
+      - middleware
+      - backend
+  smartsearch-db:
+    image: "mongo:latest"
+    container_name: smartsearch-db
     ports:
-      - '27017:27017'
-    networks:
-      - back-tier
+      - "27017:27017"
     volumes:
-      - './mongo/configdb:/data/configdb'
-      - './mongo/db:/data/db'
+      - "./mongo/configdb:/data/configdb"
+      - "./mongo/db:/data/db"
+    networks:
+      - backend
+  smartsearch-web:
+    hostname: smartsearch.ddns.net
+    depends_on:
+      - smartsearch-blog
+    container_name: smartsearch-web
+    image: "spacelama/web:dev"
+    depends_on:
+      - smartsearch-api
+    ports:
+      - 443:443
+      - 80:80
+    networks:
+      - frontend
+      - middleware
+    volumes:
+      - /etc/ssl/certificate
+      - type: bind
+        source: ./nginx
+        target: /etc/nginx/conf.d
+  smartsearch-blog:
+    hostname: smartsearch-blog
+    container_name: smartsearch-blog
+    image: "ghost:latest"
+    environment:
+      url: "http://smartsearch-blog/blog"
+    ports:
+      - 2368:2368
+    networks:
+      - frontend
 networks:
-  front-tier: null
-  back-tier: null
+  frontend:
+    driver: bridge
+  middleware:
+    driver: bridge
+  backend:
+    driver: bridge
