@@ -10,7 +10,6 @@ WORKDIR /ng-app
 # Source Code
 COPY src/ src/
 # Modules dependancies
-COPY node_modules/ node_modules/
 COPY yarn.lock yarn.lock
 # Package managment configuration
 COPY package.json package.json
