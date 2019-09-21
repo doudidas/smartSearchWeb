@@ -19,22 +19,15 @@
                 <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active">
                     <span class="nav-text">Home</span>
                 </a>
-                <!-- <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/vro']" routerLinkActive="active">
-                  <span class="nav-text">Vro</span>
-              </a> -->
                 <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active">
                     <span class="nav-text">Kubernetes</span>
                 </a>
                 <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/snake']" routerLinkActive="active">
                     <span class="nav-text">Snake</span>
                 </a>
-
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/users']" routerLinkActive="active">
-                    <span class="nav-text">Voyage SNCF</span>
+                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/admin']" routerLinkActive="active">
+                    <span class="nav-text">Admin</span>
                 </a>
-                <!-- <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/topic']" routerLinkActive="active">
-                  <span class="nav-text">Topics</span>
-              </a> -->
             </div>
             <div class="header-actions">
                 <clr-dropdown>
@@ -49,22 +42,19 @@
                 </clr-dropdown>
             </div>
         </clr-header>
-        <!-- <nav class="subnav">
-          <ul class="nav">
-              <li class="nav-item">
-                  <a class="nav-link active" [ngClass]="{'active': activeColum === 1 }" (click)=switchTo(1)>Front-End</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" [ngClass]="{'active': activeColum === 2 }" (click)=switchTo(2)>Back-End</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" [ngClass]="{'active': activeColum === 3 }" (click)=switchTo(3)>Database</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" [ngClass]="{'active': activeColum === 4 }" (click)=switchTo(4)>Infrastructure</a>
-              </li>
-          </ul>
-      </nav> -->
+        <nav class="subnav" *ngIf="router.url.match('/admin.*')">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['/admin']">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['/admin/user']">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['admin/destination']">Destinations</a>
+                </li>
+            </ul>
+        </nav>
         <div class="content-container">
             <div class="content-area">
                 <router-outlet></router-outlet>

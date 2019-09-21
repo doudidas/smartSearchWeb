@@ -7,11 +7,24 @@ FROM library/node:latest as builder
 RUN mkdir -p /ng-app
 WORKDIR /ng-app
 
-# Install all
-COPY . .
-RUN yarn global add @angular/cli
-RUN yarn
-RUN ng build --prod
+# Source Code
+COPY src/ src/
+# Modules dependancies
+COPY node_modules/ node_modules/
+COPY yarn.lock yarn.lock
+# Package managment configuration
+COPY package.json package.json
+# TypeScript configuration
+COPY tsconfig.app.json tsconfig.app.json
+COPY tsconfig.json tsconfig.json
+# Node app configuration
+COPY angular.json angular.json
+
+# Install dependancies
+RUN yarn install
+
+# Build application
+RUN yarn build_prod
 
 ###################################################
 # STEP 2 Setup nginx container with minimal code
@@ -32,4 +45,5 @@ COPY --from=builder /ng-app/dist/smartSearchWeb/ /usr/share/nginx/html
 # label
 LABEL author="Edouard Topin"
 EXPOSE 443
+VOLUME [ "/etc/ssl/certificate", "etc/nginx/conf.d/"]
 CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,88 @@
+<h1>
+    Liste des utilisateurs
+    <clr-dropdown>
+        <button clrDropdownTrigger aria-label="Dropdown demo button">
+            <clr-icon shape="cog"></clr-icon>
+            <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen>
+            <label class="dropdown-header" aria-hidden="true">Users per pages</label>
+            <div *ngFor="let size of [5,10,20,50,100]">
+                <button clrDropdownItem (click)="changesize(size)">{{size}}</button>
+            </div>
+        </clr-dropdown-menu>
+    </clr-dropdown>
+</h1>
+
+<button (click)="addUser = true" class="btn btn-success-outline">
+    <clr-icon shape="plus" class="is-success"></clr-icon>
+    Ajouter un utilisateur
+</button>
+<div class="clr-row">
+    <div *ngFor="let user of users" class="clr-col-lg-6 clr-col-12">
+        <a class="card clickable">
+            <!-- <a  class="card clickable"> -->
+            <div class="card-header">
+                {{user.firstname}} {{user.lastname}}
+            </div>
+            <div class="card-block">
+                <div class="card-media-block">
+                    <img class="card-media-image"
+                        [src]="user.picture ? user.picture.thumbnail : 'https://via.placeholder.com/400x300?text=Image+not+found'"
+                        onError="this.src='assets/images/default-user-icon.jpg'">
+                    <div class="card-media-description">
+                        <div class="card-media-title">
+                            {{user.username}}
+                        </div>
+                        <div class="card-media-description">
+                            {{user.email}}
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-sm btn-link" (click)="showCard(user)">Informations</button>
+                            <button class="btn btn-sm btn-warning-outline"
+                                (click)="showDeleteUser(user)">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- More user detail Modal -->
+<clr-modal [(clrModalOpen)]="showUser" [clrModalStaticBackdrop]="false">
+    <h3 class="modal-title">
+        <img class="card-media-image"
+            [src]="focusUser.picture ? focusUser.picture.medium : 'https://via.placeholder.com/400x300?text=Image+not+found'">
+        {{focusUser.username}}</h3>
+    <div class="modal-body">
+        <table class="table table-compact table-noborder ">
+            <thead>
+                <tr>
+                    <th>firstname</th>
+                    <th>lastname</th>
+                    <th>email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{focusUser.firstname}}</td>
+                    <td>{{focusUser.lastname}}</td>
+                    <td>{{focusUser.email}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</clr-modal>
+
+<!-- Delete user confirmation Modal -->
+<clr-modal [(clrModalOpen)]="deleteUser" [clrModalStaticBackdrop]="false">
+    <h3 class="modal-title">Delete {{focusUser.username}} from Database ?</h3>
+    <div class="modal-body">
+        Are you sure you want to delete this user ?
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-outline" type="button">Cancel</button>
+        <button class="btn btn-warning" (click)="deleteUserFromDatabase()">YES</button>
+    </div>
+</clr-modal>

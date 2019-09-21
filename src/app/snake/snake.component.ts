@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-snake',
@@ -7,11 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 
-export class SnakeComponent implements OnInit {
-
-  constructor() {
+export class SnakeComponent {
+  constructor(public router: Router) {
+    router.navigate(['maintenance']);
   }
-  ngOnInit() {
-  }
-
 }

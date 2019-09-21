@@ -28,7 +28,8 @@ export class AppComponent implements OnInit {
   errorPassword: boolean;
   title = 'smartSearchWeb';
 
-  constructor(private router: Router, private api: ApiService, private service: GeneralService, private cookieService: CookieService) {
+
+  constructor(public router: Router, private api: ApiService, private service: GeneralService, private cookieService: CookieService) {
     this.submitted = false;
     this.displayForm = false;
   }
@@ -41,7 +42,7 @@ export class AppComponent implements OnInit {
     } else {
       const cookie = this.cookieService.get('login');
       this.currentUser = JSON.parse(cookie).username;
-      this.router.navigate(['home']);
+      // this.router.navigate(['home']);
     }
     while (true) {
       await this.checkServer();
@@ -107,5 +108,8 @@ export class AppComponent implements OnInit {
   }
   switchTo(activeColum: number) {
     this.activeColum = activeColum;
+  }
+  onAdminPage() {
+    return this.router.url === '/admin';
   }
 }

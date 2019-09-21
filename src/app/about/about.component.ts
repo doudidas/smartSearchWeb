@@ -4,16 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     styleUrls: ['./about.component.scss'],
     templateUrl: './about.component.html'
 })
 export class AboutComponent {
-    // open: Boolean = false;
-    type: string;
-    columns = [
-        { id: 0, name: 'Front-End' },
-        { id: 1, name: 'Back-End' },
-    ];
+    constructor(public router: Router) {
+        router.navigate(['maintenance']);
+    }
 }

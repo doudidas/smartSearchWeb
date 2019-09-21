@@ -1,9 +1,7 @@
-version: "3"
+version: "3.3"
 services:
   smartsearch-api:
     container_name: smartsearch-api
-    deploy:
-      replicas: 2
     image: "spacelama/api-go:dev"
     depends_on:
       - smartsearch-db
@@ -23,10 +21,11 @@ services:
     networks:
       - backend
   smartsearch-web:
+    hostname: smartsearch.ddns.net
+    depends_on:
+      - smartsearch-blog
     container_name: smartsearch-web
     image: "spacelama/web:dev"
-    deploy:
-      replicas: 2
     depends_on:
       - smartsearch-api
     ports:
@@ -35,9 +34,17 @@ services:
     networks:
       - frontend
       - middleware
+    volumes:
+      - /etc/ssl/certificate
+      - type: bind
+        source: ./nginx
+        target: /etc/nginx/conf.d
   smartsearch-blog:
+    hostname: smartsearch-blog
     container_name: smartsearch-blog
     image: "ghost:latest"
+    environment:
+      url: "http://smartsearch-blog/blog"
     ports:
       - 2368:2368
     networks:
