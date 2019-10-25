@@ -44,5 +44,6 @@ COPY --from=builder /ng-app/dist/smartSearchWeb/ /usr/share/nginx/html
 # label
 LABEL author="Edouard Topin"
 EXPOSE 443
+ENV PORT=443
 VOLUME [ "/etc/ssl/certificate", "etc/nginx/conf.d/"]
 CMD ["nginx", "-g", "daemon off;"]
