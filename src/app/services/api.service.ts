@@ -16,7 +16,7 @@ export class ApiService {
     }
     public async checkHealth(): Promise<string> {
         console.log('checking api health...');
-        return await this.http.get('api/healthcheck', { headers: this.defaultHeaders }).toPromise().then(
+        return await this.http.get('/api/healthcheck', { headers: this.defaultHeaders }).toPromise().then(
             (response: HealthResponse) => {
                 console.log(response);
                 if (response.mongo === 'true') {

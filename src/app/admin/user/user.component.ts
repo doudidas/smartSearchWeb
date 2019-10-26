@@ -9,7 +9,6 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   styleUrls: ['./user.component.css']
 })
 
-
 export class UserComponent implements OnInit {
   public currentPage: number;
   public pagesize: number;
@@ -55,7 +54,7 @@ export class UserComponent implements OnInit {
   deleteUserFromDatabase() {
     const user = this.focusUser;
     console.log('Deleting user :' + user._id);
-    this.api.delete('api/user/' + user._id).then(
+    this.api.delete('/api/user/' + user._id).then(
       success => {
         console.log(success);
         this.users.splice(this.users.indexOf(user), 1);
@@ -68,7 +67,7 @@ export class UserComponent implements OnInit {
 
   async getAllUsers(): Promise<User[]> {
     let users: User[];
-    await this.api.get('api/user?size=' + this.pagesize + '&page=' + this.currentPage, null).then((success: User[]) => {
+    await this.api.get('/api/user?size=' + this.pagesize + '&page=' + this.currentPage, null).then((success: User[]) => {
       users = success;
       if (users.length == null) {
         users = [];
