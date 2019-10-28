@@ -10,15 +10,15 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'snake', component: SnakeComponent },
-  { path: 'topic/:id', component: TopicComponent },
-  { path: 'topic', component: TopicComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'maintenance', component: MaintenanceComponent },
+  { path: '', redirectTo: 'app/home', pathMatch: 'full'},
+  { path: 'app/home', component: HomeComponent },
+  { path: 'app/about', component: AboutComponent },
+  { path: 'app/login', component: LoginComponent },
+  { path: 'app/snake', component: SnakeComponent },
+  { path: 'app/topic/:id', component: TopicComponent },
+  { path: 'app/topic', component: TopicComponent },
+  { path: 'app/admin', component: AdminComponent },
+  { path: 'app/maintenance', component: MaintenanceComponent },
 ];
 
 @NgModule({

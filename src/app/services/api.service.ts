@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view/util';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class ApiService {
@@ -16,7 +17,7 @@ export class ApiService {
     }
     public async checkHealth(): Promise<string> {
         console.log('checking api health...');
-        return await this.http.get('/api/healthcheck', { headers: this.defaultHeaders }).toPromise().then(
+        return await this.http.get(environment.apiBaseURL + 'healthcheck', { headers: this.defaultHeaders }).toPromise().then(
             (response: HealthResponse) => {
                 console.log(response);
                 if (response.mongo === 'true') {
@@ -36,9 +37,9 @@ export class ApiService {
     public async get(uri: string, headers: HttpHeaders): Promise<any> {
         try {
             if (headers == null) {
-                return this.http.get(uri, { headers: this.defaultHeaders} ).toPromise();
+                return this.http.get(uri, { headers: this.defaultHeaders }).toPromise();
             } else {
-                if (! headers.has('Authorization')) {
+                if (!headers.has('Authorization')) {
                     headers.set('Authorization', this.defaultHeaders.get('Authorization'));
                 }
                 return this.http.get(uri, { headers }).toPromise();
@@ -49,15 +50,15 @@ export class ApiService {
     }
 
     public post(uri: string, body: object): any {
-        return this.http.post(uri, body, {headers: this.defaultHeaders}).subscribe(res => res, error => { throw error; });
+        return this.http.post(uri, body, { headers: this.defaultHeaders }).subscribe(res => res, error => { throw error; });
     }
 
     public put(uri: string, body: object): any {
-        return this.http.put(uri, body, {headers: this.defaultHeaders}).subscribe(res => res, error => { throw error; });
+        return this.http.put(uri, body, { headers: this.defaultHeaders }).subscribe(res => res, error => { throw error; });
     }
 
     public delete(uri: string) {
-        return this.http.delete(uri, {headers: this.defaultHeaders}).toPromise().then(output => output, error => { throw error; });
+        return this.http.delete(uri, { headers: this.defaultHeaders }).toPromise().then(output => output, error => { throw error; });
     }
     /**
      * Handle Http operation that failed.

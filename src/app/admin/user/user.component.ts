@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/class/user';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user',
@@ -36,7 +37,7 @@ export class UserComponent implements OnInit {
     user.topics = [];
     user.departure = null;
     let response: User;
-    response = this.api.post('api/user', user).then(
+    response = this.api.post(environment.apiBaseURL + 'user', user).then(
       () => {
         this.users.push(user);
         this.errorForm = false;
@@ -54,7 +55,7 @@ export class UserComponent implements OnInit {
   deleteUserFromDatabase() {
     const user = this.focusUser;
     console.log('Deleting user :' + user._id);
-    this.api.delete('/api/user/' + user._id).then(
+    this.api.delete(environment.apiBaseURL + 'user/' + user._id).then(
       success => {
         console.log(success);
         this.users.splice(this.users.indexOf(user), 1);
@@ -67,27 +68,28 @@ export class UserComponent implements OnInit {
 
   async getAllUsers(): Promise<User[]> {
     let users: User[];
-    await this.api.get('/api/user?size=' + this.pagesize + '&page=' + this.currentPage, null).then((success: User[]) => {
-      users = success;
-      if (users.length == null) {
-        users = [];
-      } else {
-        for (const user of users) {
-          if (user.hasOwnProperty('topics')) {
-            for (let i = 0; i < user.topics.length; i++) {
-              if (user.topics[i] != null || user.topics[i] !== '0') {
-                user.topics.splice(i, 1);
+    await this.api.get(environment.apiBaseURL + 'user?size=' + this.pagesize + '&page=' + this.currentPage, null)
+      .then((success: User[]) => {
+        users = success;
+        if (users.length == null) {
+          users = [];
+        } else {
+          for (const user of users) {
+            if (user.hasOwnProperty('topics')) {
+              for (let i = 0; i < user.topics.length; i++) {
+                if (user.topics[i] != null || user.topics[i] !== '0') {
+                  user.topics.splice(i, 1);
+                }
               }
+            } else {
+              user.topics = [];
             }
-          } else {
-            user.topics = [];
+            this.users.push(user);
           }
-          this.users.push(user);
         }
-      }
-    }, () => {
-      users = null;
-    });
+      }, () => {
+        users = null;
+      });
     return users;
   }
   getUserById(userId: string) {

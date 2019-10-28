@@ -16,16 +16,16 @@
                 </a>
             </div>
             <div class="header-nav" [clr-nav-level]="1">
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active">
+                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/app/home']" routerLinkActive="active">
                     <span class="nav-text">Home</span>
                 </a>
                 <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active">
                     <span class="nav-text">Kubernetes</span>
                 </a>
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/snake']" routerLinkActive="active">
+                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['app/snake']" routerLinkActive="active">
                     <span class="nav-text">Snake</span>
                 </a>
-                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['/admin']" routerLinkActive="active">
+                <a *ngIf="logged==true" class="nav-link" href="#" [routerLink]="['app/admin']" routerLinkActive="active">
                     <span class="nav-text">Admin</span>
                 </a>
             </div>
@@ -45,13 +45,13 @@
         <nav class="subnav" *ngIf="router.url.match('/admin.*')">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" [routerLink]="['/admin']">Home</a>
+                    <a class="nav-link" href="#" [routerLink]="['app/admin']">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" [routerLink]="['/admin/user']">Users</a>
+                    <a class="nav-link" href="#" [routerLink]="['app/admin/user']">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" [routerLink]="['admin/destination']">Destinations</a>
+                    <a class="nav-link" href="#" [routerLink]="['app/admin/destination']">Destinations</a>
                 </li>
             </ul>
         </nav>

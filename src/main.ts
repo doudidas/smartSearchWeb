@@ -7,6 +7,6 @@ import { environment } from './environments/environment';
 if (environment.production) {
   enableProdMode();
 }
-
+const apiURL = environment.apiBaseURL;
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

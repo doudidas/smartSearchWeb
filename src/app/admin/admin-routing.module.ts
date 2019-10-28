@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
-    { path: 'admin/user', component: UserComponent },
+    { path: 'app/admin/user', component: UserComponent },
 ];
 
 @NgModule({
