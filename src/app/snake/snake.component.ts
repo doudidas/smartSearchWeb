@@ -10,6 +10,6 @@ import { Router } from '@angular/router';
 
 export class SnakeComponent {
   constructor(public router: Router) {
-    router.navigate(['maintenance']);
+    router.navigate(['app/maintenance']);
   }
 }
