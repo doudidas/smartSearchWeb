@@ -87,7 +87,7 @@ export class AppComponent implements OnInit {
     this.logged = true;
     this.currentUser = username;
     this.logged = true;
-    this.router.navigate(['home']);
+    this.router.navigate(['app/home']);
   }
 
   logOut() {

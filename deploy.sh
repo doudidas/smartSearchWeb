@@ -1,8 +1,8 @@
 #!/bin/bash
-echo Please choose branch to deploy ? [master/dev] default: dev
+echo Please choose branch to deploy ? [latest/dev] default: dev
 read branch
 
-if [[ $branch == "master" ]]
+if [[ $branch == "latest" ]]
 then
     tag="latest"
 else
@@ -11,4 +11,3 @@ fi
 echo "Deploying into $tag branch…"
 docker build -t spacelama/web:$tag .;
 docker push spacelama/web:$tag;
-docker rmi spacelama/web:$tag;
