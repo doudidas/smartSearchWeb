@@ -37,7 +37,7 @@ export class UserComponent implements OnInit {
     user.topics = [];
     user.departure = null;
     let response: User;
-    response = this.api.post(environment.apiBaseURL + 'user', user).then(
+    response = this.api.post(this.api.baseURL + 'user', user).then(
       () => {
         this.users.push(user);
         this.errorForm = false;
@@ -55,7 +55,7 @@ export class UserComponent implements OnInit {
   deleteUserFromDatabase() {
     const user = this.focusUser;
     console.log('Deleting user :' + user._id);
-    this.api.delete(environment.apiBaseURL + 'user/' + user._id).then(
+    this.api.delete(this.api.baseURL + 'user/' + user._id).then(
       success => {
         console.log(success);
         this.users.splice(this.users.indexOf(user), 1);
@@ -68,7 +68,7 @@ export class UserComponent implements OnInit {
 
   async getAllUsers(): Promise<User[]> {
     let users: User[];
-    await this.api.get(environment.apiBaseURL + 'user?size=' + this.pagesize + '&page=' + this.currentPage, null)
+    await this.api.get(this.api.baseURL + 'user?size=' + this.pagesize + '&page=' + this.currentPage, null)
       .then((success: User[]) => {
         users = success;
         if (users.length == null) {

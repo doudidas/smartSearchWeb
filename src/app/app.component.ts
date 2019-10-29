@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
   }
 
   private async init() {
+
     this.logged = this.cookieService.check('login');
     if (!this.logged) {
       this.form = { username: null, password: null, userType: 'user', rememberme: false };
