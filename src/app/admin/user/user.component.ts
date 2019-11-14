@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/class/user';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { environment } from 'src/environments/environment';
+import { ClrForm } from '@clr/angular';
 
 @Component({
   selector: 'app-user',
@@ -11,43 +11,36 @@ import { environment } from 'src/environments/environment';
 })
 
 export class UserComponent implements OnInit {
+  @ViewChild(ClrForm, { static: true }) clrForm;
   public currentPage: number;
   public pagesize: number;
-  public addUser = false;
+  // public addUser = false;
   public showUser = false;
   public deleteUser = false;
   public user: User;
+  public newUser: User;
   public focusUser: User;
   public users: User[];
   public errorForm: boolean;
-  public userForm: FormGroup;
-
+  public addUserModal: boolean;
   constructor(private api: ApiService) { }
-
+  public userForm: FormGroup;
   ngOnInit() {
     this.focusUser = new User(null, null, null, null, null, null, null, null);
     this.user = new User(null, null, null, null, null, null, null, null);
+    this.newUser = new User(null, null, null, null, null, null, null, null);
     this.users = new Array<User>(0);
     this.currentPage = 0;
     this.pagesize = 20;
+    this.userForm = new FormGroup({
+      firstname: new FormControl('', Validators.nullValidator),
+      lastname: new FormControl('', Validators.nullValidator),
+      username: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+    });
     this.getAllUsers();
   }
 
-  public sendUser(user: User): boolean {
-    user.topics = [];
-    user.departure = null;
-    let response: User;
-    response = this.api.post(this.api.baseURL + 'user', user).then(
-      () => {
-        this.users.push(user);
-        this.errorForm = false;
-        this.addUser = false;
-      }, () => {
-        this.addUser = true;
-      }
-    );
-    return this.addUser;
-  }
   showDeleteUser(user: User) {
     this.deleteUser = true;
     this.focusUser = user;
@@ -92,6 +85,16 @@ export class UserComponent implements OnInit {
       });
     return users;
   }
+  appendUser(userID: string) {
+    this.api.get(this.api.baseURL + 'user/' + userID, null).then(
+      (user: User) => {
+        this.users.push(user);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
   getUserById(userId: string) {
     let output: User;
     for (const user of this.users) {
@@ -101,15 +104,6 @@ export class UserComponent implements OnInit {
       }
     }
     return output;
-  }
-  onSubmit() {
-    const successful = this.sendUser(this.user);
-    if (successful) {
-      this.resetForm();
-    }
-  }
-  resetForm() {
-    this.userForm.reset();
   }
 
   showCard(user: User) {
@@ -129,5 +123,52 @@ export class UserComponent implements OnInit {
   public async changesize(size: number) {
     this.pagesize = size;
     this.users = await this.getAllUsers();
+  }
+
+  async submit() {
+    if (this.userForm.invalid) {
+      this.clrForm.markAsTouched();
+    } else {
+      const user = new User(this.userForm.value.firstname, this.userForm.value.lastname,
+        null,
+        '',
+        this.userForm.value.email,
+        [],
+        this.userForm.value.username,
+        null);
+      delete user._id;
+      this.api.post(this.api.baseURL + 'user', [user]).then(
+        success => {
+          this.appendUser(success[0]);
+        }
+      );
+      this.addUserModal = false;
+      this.newUser = null;
+    }
+  }
+  addRandomUser() {
+    this.api.get('https://randomuser.me/api/?inc=login,name,email,picture', null).then(
+      async success => {
+        const tmp = success.results[0];
+        const generatedUser = new User(
+          tmp.name.first,
+          tmp.name.last,
+          null,
+          '',
+          tmp.email,
+          [],
+          tmp.login.username,
+          tmp.picture
+        );
+        delete generatedUser._id;
+        this.api.post(this.api.baseURL + 'user', [generatedUser]).then(
+          successresponse => {
+            this.appendUser(successresponse[0]);
+          }
+        );
+      }, fail => {
+        console.log(fail);
+      }
+    );
   }
 }

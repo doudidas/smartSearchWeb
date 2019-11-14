@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view/util';
 import { environment } from 'src/environments/environment';
-
 
 const defaultHeaders = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: 'Basic ' + btoa('admin:VMware1!') });
 
@@ -11,8 +9,6 @@ const defaultHeaders = new HttpHeaders({ 'Content-Type': 'application/json', Aut
 export class ApiService {
     public reachable: boolean;
     public baseURL: string;
-
-
 
     constructor(private http: HttpClient) {
         this.reachable = false;
@@ -23,18 +19,14 @@ export class ApiService {
         }
     }
 
-
-
     public async checkHealth(): Promise<string> {
         console.log('checking api health...');
         return await this.http.get(this.baseURL + 'healthcheck', { headers: defaultHeaders }).toPromise().then(
             (response: HealthResponse) => {
                 console.log(response);
                 if (response.mongo === 'true') {
-                    console.log('mongoDB: ok');
                     return null;
                 } else {
-                    console.error('mongoDB: ko');
                     return 'Limited access to resources : No DB connection on API side !! more details on log ';
                 }
             },
@@ -55,12 +47,12 @@ export class ApiService {
                 return this.http.get(uri, { headers }).toPromise();
             }
         } catch (error) {
-            await this.handleError();
+            this.handleError();
         }
     }
 
-    public post(uri: string, body: object): any {
-        return this.http.post(uri, body, { headers: defaultHeaders }).subscribe(res => res, error => { throw error; });
+    public async post(uri: string, body: object): Promise<any> {
+        return this.http.post(uri, body, { headers: defaultHeaders }).toPromise();
     }
 
     public put(uri: string, body: object): any {

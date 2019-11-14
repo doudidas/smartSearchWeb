@@ -11,7 +11,6 @@ import { LoginComponent } from './login/login.component';
 import { ApiService } from './services/api.service';
 import { GeneralService } from './services/general.service';
 import { SnakeComponent } from './snake/snake.component';
-import { TopicComponent } from './topic/topic.component';
 import { CookieService } from 'ngx-cookie-service';
 import { NotFoundComponent } from './notFound/notFound.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +24,6 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
     HomeComponent,
     LoginComponent,
     SnakeComponent,
-    TopicComponent,
     NotFoundComponent,
     AdminComponent,
     MaintenanceComponent

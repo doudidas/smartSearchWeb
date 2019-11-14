@@ -14,14 +14,17 @@
     </clr-dropdown>
 </h1>
 
-<button (click)="addUser = true" class="btn btn-success-outline">
+<button (click)="addUserModal = true" class="btn btn-success-outline">
     <clr-icon shape="plus" class="is-success"></clr-icon>
     Ajouter un utilisateur
 </button>
+<button (click)="addRandomUser()" class="btn btn-outline">
+    <clr-icon shape="bolt" class=""></clr-icon>
+    Generate random user
+</button>
 <div class="clr-row">
-    <div *ngFor="let user of users" class="clr-col-lg-6 clr-col-12">
+    <div *ngFor="let user of users" class="clr-col-xl-3 clr-col-lg-4 clr-col-md-6 clr-col-12">
         <a class="card clickable">
-            <!-- <a  class="card clickable"> -->
             <div class="card-header">
                 {{user.firstname}} {{user.lastname}}
             </div>
@@ -49,11 +52,43 @@
     </div>
 </div>
 
+<!-- Delete user confirmation Modal -->
+<clr-modal [(clrModalOpen)]="addUserModal" [clrModalStaticBackdrop]="false" (keydown.enter)="submit()">
+    <h3 class="modal-title">Ajouter un nouvel unitlisateur </h3>
+    <div class="modal-body">
+        <form clrForm [formGroup]="userForm">
+            <clr-input-container>
+                <label>Nom</label>
+                <input formControlName="lastname" clrInput type="text" name="lastname" />
+            </clr-input-container>
+            <clr-input-container>
+                <label>Prénom</label>
+                <input formControlName="firstname" clrInput type="text" name="firstname" />
+            </clr-input-container>
+            <clr-input-container>
+                <label>Username</label>
+                <input formControlName="username" clrInput type="text" name="username" required />
+                <clr-control-helper>ex: etopin</clr-control-helper>
+                <clr-control-error>Please provide a username</clr-control-error>
+            </clr-input-container>
+            <clr-input-container>
+                <label>Email</label>
+                <input formControlName="email" clrInput type="email" name="email" required />
+                <clr-control-helper>ex: foo@bar.com</clr-control-helper>
+                <clr-control-error>Please provide an email</clr-control-error>
+            </clr-input-container>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-outline" type="button">Cancel</button>
+        <button class="btn btn-primary" type="submit" (click)="submit()">Submit</button>
+    </div>
+</clr-modal>
 <!-- More user detail Modal -->
 <clr-modal [(clrModalOpen)]="showUser" [clrModalStaticBackdrop]="false">
     <h3 class="modal-title">
         <img class="card-media-image"
-            [src]="focusUser.picture ? focusUser.picture.medium : 'https://via.placeholder.com/400x300?text=Image+not+found'">
+            [src]="focusUser.picture ? focusUser.picture.medium : 'https://via.placeholder.com/50x50?text=Image+not+found'">
         {{focusUser.username}}</h3>
     <div class="modal-body">
         <table class="table table-compact table-noborder ">
@@ -76,7 +111,8 @@
 </clr-modal>
 
 <!-- Delete user confirmation Modal -->
-<clr-modal [(clrModalOpen)]="deleteUser" [clrModalStaticBackdrop]="false">
+<clr-modal [(clrModalOpen)]="deleteUser" [clrModalStaticBackdrop]="false"
+    (keydown.enter)="deleteUserFromDatabase(); deleteUser = false">
     <h3 class="modal-title">Delete {{focusUser.username}} from Database ?</h3>
     <div class="modal-body">
         Are you sure you want to delete this user ?
