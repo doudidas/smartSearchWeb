@@ -1,0 +1,14 @@
+<h1>Liste des destinations</h1>
+<button (click)="addRandomDestination()" class="btn btn-outline">
+        <clr-icon shape="bolt" class=""></clr-icon>
+        Generate random Destination
+    </button>
+<div class="clr-row">
+        <div *ngFor="let destination of destinations" class="clr-col-xl-3 clr-col-lg-4 clr-col-md-6 clr-col-12">
+            <a class="card clickable">
+            <img class="card-media-image" [src]="destination.link">
+            {{destination.author}}
+            </a>
+        </div>
+    </div>
+    

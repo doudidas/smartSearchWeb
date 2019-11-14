@@ -5,11 +5,12 @@ import { HttpClient } from '@angular/common/http';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ClarityModule } from '@clr/angular';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DestinationComponent } from './destination/destination.component';
 
 
 
 @NgModule({
-  declarations: [UserComponent],
+  declarations: [UserComponent, DestinationComponent],
   imports: [CommonModule, AdminRoutingModule, ClarityModule, FormsModule, ReactiveFormsModule],
   providers: [HttpClient]
 })
