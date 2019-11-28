@@ -7,7 +7,7 @@ export class User {
         public email: string,
         public topics: string[],
         public username: string,
-        public picture: {large: string, medium: string, thumbnail: string}
+        public picture: { large: string, medium: string, thumbnail: string }
     ) {
     }
 }
