@@ -6,15 +6,15 @@ import { LoginComponent } from './login/login.component';
 import { SnakeComponent } from './snake/snake.component';
 import { AdminComponent } from './admin/admin.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
-
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'app/home', pathMatch: 'full'},
+  { path: 'app', component: AppComponent },
   { path: 'app/home', component: HomeComponent },
   { path: 'app/about', component: AboutComponent },
-  { path: 'app/login', component: LoginComponent },
+  { path: 'app/login', component: LoginComponent},
   { path: 'app/snake', component: SnakeComponent },
-  { path: 'app/admin', component: AdminComponent },
+  { path: 'app/admin/home', component: AdminComponent },
   { path: 'app/maintenance', component: MaintenanceComponent },
 ];
 
@@ -22,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
