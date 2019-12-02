@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, SystemJsNgModuleLoader } from '@angular/core';
 import { User } from 'src/app/class/user';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ClrForm } from '@clr/angular';
+import { ClrLoadingState } from '@clr/angular';
+import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-user',
@@ -12,31 +14,36 @@ import { ClrForm } from '@clr/angular';
 
 export class UserComponent implements OnInit {
   @ViewChild(ClrForm, { static: true }) clrForm;
+  public uploadBtn: ClrLoadingState = ClrLoadingState.DEFAULT;
+  public submitBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  public randomBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
   public currentPage: number;
   public pagesize: number;
-  // public addUser = false;
+  public userPicture: string;
   public showUser = false;
   public deleteUser = false;
   public user: User;
-  public newUser: User;
   public focusUser: User;
   public users: User[];
   public errorForm: boolean;
   public addUserModal: boolean;
-  constructor(private api: ApiService) { }
+  public fileMaxSize: number;
+  constructor(private api: ApiService, private generateServie: GeneralService) { }
   public userForm: FormGroup;
   ngOnInit() {
-    this.focusUser = new User(null, null, null, null, null, null, null, null);
-    this.user = new User(null, null, null, null, null, null, null, null);
-    this.newUser = new User(null, null, null, null, null, null, null, null);
+    this.focusUser = {} as User;
+    this.user = {} as User;
+    this.fileMaxSize = 0;
     this.users = new Array<User>(0);
     this.currentPage = 0;
     this.pagesize = 20;
+    this.userPicture = '';
     this.userForm = new FormGroup({
       firstname: new FormControl('', Validators.nullValidator),
       lastname: new FormControl('', Validators.nullValidator),
       username: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.nullValidator)
     });
     this.getAllUsers();
   }
@@ -47,10 +54,8 @@ export class UserComponent implements OnInit {
   }
   deleteUserFromDatabase() {
     const user = this.focusUser;
-    console.log('Deleting user :' + user._id);
     this.api.delete(this.api.baseURL + 'user/' + user._id).then(
       success => {
-        console.log(success);
         this.users.splice(this.users.indexOf(user), 1);
       }, fail => {
         console.error(fail);
@@ -91,7 +96,7 @@ export class UserComponent implements OnInit {
         this.users.push(user);
       },
       error => {
-        console.log(error);
+        console.error(error);
       }
     );
   }
@@ -108,7 +113,6 @@ export class UserComponent implements OnInit {
 
   showCard(user: User) {
     this.focusUser = user;
-    console.log(this.focusUser);
     this.showUser = true;
   }
   getTopicUrlById(topicId: string) {
@@ -118,7 +122,6 @@ export class UserComponent implements OnInit {
     let user: User;
     user = this.getUserById(userId);
     user.topics.splice(user.topics.indexOf(topicId), 1);
-    // this.updateUser(user);
   }
   public async changesize(size: number) {
     this.pagesize = size;
@@ -126,16 +129,25 @@ export class UserComponent implements OnInit {
   }
 
   async submit() {
+    this.submitBtnState = ClrLoadingState.LOADING;
     if (this.userForm.invalid) {
+      this.submitBtnState = ClrLoadingState.ERROR;
       this.clrForm.markAsTouched();
     } else {
+      const hash = this.generateServie.encrypt(this.userForm.value.username + ':' + this.userForm.value.password);
       const user = new User(this.userForm.value.firstname, this.userForm.value.lastname,
         null,
         '',
         this.userForm.value.email,
         [],
         this.userForm.value.username,
-        null);
+        hash,
+        {
+          thumbnail: this.userPicture,
+          medium: this.userPicture,
+          large: this.userPicture
+        },
+      );
       delete user._id;
       this.api.post(this.api.baseURL + 'user', [user]).then(
         success => {
@@ -143,10 +155,14 @@ export class UserComponent implements OnInit {
         }
       );
       this.addUserModal = false;
-      this.newUser = null;
+      this.userPicture = '';
+      this.userForm.reset();
+      await new GeneralService()._delay(500);
+      this.submitBtnState = ClrLoadingState.SUCCESS;
     }
   }
   addRandomUser() {
+    this.randomBtnState = ClrLoadingState.LOADING;
     this.api.get('https://randomuser.me/api/?inc=login,name,email,picture', null).then(
       async success => {
         const tmp = success.results[0];
@@ -158,6 +174,7 @@ export class UserComponent implements OnInit {
           tmp.email,
           [],
           tmp.login.username,
+          '',
           tmp.picture
         );
         delete generatedUser._id;
@@ -166,9 +183,28 @@ export class UserComponent implements OnInit {
             this.appendUser(successresponse[0]);
           }
         );
-      }, fail => {
-        console.log(fail);
+        this.randomBtnState = ClrLoadingState.SUCCESS;
+      }, error => {
+        console.error(error);
+        this.randomBtnState = ClrLoadingState.ERROR;
       }
     );
+  }
+
+  updateImage(event: any) {
+    const reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onprogress = e => {
+      this.uploadBtn = ClrLoadingState.LOADING;
+    };
+    reader.onloadend = e => {
+      this.uploadBtn = ClrLoadingState.SUCCESS;
+      this.userPicture = reader.result.toString();
+
+    };
+    reader.onerror = error => {
+      this.uploadBtn = ClrLoadingState.ERROR;
+      console.error(error);
+    };
   }
 }

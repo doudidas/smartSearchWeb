@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +10,6 @@ import { Router } from '@angular/router';
 
 export class SnakeComponent {
   constructor(public router: Router) {
-    router.navigate(['app/maintenance']);
+    router.navigate(['maintenance']);
   }
 }

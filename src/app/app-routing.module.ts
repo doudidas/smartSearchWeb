@@ -6,17 +6,20 @@ import { LoginComponent } from './login/login.component';
 import { SnakeComponent } from './snake/snake.component';
 import { AdminComponent } from './admin/admin.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
-import { AppComponent } from './app.component';
+import { NotFoundComponent } from './notFound/notFound.component';
+import { UserComponent } from './admin/user/user.component';
+import { DestinationComponent } from './admin/destination/destination.component';
 
 const routes: Routes = [
-  { path: 'app', component: AppComponent },
-  { path: 'app/home', component: HomeComponent },
-  { path: 'app/about', component: AboutComponent },
-  { path: 'app/login', component: LoginComponent },
-  { path: 'app/snake', component: SnakeComponent },
-  { path: 'app/admin/home', component: AdminComponent },
-  { path: 'app/maintenance', component: MaintenanceComponent },
-
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'snake', component: SnakeComponent },
+  { path: 'admin/home', component: AdminComponent },
+  { path: 'admin/user', component: UserComponent },
+  { path: 'admin/destination', component: DestinationComponent },
+  { path: 'maintenance', component: MaintenanceComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

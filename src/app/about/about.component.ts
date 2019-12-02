@@ -12,6 +12,6 @@ import { Router } from '@angular/router';
 })
 export class AboutComponent {
     constructor(public router: Router) {
-        router.navigate(['app/maintenance']);
+        router.navigate(['maintenance']);
     }
 }

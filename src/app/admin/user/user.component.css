@@ -1,0 +1,12 @@
+.form-picture {
+    max-width: 150px;
+    max-height: 150px;
+    size: auto;
+
+    background-position: left top, right top, right bottom, left bottom, center center;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x;
+
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    border-radius: 20%;
+}

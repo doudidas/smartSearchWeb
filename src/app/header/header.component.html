@@ -1,21 +1,21 @@
 <header>
     <div class="branding">
-        <a href="#" class="nav-link">
-            <span class="clr-icon clr-clarity-logo"></span>
+        <a href="#" [routerLink]="['/home']" class="nav-link">
+            <span class="clr-icon clr-clarity-logo lama-logo"></span>
             <span class="title">Smart Search</span>
         </a>
     </div>
     <div class="header-nav" [clr-nav-level]="1">
-        <a class="nav-link" href="#" [routerLink]="['/app/home']" routerLinkActive="active">
+        <a class="nav-link" href="#" [routerLink]="['home']" routerLinkActive="active">
             <span class="nav-text">Home</span>
         </a>
-        <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active">
+        <a class="nav-link" href="#" [routerLink]="['about']" routerLinkActive="active">
             <span class="nav-text">Kubernetes</span>
         </a>
-        <a class="nav-link" href="#" [routerLink]="['app/snake']" routerLinkActive="active">
+        <a class="nav-link" href="#" [routerLink]="['snake']" routerLinkActive="active">
             <span class="nav-text">Snake</span>
         </a>
-        <a class="nav-link" href="#" [routerLink]="['app/admin/home']">
+        <a class="nav-link" href="#" [routerLink]="['admin/home']">
             <span class="nav-text">Admin</span>
         </a>
     </div>
@@ -32,16 +32,16 @@
         </clr-dropdown>
     </div>
 </header>
-<nav class="subnav" *ngIf="this.router.url.startsWith('/app/admin')">
+<nav class="subnav" *ngIf="this.router.url.startsWith('/admin')">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="#" [routerLink]="['app/admin/home']" routerLinkActive="active">Home</a>
+            <a class="nav-link" href="#" [routerLink]="['admin/home']" routerLinkActive="active">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" [routerLink]="['app/admin/user']" routerLinkActive="active">Users</a>
+            <a class="nav-link" href="#" [routerLink]="['admin/user']" routerLinkActive="active">Users</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" [routerLink]="['app/admin/destination']"
+            <a class="nav-link" href="#" [routerLink]="['admin/destination']"
                 routerLinkActive="active">Destinations</a>
         </li>
     </ul>

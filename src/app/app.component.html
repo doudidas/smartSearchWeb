@@ -1,5 +1,5 @@
 <clr-main-container>
-    <div *ngIf="this.router.url != ('/app/login')">
+    <div *ngIf="this.router.url != ('/login')">
         <app-api-health></app-api-health>
         <app-header></app-header>
         <div class="content-container">
@@ -8,7 +8,11 @@
                 </div>
             </div>
     </div>
-    <div *ngIf="this.router.url == ('/app/login')">
-        <app-login></app-login>
+    <div *ngIf="this.router.url == ('/login')">
+        <app-login>
+                <span class="spinner">
+                        Loading...
+                </span>
+        </app-login>
     </div>
 </clr-main-container>

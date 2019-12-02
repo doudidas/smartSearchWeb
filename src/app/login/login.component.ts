@@ -34,20 +34,20 @@ export class LoginComponent implements OnInit {
           });
         this.logged = this.cookieService.check('login');
         if (this.logged) {
-          this.router.navigate(['app/home']);
+          this.router.navigate(['home']);
         }
     }
 
 
     logAsGuest() {
         this.logAsUser('guest');
-        this.router.navigate(['app/home']);
+        this.router.navigate(['home']);
     }
 
     logAsUser(username) {
         const cookie = JSON.stringify({ username, id: UUID.UUID() });
         this.cookieService.set('login', cookie, 0.5, '/', 'localhost');
-        this.router.navigate(['app/home']);
+        this.router.navigate(['home']);
     }
 
     showForm() {
