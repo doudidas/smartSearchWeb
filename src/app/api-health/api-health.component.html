@@ -1,0 +1,9 @@
+<div *ngIf="this.refresh" class="progress loop"><progress>{{this.message}}</progress></div>
+<clr-alert *ngIf="this.message" [clrAlertType]="'alert-danger'" [clrAlertAppLevel]="true">
+    <clr-alert-item>
+        <span class="alert-text">
+            {{this.message}}
+        </span>
+        <button class="btn btn-sm btn-warning-outline" (click)="this.refreshMessage()">check</button>
+    </clr-alert-item>
+</clr-alert>

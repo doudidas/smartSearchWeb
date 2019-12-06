@@ -14,11 +14,11 @@
     </clr-dropdown>
 </h1>
 
-<button (click)="addUserModal = true" class="btn btn-success-outline">
+<button [clrLoading]="submitBtnState" (click)="addUserModal = true" class="btn btn-success-outline">
     <clr-icon shape="plus" class="is-success"></clr-icon>
     Ajouter un utilisateur
 </button>
-<button (click)="addRandomUser()" class="btn btn-outline">
+<button [clrLoading]="randomBtnState" (click)="addRandomUser()" class="btn btn-outline">
     <clr-icon shape="bolt" class=""></clr-icon>
     Generate random user
 </button>
@@ -30,9 +30,8 @@
             </div>
             <div class="card-block">
                 <div class="card-media-block">
-                    <img class="card-media-image"
-                        [src]="user.picture ? user.picture.thumbnail : 'https://via.placeholder.com/400x300?text=Image+not+found'"
-                        onError="this.src='assets/images/default-user-icon.jpg'">
+                    <img class="card-media-image form-picture"
+                        [src]="user.picture && user.picture.medium ? user.picture.medium : 'assets/images/default-user-icon.jpg'">
                     <div class="card-media-description">
                         <div class="card-media-title">
                             {{user.username}}
@@ -53,56 +52,81 @@
 </div>
 
 <!-- Delete user confirmation Modal -->
-<clr-modal [(clrModalOpen)]="addUserModal" [clrModalStaticBackdrop]="false" (keydown.enter)="submit()">
-    <h3 class="modal-title">Ajouter un nouvel unitlisateur </h3>
+<clr-modal [(clrModalOpen)]="addUserModal" [clrModalStaticBackdrop]="false" (keydown.enter)="submit()"
+    [clrModalSize]="'md'">
+    <div class="modal-title">
+        <h3>Ajouter un nouvel utilisateur</h3>
+    </div>
     <div class="modal-body">
-        <form clrForm [formGroup]="userForm">
-            <clr-input-container>
-                <label>Nom</label>
-                <input formControlName="lastname" clrInput type="text" name="lastname" />
-            </clr-input-container>
-            <clr-input-container>
-                <label>Prénom</label>
-                <input formControlName="firstname" clrInput type="text" name="firstname" />
-            </clr-input-container>
-            <clr-input-container>
-                <label>Username</label>
-                <input formControlName="username" clrInput type="text" name="username" required />
-                <clr-control-helper>ex: etopin</clr-control-helper>
-                <clr-control-error>Please provide a username</clr-control-error>
-            </clr-input-container>
-            <clr-input-container>
-                <label>Email</label>
-                <input formControlName="email" clrInput type="email" name="email" required />
-                <clr-control-helper>ex: foo@bar.com</clr-control-helper>
-                <clr-control-error>Please provide an email</clr-control-error>
-            </clr-input-container>
-        </form>
+        <div class="clr-row">
+            <div class="clr-col-6">
+                <form clrForm [formGroup]="userForm" clrLayout="vertical">
+                    <clr-input-container>
+                        <label>Nom</label>
+                        <input formControlName="lastname" clrInput type="text" name="lastname" />
+                    </clr-input-container>
+                    <clr-input-container>
+                        <label>Prénom</label>
+                        <input formControlName="firstname" clrInput type="text" name="firstname" />
+                    </clr-input-container>
+                    <clr-input-container>
+                        <label>Username</label>
+                        <input formControlName="username" clrInput type="text" name="username" required />
+                        <clr-control-helper>ex: etopin</clr-control-helper>
+                        <clr-control-error>Please provide a username</clr-control-error>
+                    </clr-input-container>
+                    <clr-input-container>
+                            <label>Password</label>
+                            <input formControlName="password" clrInput type="password" name="password" required />
+                            <clr-control-helper>ex: VMware1!</clr-control-helper>
+                            <clr-control-error>Please provide a password</clr-control-error>
+                        </clr-input-container>
+                    <clr-input-container>
+                        <label>Email</label>
+                        <input formControlName="email" clrInput type="email" name="email" required />
+                        <clr-control-helper>ex: foo@bar.com</clr-control-helper>
+                        <clr-control-error>Please provide an email</clr-control-error>
+                    </clr-input-container>
+                    <input type="file" hidden #picture (change)="updateImage($event)" />
+                </form>
+            </div>
+            <div class="clr-col-6">
+                <button [clrLoading]="uploadBtn"
+                    [ngClass]="{'btn-success-outline': this.userPicture != '', 'btn-outline': true}" class="btn"
+                    (click)="picture.click();">
+                    {{! this.userPicture ? 'Upload': 'Done !'}}
+                </button>
+                <img class="form-picture"
+                    [src]="userPicture != '' ? userPicture : 'assets/images/default-user-icon.jpg'">
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-outline" type="button">Cancel</button>
+        <button class="btn btn-outline" type="button" (click)="addUserModal = false">Cancel</button>
         <button class="btn btn-primary" type="submit" (click)="submit()">Submit</button>
     </div>
 </clr-modal>
 <!-- More user detail Modal -->
-<clr-modal [(clrModalOpen)]="showUser" [clrModalStaticBackdrop]="false">
-    <h3 class="modal-title">
-        <img class="card-media-image"
-            [src]="focusUser.picture ? focusUser.picture.medium : 'https://via.placeholder.com/50x50?text=Image+not+found'">
-        {{focusUser.username}}</h3>
+<clr-modal [(clrModalOpen)]="showUser" [clrModalStaticBackdrop]="false" fadeDown>
     <div class="modal-body">
-        <table class="table table-compact table-noborder ">
-            <thead>
-                <tr>
-                    <th>firstname</th>
-                    <th>lastname</th>
-                    <th>email</th>
-                </tr>
-            </thead>
+        <img class="card-media-image form-picture"
+            [src]="(focusUser.picture && focusUser.picture.large) ? focusUser.picture.large : '/assets/images/default-user-icon.jpg'">
+        <table class="table table-noborder table-vertical ">
             <tbody>
                 <tr>
+                    <th>Firstname</th>
                     <td>{{focusUser.firstname}}</td>
+                </tr>
+                <tr>
+                    <th>Lastname</th>
                     <td>{{focusUser.lastname}}</td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td>{{focusUser.username}}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
                     <td>{{focusUser.email}}</td>
                 </tr>
             </tbody>

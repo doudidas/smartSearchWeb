@@ -17,6 +17,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AdminComponent } from './admin/admin.component';
 import { AdminModule } from './admin/admin.module';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { HeaderComponent } from './header/header.component';
+import { ApiHealthComponent } from './api-health/api-health.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,9 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
     SnakeComponent,
     NotFoundComponent,
     AdminComponent,
-    MaintenanceComponent
+    MaintenanceComponent,
+    HeaderComponent,
+    ApiHealthComponent,
   ],
   imports: [
     BrowserModule,

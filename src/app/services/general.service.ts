@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-// import { async } from '@angular/core/testing';
+
 
 @Injectable()
 export class GeneralService {
@@ -10,4 +10,10 @@ export class GeneralService {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  public encrypt(value: string) {
+    // const hash = createHash('sha512');
+    // hash.update(value);
+    // return hash.digest('hex');
+    return value;
+  }
 }
