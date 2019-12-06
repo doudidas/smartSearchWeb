@@ -36,7 +36,6 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "fsevents": "^2.1.2",
     "@angular-devkit/build-angular": "~0.803.20",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
@@ -46,5 +45,8 @@
     "protractor": "~5.4.2",
     "ts-node": "~8.5.3",
     "tslint": "^5.15.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "2.1.2"
   }
 }
