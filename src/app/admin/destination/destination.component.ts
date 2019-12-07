@@ -22,6 +22,9 @@ export class DestinationComponent implements OnInit {
   }
 
   async addRandomDestination() {
+    if (! this.destinations) {
+      this.destinations = [];
+    }
     const destination = await this.generateRandomDestination();
     this.api.post(this.api.baseURL + 'topic', destination).then(
       success => {
