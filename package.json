@@ -9,9 +9,7 @@
     "build_prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "snyk-protect": "snyk protect",
-    "prepublish": "yarn run snyk-protect"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -38,7 +36,6 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "snyk": "1.258.1",
     "@angular-devkit/build-angular": "~0.803.20",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
