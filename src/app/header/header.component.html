@@ -25,8 +25,9 @@
                 {{currentUser}}
                 <clr-icon shape="caret down"></clr-icon>
             </button>
+
             <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-                <a href="..." clrDropdownItem>Preferences</a>
+                <!-- <a href="#" clrDropdownItem [clrDisabled]>Preferences</a> -->
                 <a (click)="logOut()" clrDropdownItem>Log out</a>
             </clr-dropdown-menu>
         </clr-dropdown>
@@ -41,8 +42,7 @@
             <a class="nav-link" href="#" [routerLink]="['admin/user']" routerLinkActive="active">Users</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" [routerLink]="['admin/destination']"
-                routerLinkActive="active">Destinations</a>
+            <a class="nav-link" href="#" [routerLink]="['admin/destination']" routerLinkActive="active">Destinations</a>
         </li>
     </ul>
 </nav>

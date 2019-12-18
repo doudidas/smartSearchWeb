@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
+import { ApiService } from './api.service';
+import { HttpHeaders } from '@angular/common/http';
+import { HttpClient } from 'selenium-webdriver/http';
 
 
 @Injectable()
 export class GeneralService {
+  private destinationDB: any[];
 
   constructor() { }
 

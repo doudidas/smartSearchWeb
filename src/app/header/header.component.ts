@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { User } from '../class/user';
+import { UserComponent } from '../admin/user/user.component';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   public currentUser: string;
-  constructor(private cookieService: CookieService, public router: Router) {
+  constructor(private cookieService: CookieService, public router: Router, private apiService: ApiService) {
   }
 
   async ngOnInit() {
@@ -22,4 +25,5 @@ export class HeaderComponent implements OnInit {
     this.cookieService.delete('login', '/');
     this.router.navigate(['login']);
   }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, SystemJsNgModuleLoader } from '@angular/core';
+import { Component, OnInit, ViewChild, SystemJsNgModuleLoader, Output } from '@angular/core';
 import { User } from 'src/app/class/user';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -207,4 +207,5 @@ export class UserComponent implements OnInit {
       console.error(error);
     };
   }
+
 }

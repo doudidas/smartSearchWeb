@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-const defaultHeaders = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: 'Basic ' + btoa('admin:VMware1!') });
+const defaultHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
 @Injectable()
 export class ApiService {
     public reachable: boolean;
     public baseURL: string;
+    private headers: HttpHeaders;
 
     constructor(private http: HttpClient) {
         this.reachable = false;
@@ -17,11 +18,17 @@ export class ApiService {
         } else {
             this.baseURL = window.location.origin + '/api/';
         }
+        const hash = btoa(environment.username + ':' + environment.password);
+        this.headers = defaultHeaders.set('Authorization', 'Basic ' + hash);
+    }
+
+    public async getDestinationDB() {
+        return this.get('https://restcountries.eu/rest/v2/all', new HttpHeaders({ Accept: '*' }));
     }
 
     public async checkHealth(): Promise<string> {
         console.log('checking api health...');
-        return await this.http.get(this.baseURL + 'healthcheck', { headers: defaultHeaders }).toPromise().then(
+        return await this.http.get(this.baseURL + 'healthcheck', { headers: this.headers }).toPromise().then(
             (response: HealthResponse) => {
                 console.log(response);
                 if (response.mongo === 'true') {
@@ -31,6 +38,7 @@ export class ApiService {
                 }
             },
             response => {
+                console.error(this.headers);
                 console.error(response);
                 return 'Backend disconnected: run on cache !';
             }
@@ -39,10 +47,10 @@ export class ApiService {
     public async get(uri: string, headers: HttpHeaders): Promise<any> {
         try {
             if (headers == null) {
-                return this.http.get(uri, { headers: defaultHeaders }).toPromise();
+                return this.http.get(uri, { headers: this.headers }).toPromise();
             } else {
                 if (!headers.has('Authorization')) {
-                    headers.set('Authorization', defaultHeaders.get('Authorization'));
+                    headers.set('Authorization', this.headers.get('Authorization'));
                 }
                 return this.http.get(uri, { headers }).toPromise();
             }
@@ -52,15 +60,15 @@ export class ApiService {
     }
 
     public async post(uri: string, body: object): Promise<any> {
-        return this.http.post(uri, body, { headers: defaultHeaders }).toPromise();
+        return this.http.post(uri, body, { headers: this.headers }).toPromise();
     }
 
     public put(uri: string, body: object): any {
-        return this.http.put(uri, body, { headers: defaultHeaders }).subscribe(res => res, error => { throw error; });
+        return this.http.put(uri, body, { headers: this.headers }).subscribe(res => res, error => { throw error; });
     }
 
     public delete(uri: string) {
-        return this.http.delete(uri, { headers: defaultHeaders }).toPromise().then(output => output, error => { throw error; });
+        return this.http.delete(uri, { headers: this.headers }).toPromise().then(output => output, error => { throw error; });
     }
 
     /**

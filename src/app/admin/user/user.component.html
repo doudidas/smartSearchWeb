@@ -76,11 +76,11 @@
                         <clr-control-error>Please provide a username</clr-control-error>
                     </clr-input-container>
                     <clr-input-container>
-                            <label>Password</label>
-                            <input formControlName="password" clrInput type="password" name="password" required />
-                            <clr-control-helper>ex: VMware1!</clr-control-helper>
-                            <clr-control-error>Please provide a password</clr-control-error>
-                        </clr-input-container>
+                        <label>Password</label>
+                        <input formControlName="password" clrInput type="password" name="password" required />
+                        <clr-control-helper>ex: VMware1!</clr-control-helper>
+                        <clr-control-error>Please provide a password</clr-control-error>
+                    </clr-input-container>
                     <clr-input-container>
                         <label>Email</label>
                         <input formControlName="email" clrInput type="email" name="email" required />
@@ -128,6 +128,14 @@
                 <tr>
                     <th>Email</th>
                     <td>{{focusUser.email}}</td>
+                </tr>
+                <tr>
+                    <th>Destinations</th>
+                    <td>
+                        <div *ngFor="let topic of focusUser.topics">
+                            <span class="label">{{topic}}</span>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

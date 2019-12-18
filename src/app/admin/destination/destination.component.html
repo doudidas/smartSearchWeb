@@ -1,14 +1,56 @@
 <h1>Liste des destinations</h1>
 <button (click)="addRandomDestination()" class="btn btn-outline">
-        <clr-icon shape="bolt" class=""></clr-icon>
-        Generate random Destination
-    </button>
-<div class="clr-row">
+    <clr-icon shape="bolt" class=""></clr-icon>
+    Generate random Destination
+</button>
+<!-- <div class="clr-row">
         <div *ngFor="let destination of destinations" class="clr-col-xl-3 clr-col-lg-4 clr-col-md-6 clr-col-12">
             <a class="card clickable">
-            <img class="card-media-image" [src]="destination.link">
-            {{destination.author}}
+            <img class="card-media-image" [src]="destination.flag">
+            {{destination.name}}
             </a>
         </div>
+    </div> -->
+
+<div class="clr-row">
+    <div *ngFor="let destination of destinations" class="clr-col-xl-4 clr-col-lg-6 clr-col-md-6 clr-col-12">
+        <a class="card clickable">
+            <div class="card-header">
+                {{destination.name}}
+            </div>
+            <div class="card-block">
+                <div class="card-media-block">
+                    <div class="card-media-image">
+                        <img class="card-media-image form-picture" [src]="destination.flag">
+                    </div>
+
+                    <div class="card-media-description">
+                            <div>
+                                    <span class="label">
+                                        <clr-icon shape="users"></clr-icon>&nbsp;
+                                        {{this.showPopulation(destination.population)}}
+                                    </span>
+                                    <span class="label">
+                                        <clr-icon shape="world"></clr-icon>&nbsp;
+                                        {{destination.region}}
+                                    </span>
+                                    <div *ngFor="let language of destination.languages">
+                                        <span class="label">
+                                            <clr-icon shape="happy-face"></clr-icon>&nbsp;
+                                            {{language.name}}
+                                        </span>
+                                    </div>
+                                </div>
+                    </div>
+                    <!-- <div class="card-content"> -->
+
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-link" disabled>Informations</button>
+                        <button class="btn btn-sm btn-warning-outline" disabled>Supprimer</button>
+                    </div>
+                </div>
+            
+        </a>
     </div>
-    
+</div>

@@ -10,5 +10,18 @@ export class User {
         private hash: string,
         public picture: { large: string, medium: string, thumbnail: string }
     ) {
+        this.topics = this.generateTopics();
     }
+    generateTopics() {
+        const out = ['Austin', 'New York', 'Palo Alto', 'San Francisco', 'Seattle'];
+        out.sort(() => Math.random() - 0.5);
+        let nb = Math.trunc(Math.random() * 5);
+        console.log(nb);
+        while (nb > 0) {
+            out.pop();
+            nb--;
+        }
+        return out;
+    }
+
 }

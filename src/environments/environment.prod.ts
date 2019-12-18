@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiBaseURL: ''
+  apiBaseURL: '',
+  username: 'admin',
+  password: 'VMware1!'
 };
