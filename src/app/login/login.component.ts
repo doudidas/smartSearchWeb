@@ -4,7 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginSession } from '../class/loginSession';
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
     public session: LoginSession;
     displayForm: boolean;
     logged: boolean;
-    form: FormGroup
+    form: FormGroup;
     password: string;
 
     constructor(public router: Router, private sessionService: SessionService) {
