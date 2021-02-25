@@ -7,7 +7,6 @@ export class User {
         public email: string,
         public topics: string[],
         public username: string,
-        private hash: string,
         public picture: { large: string, medium: string, thumbnail: string }
     ) {
         this.topics = this.generateTopics();

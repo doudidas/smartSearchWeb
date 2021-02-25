@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import { LoginSession } from './class/loginSession';
+import { SessionService } from './services/session.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,14 @@ import { CookieService } from 'ngx-cookie-service';
 })
 @Injectable()
 export class AppComponent implements OnInit {
-
+  session: LoginSession
   title = 'smartSearchWeb';
-  constructor(public router: Router, private cookieService: CookieService) {
+  constructor(public router: Router, private sessionService: SessionService) {
   }
 
-  ngOnInit() {
-    if (! this.cookieService.check('login')) {
-      this.router.navigate(['login']);
+  async ngOnInit() {
+    if (!this.sessionService.isLogged()) {
+      this.router.navigate(['login'])
     }
   }
 }

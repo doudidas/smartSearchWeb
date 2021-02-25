@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PreviousRouteService } from '../services/previous-route.service';
 
 @Component({
   selector: 'app-not-found',
@@ -8,7 +7,7 @@ import { PreviousRouteService } from '../services/previous-route.service';
 })
 export class NotFoundComponent implements OnInit {
   previousRoute: string;
-  constructor(private previousRouteService: PreviousRouteService) { }
+  constructor() { }
 
   ngOnInit() {
     // this.previousRoute = this.previousRouteService.getPreviousUrl();

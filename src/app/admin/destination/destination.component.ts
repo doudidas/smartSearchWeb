@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { addTextIcon, ClarityIcons, languageIcon, viewCardsIcon, viewListIcon } from '@cds/core/icon';
 import { ApiService } from 'src/app/services/api.service';
-import { HttpHeaders } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-destination',
@@ -12,12 +11,14 @@ export class DestinationComponent implements OnInit {
   public destinations: any[];
   public database: any[];
   private destinationDB: any[];
-
+  public showAs: string;
   constructor(private api: ApiService) {
     this.destinations = new Array();
     // this.getAllDestinations();
   }
   async ngOnInit() {
+    ClarityIcons.addIcons(viewCardsIcon,viewListIcon,addTextIcon,languageIcon);
+    this.showAs = "list"
     this.destinations = await this.getAllDestination();
   }
 
@@ -28,7 +29,7 @@ export class DestinationComponent implements OnInit {
     const destination = await this.generateRandomDestination();
     this.api.post(this.api.baseURL + 'topic', destination).then(
       success => {
-        this.destinations.push(destination);
+        this.destinations.unshift(destination);
 
       }
     );

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { User } from '../class/user';
-import { UserComponent } from '../admin/user/user.component';
-import { ApiService } from '../services/api.service';
+import { ClarityIcons, userIcon } from '@cds/core/icon';
+import { LoginSession } from '../class/loginSession';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-header',
@@ -11,19 +10,18 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  public currentUser: string;
-  constructor(private cookieService: CookieService, public router: Router, private apiService: ApiService) {
-  }
+  session: LoginSession
+  constructor(public router: Router, private sessionService: SessionService) { }
 
   async ngOnInit() {
-    const cookie = this.cookieService.get('login');
-    this.currentUser = JSON.parse(cookie).username;
+    ClarityIcons.addIcons(userIcon);
+    if (this.sessionService.isLogged()) {
+      this.session = SessionService.getSession()
+    }
   }
 
   logOut() {
-    this.currentUser = null;
-    this.cookieService.delete('login', '/');
-    this.router.navigate(['login']);
+    SessionService.logOut();
+    this.router.navigate(['/login']);
   }
-
 }
