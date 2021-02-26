@@ -3,3 +3,8 @@
     max-height: 150px;
     size: auto;
 }
+.form-picture-sm {
+    max-width: 500px;
+    max-height: 50px;
+    size: auto;
+}

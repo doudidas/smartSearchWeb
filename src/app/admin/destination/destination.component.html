@@ -1,18 +1,49 @@
+<!--  Title -->
 <h1>Liste des destinations</h1>
+
+<!--  Action Buttons -->
 <button (click)="addRandomDestination()" class="btn btn-outline">
-    <clr-icon shape="bolt" class=""></clr-icon>
+    <cds-icon shape="add-text"></cds-icon>
     Generate random Destination
 </button>
-<!-- <div class="clr-row">
-        <div *ngFor="let destination of destinations" class="clr-col-xl-3 clr-col-lg-4 clr-col-md-6 clr-col-12">
-            <a class="card clickable">
-            <img class="card-media-image" [src]="destination.flag">
-            {{destination.name}}
-            </a>
-        </div>
-    </div> -->
+<button (click)="showAs = 'list'" class="btn ">
+    <cds-icon shape="view-list"></cds-icon>
+    Show As List
+</button>
+<button (click)="showAs = 'card'" class="btn btn-outline">
+    <cds-icon shape="view-cards"></cds-icon>
+    Show As Cards
+</button>
 
-<div class="clr-row">
+
+<!--  List view -->
+<clr-datagrid *ngIf="showAs == 'list'">
+    <clr-dg-column></clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'region'">region</clr-dg-column>
+    <clr-dg-column [clrDgField]="'population'">population</clr-dg-column>
+    <clr-dg-column [clrDgField]="'langeage'">language</clr-dg-column>
+    <clr-dg-row *clrDgItems="let destination of destinations">
+        <clr-dg-cell> <img class="form-picture-sm" [src]="destination.flag"></clr-dg-cell>
+        <clr-dg-cell>{{destination.name}}</clr-dg-cell>
+        <clr-dg-cell>{{destination.region}}</clr-dg-cell>
+        <clr-dg-cell>{{this.showPopulation(destination.population)}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="label" *ngFor="let language of destination.languages">
+                <cds-icon shape="language"></cds-icon>{{language.name}}
+            </span>
+        </clr-dg-cell>
+    </clr-dg-row>
+    <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPageSize]="10">
+            <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} destinations
+        </clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>
+
+<!-- Card View -->
+<div class="clr-row" *ngIf="showAs == 'card'">
     <div *ngFor="let destination of destinations" class="clr-col-xl-4 clr-col-lg-6 clr-col-md-6 clr-col-12">
         <a class="card clickable">
             <div class="card-header">
@@ -25,32 +56,28 @@
                     </div>
 
                     <div class="card-media-description">
-                            <div>
-                                    <span class="label">
-                                        <clr-icon shape="users"></clr-icon>&nbsp;
-                                        {{this.showPopulation(destination.population)}}
-                                    </span>
-                                    <span class="label">
-                                        <clr-icon shape="world"></clr-icon>&nbsp;
-                                        {{destination.region}}
-                                    </span>
-                                    <div *ngFor="let language of destination.languages">
-                                        <span class="label">
-                                            <clr-icon shape="happy-face"></clr-icon>&nbsp;
-                                            {{language.name}}
-                                        </span>
-                                    </div>
-                                </div>
+                        <div>
+                            <span class="label">
+                                <clr-icon shape="users"></clr-icon>&nbsp;
+                                {{this.showPopulation(destination.population)}}
+                            </span>
+                            <span class="label">
+                                <clr-icon shape="world"></clr-icon>&nbsp;
+                                {{destination.region}}
+                            </span>
+                            <span class="label" *ngFor="let language of destination.languages">
+                                <cds-icon shape="language"></cds-icon>{{language.name}}
+                            </span>
+                        </div>
                     </div>
                     <!-- <div class="card-content"> -->
-
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-sm btn-link" disabled>Informations</button>
-                        <button class="btn btn-sm btn-warning-outline" disabled>Supprimer</button>
-                    </div>
                 </div>
-            
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-link" disabled>Informations</button>
+                    <button class="btn btn-sm btn-warning-outline" disabled>Supprimer</button>
+                </div>
+            </div>
+
         </a>
     </div>
 </div>

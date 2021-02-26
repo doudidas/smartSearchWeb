@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/class/user';
 import { ApiService } from 'src/app/services/api.service';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ClrForm } from '@clr/angular';
 import { ClrLoadingState } from '@clr/angular';
 import { GeneralService } from 'src/app/services/general.service';
+import { Md5 } from 'ts-md5';
+import { addTextIcon, airplaneIcon, ClarityIcons, cogIcon, viewCardsIcon, viewListIcon } from '@cds/core/icon';
 
 @Component({
   selector: 'app-user',
@@ -18,7 +20,7 @@ export class UserComponent implements OnInit {
   public submitBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
   public randomBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
   public currentPage: number;
-  public pagesize: number;
+  public pagesize: number| string;
   public userPicture: string;
   public showUser = false;
   public deleteUser = false;
@@ -28,9 +30,14 @@ export class UserComponent implements OnInit {
   public errorForm: boolean;
   public addUserModal: boolean;
   public fileMaxSize: number;
-  constructor(private api: ApiService, private generateServie: GeneralService) { }
+  constructor(private api: ApiService) { }
   public userForm: FormGroup;
+  public showAs: string;
+
   ngOnInit() {
+    ClarityIcons.addIcons(viewCardsIcon,viewListIcon,addTextIcon,airplaneIcon,cogIcon);
+
+    this.showAs = "list"
     this.focusUser = {} as User;
     this.user = {} as User;
     this.fileMaxSize = 0;
@@ -55,7 +62,7 @@ export class UserComponent implements OnInit {
   deleteUserFromDatabase() {
     const user = this.focusUser;
     this.api.delete(this.api.baseURL + 'user/' + user._id).then(
-      success => {
+      () => {
         this.users.splice(this.users.indexOf(user), 1);
       }, fail => {
         console.error(fail);
@@ -66,6 +73,7 @@ export class UserComponent implements OnInit {
 
   async getAllUsers(): Promise<User[]> {
     let users: User[];
+
     await this.api.get(this.api.baseURL + 'user?size=' + this.pagesize + '&page=' + this.currentPage, null)
       .then((success: User[]) => {
         users = success;
@@ -82,7 +90,7 @@ export class UserComponent implements OnInit {
             } else {
               user.topics = [];
             }
-            this.users.push(user);
+            this.users.unshift(user);
           }
         }
       }, () => {
@@ -93,7 +101,7 @@ export class UserComponent implements OnInit {
   appendUser(userID: string) {
     this.api.get(this.api.baseURL + 'user/' + userID, null).then(
       (user: User) => {
-        this.users.push(user);
+        this.users.unshift(user);
       },
       error => {
         console.error(error);
@@ -123,9 +131,9 @@ export class UserComponent implements OnInit {
     user = this.getUserById(userId);
     user.topics.splice(user.topics.indexOf(topicId), 1);
   }
-  public async changesize(size: number) {
-    this.pagesize = size;
-    this.users = await this.getAllUsers();
+  public async changesize(size: number|string) {
+      this.pagesize = size;
+      this.users = await this.getAllUsers();
   }
 
   async submit() {
@@ -134,7 +142,7 @@ export class UserComponent implements OnInit {
       this.submitBtnState = ClrLoadingState.ERROR;
       this.clrForm.markAsTouched();
     } else {
-      const hash = this.generateServie.encrypt(this.userForm.value.username + ':' + this.userForm.value.password);
+      const hash = Md5.hashStr(this.userForm.value.username + ':' + this.userForm.value.password).toString()
       const user = new User(this.userForm.value.firstname, this.userForm.value.lastname,
         null,
         '',
@@ -194,10 +202,10 @@ export class UserComponent implements OnInit {
   updateImage(event: any) {
     const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
-    reader.onprogress = e => {
+    reader.onprogress = () => {
       this.uploadBtn = ClrLoadingState.LOADING;
     };
-    reader.onloadend = e => {
+    reader.onloadend = () => {
       this.uploadBtn = ClrLoadingState.SUCCESS;
       this.userPicture = reader.result.toString();
 

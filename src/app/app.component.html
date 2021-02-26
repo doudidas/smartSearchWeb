@@ -1,18 +1,30 @@
+<!--  Main Decription of the app -->
 <clr-main-container>
+
+    <!-- Default view When user is Logged -->
     <div *ngIf="this.router.url != ('/login')">
+
+        <!-- Healthcheck alert bar  -->
         <app-api-health></app-api-health>
+
+        <!-- Header for navbar -->
         <app-header></app-header>
+
+        <!-- Main content of the app -->
         <div class="content-container">
-                <div class="content-area">
-                    <router-outlet></router-outlet>
-                </div>
+            <div class="content-area">
+                <router-outlet></router-outlet>
             </div>
+        </div>
+
     </div>
+
+    <!-- Special view when on login -->
     <div *ngIf="this.router.url == ('/login')">
         <app-login>
-                <span class="spinner">
-                        Loading...
-                </span>
+            <span class="spinner">
+                Loading...
+            </span>
         </app-login>
     </div>
 </clr-main-container>

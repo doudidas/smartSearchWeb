@@ -6,28 +6,24 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { ApiService } from './services/api.service';
 import { GeneralService } from './services/general.service';
 import { SnakeComponent } from './snake/snake.component';
-import { CookieService } from 'ngx-cookie-service';
-import { NotFoundComponent } from './notFound/notFound.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminComponent } from './admin/admin.component';
 import { AdminModule } from './admin/admin.module';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { HeaderComponent } from './header/header.component';
 import { ApiHealthComponent } from './api-health/api-health.component';
+import { SessionService } from './services/session.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent,
     HomeComponent,
     LoginComponent,
     SnakeComponent,
-    NotFoundComponent,
     AdminComponent,
     MaintenanceComponent,
     HeaderComponent,
@@ -43,7 +39,7 @@ import { ApiHealthComponent } from './api-health/api-health.component';
     ClarityModule,
     AdminModule,
   ],
-  providers: [HttpClient, ApiService, GeneralService, CookieService],
+  providers: [HttpClient, ApiService, GeneralService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

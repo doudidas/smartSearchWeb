@@ -25,7 +25,6 @@ export class HomeComponent {
         },
         {
             title: 'Kubernetes',
-            // tslint:disable-next-line: max-line-length
             body: 'Kubernetes is an open-source container-orchestration system for automating deployment, scaling and management of containerized applications.',
             image: 'assets/images/kubernetes.svg'
         },
