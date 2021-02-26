@@ -11,26 +11,28 @@ export class DestinationComponent implements OnInit {
   public destinations: any[];
   public database: any[];
   private destinationDB: any[];
-  public showAs: string;
+  public showAs = "list" 
+
   constructor(private api: ApiService) {
     this.destinations = new Array();
-    // this.getAllDestinations();
   }
+
   async ngOnInit() {
-    ClarityIcons.addIcons(viewCardsIcon,viewListIcon,addTextIcon,languageIcon);
-    this.showAs = "list"
+    ClarityIcons.addIcons(viewCardsIcon, viewListIcon, addTextIcon, languageIcon);
     this.destinations = await this.getAllDestination();
   }
 
   async addRandomDestination() {
-    if (! this.destinations) {
+    if (!this.destinations) {
       this.destinations = [];
     }
     const destination = await this.generateRandomDestination();
     this.api.post(this.api.baseURL + 'topic', destination).then(
-      success => {
+      () => {
         this.destinations.unshift(destination);
-
+      },
+      error => {
+        console.error("Failed to update value on DB: " + error);
       }
     );
   }

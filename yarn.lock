@@ -1111,7 +1111,7 @@
   resolved "https://registry.yarnpkg.com/@cds/city/-/city-1.1.0.tgz#5b7323750d3d64671ce2e3a804bcf260fbea1154"
   integrity sha512-S9K+Q39BGOghyLHmR0Wdcmu1i1noSUk8HcvMj+3IaohZw02WFd99aPTQDHJeseXrXZP3CNovaSlePI0R11NcFg==
 
-"@cds/core@5.0.2":
+"@cds/core@^5":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@cds/core/-/core-5.0.2.tgz#dcbb177ff646982be0506daaddf41533a7d74838"
   integrity sha512-V7SyUTiC0ik52HODpvzPWzL56Y9r+OjviuHgjF/gqcgigkQFDDlSCCv80W0n9UGNARmATdKtRX92nA83Y6+ivQ==
@@ -5546,13 +5546,6 @@ next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
-
-ngx-cookie-service@^11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/ngx-cookie-service/-/ngx-cookie-service-11.0.2.tgz#f1dfaff3da838bc9babecdae7ee56e761495f81e"
-  integrity sha512-nsjzdcjK+gNAweE/DDdnOyHo04jlxTeMXOL/oJNp8MHtOTvCXnOtIFYgq4Sb2JU6UXTovO9tHEMIf9TxjlsdgQ==
-  dependencies:
-    tslib "^2.0.0"
 
 nice-try@^1.0.4:
   version "1.0.5"

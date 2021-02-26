@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.session = new LoginSession("local", "", false);
+        this.session = new LoginSession("user", "", false);
         this.form = new FormGroup({
             type: new FormControl(this.session.type, Validators.required),
             username: new FormControl(this.session.username, Validators.required),

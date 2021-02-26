@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { HealthResponse } from '../class/healthResponse';
 
 const defaultHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -87,10 +88,4 @@ export class ApiService {
             return of(result as T);
         };
     }
-}
-
-class HealthResponse {
-    constructor(
-        public api: string,
-        public mongo: string) { }
 }
