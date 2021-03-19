@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginSession } from '../class/loginSession';
 import { SessionService } from '../services/session.service';
+import { AppComponent } from '../app.component';
 
 @Component({
     selector: 'app-login',

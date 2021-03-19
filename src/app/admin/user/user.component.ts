@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   public submitBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
   public randomBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
   public currentPage: number;
-  public pagesize: number| string;
+  public pagesize: number | string;
   public userPicture: string;
   public showUser = false;
   public deleteUser = false;
@@ -35,15 +35,13 @@ export class UserComponent implements OnInit {
   public showAs: string;
 
   ngOnInit() {
-    ClarityIcons.addIcons(viewCardsIcon,viewListIcon,addTextIcon,airplaneIcon,cogIcon);
-
+    ClarityIcons.addIcons(viewCardsIcon, viewListIcon, addTextIcon, airplaneIcon, cogIcon);
     this.showAs = "list"
     this.focusUser = {} as User;
     this.user = {} as User;
     this.fileMaxSize = 0;
     this.users = new Array<User>(0);
     this.currentPage = 0;
-    this.pagesize = 20;
     this.userPicture = '';
     this.userForm = new FormGroup({
       firstname: new FormControl('', Validators.nullValidator),
@@ -52,7 +50,15 @@ export class UserComponent implements OnInit {
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.nullValidator)
     });
+    this.initFakeUsers();
+
     this.getAllUsers();
+  }
+
+  initFakeUsers() {
+    let tmpUser = new User("---", "---", "", "", "---", [], "---", null, null);
+    tmpUser.topics = [];
+    this.users = Array(10).fill(tmpUser)
   }
 
   showDeleteUser(user: User) {
@@ -62,50 +68,32 @@ export class UserComponent implements OnInit {
   deleteUserFromDatabase() {
     const user = this.focusUser;
     this.api.delete(this.api.baseURL + 'user/' + user._id).then(
-      () => {
-        this.users.splice(this.users.indexOf(user), 1);
-      }, fail => {
-        console.error(fail);
-      }
+      () => this.users.splice(this.users.indexOf(user), 1),
+      fail => console.error(fail)
     );
     this.deleteUser = false;
   }
 
-  async getAllUsers(): Promise<User[]> {
-    let users: User[];
-
-    await this.api.get(this.api.baseURL + 'user?size=' + this.pagesize + '&page=' + this.currentPage, null)
-      .then((success: User[]) => {
-        users = success;
-        if (users.length == null) {
-          users = [];
-        } else {
-          for (const user of users) {
-            if (user.hasOwnProperty('topics')) {
-              for (let i = 0; i < user.topics.length; i++) {
-                if (user.topics[i] != null || user.topics[i] !== '0') {
-                  user.topics.splice(i, 1);
-                }
-              }
-            } else {
-              user.topics = [];
-            }
-            this.users.unshift(user);
-          }
+  async getAllUsers() {
+    const pageSize = 20;
+    this.api.get(this.api.baseURL + 'countUser', null).then(
+      number => {
+        this.users = []
+        for (let page = 0; page < Math.ceil(number / pageSize); page++) {
+          this.api.get(this.api.baseURL + 'user?size=' + pageSize + '&page=' + page, null).then(
+            (users: User[]) => this.users = this.users.concat(users)
+          )
         }
-      }, () => {
-        users = null;
-      });
-    return users;
+      },
+      error => console.error(error)
+    )
+
   }
+
   appendUser(userID: string) {
     this.api.get(this.api.baseURL + 'user/' + userID, null).then(
-      (user: User) => {
-        this.users.unshift(user);
-      },
-      error => {
-        console.error(error);
-      }
+      (user: User) => this.users.unshift(user),
+      error => console.error(error)
     );
   }
   getUserById(userId: string) {
@@ -131,9 +119,10 @@ export class UserComponent implements OnInit {
     user = this.getUserById(userId);
     user.topics.splice(user.topics.indexOf(topicId), 1);
   }
-  public async changesize(size: number|string) {
-      this.pagesize = size;
-      this.users = await this.getAllUsers();
+
+  public async changesize(size: number | string) {
+    this.pagesize = size;
+    this.getAllUsers();
   }
 
   async submit() {
@@ -172,7 +161,7 @@ export class UserComponent implements OnInit {
   addRandomUser() {
     this.randomBtnState = ClrLoadingState.LOADING;
     this.api.get('https://randomuser.me/api/?inc=login,name,email,picture', null).then(
-      async success => {
+      success => {
         const tmp = success.results[0];
         const generatedUser = new User(
           tmp.name.first,
@@ -208,12 +197,10 @@ export class UserComponent implements OnInit {
     reader.onloadend = () => {
       this.uploadBtn = ClrLoadingState.SUCCESS;
       this.userPicture = reader.result.toString();
-
     };
     reader.onerror = error => {
       this.uploadBtn = ClrLoadingState.ERROR;
       console.error(error);
     };
   }
-
 }

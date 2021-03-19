@@ -10,3 +10,11 @@
     -moz-border-radius: 20%;
     border-radius: 20%;
 }
+
+.list-picture {
+    max-width: 48px;
+    max-height: 48px;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    border-radius: 20%;
+}

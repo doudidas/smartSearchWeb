@@ -10,7 +10,8 @@ import { LoginSession } from '../class/loginSession';
 export class SessionService {
 
   // Minimal Constructor with router only
-  constructor(private router: Router,) { }
+  constructor(private router: Router,) { 
+  }
 
   // Static function are use to avoid manipulating a local SessionService Variable.
 

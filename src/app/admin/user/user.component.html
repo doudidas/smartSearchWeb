@@ -28,7 +28,7 @@
     <clr-dg-column [clrDgField]="'langeage'">email</clr-dg-column>
     <clr-dg-column [clrDgField]="'destination'">destinations</clr-dg-column>
     <clr-dg-row *clrDgItems="let user of users">
-        <clr-dg-cell> <img
+        <clr-dg-cell> <img class="list-picture"
                 [src]="user.picture && user.picture.thumbnail ? user.picture.thumbnail : 'assets/images/default-user-icon.jpg'">
         </clr-dg-cell>
         <clr-dg-cell>{{user.username}}</clr-dg-cell>
@@ -53,7 +53,7 @@
 
 <!--  Card View -->
 <div *ngIf="showAs == 'card'">
-    <clr-dropdown >
+    <clr-dropdown>
         <button clrDropdownTrigger class="btn btn-outline" disabled>
             <cds-icon shape="cog"></cds-icon> Users per pages - {{pagesize}}
         </button>

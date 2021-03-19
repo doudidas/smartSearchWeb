@@ -64,12 +64,12 @@ export class ApiService {
         return this.http.post(uri, body, { headers: this.headers }).toPromise();
     }
 
-    public put(uri: string, body: object): any {
-        return this.http.put(uri, body, { headers: this.headers }).subscribe(res => res, error => { throw error; });
+    public async put(uri: string, body: object): Promise<any> {
+        return this.http.put(uri, body, { headers: this.headers }).toPromise();
     }
 
-    public delete(uri: string) {
-        return this.http.delete(uri, { headers: this.headers }).toPromise().then(output => output, error => { throw error; });
+    public delete(uri: string): Promise<any> {
+        return this.http.delete(uri, { headers: this.headers }).toPromise();
     }
 
     /**
