@@ -29,7 +29,7 @@
     "@webcomponents/custom-elements": "^1.4.3",
     "angular2-uuid": "^1.1.1",
     "md5": "^2.3.0",
-    "node": "^15.8.0",
+    "node": "^15.10.0",
     "rxjs": "~6.6.3",
     "ts-md5": "^1.2.7",
     "tslib": "^2.1.0",
