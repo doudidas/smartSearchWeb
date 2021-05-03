@@ -50,7 +50,7 @@ export class UserComponent implements OnInit {
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.nullValidator)
     });
-    this.initFakeUsers();
+    // this.initFakeUsers();
 
     this.getAllUsers();
   }

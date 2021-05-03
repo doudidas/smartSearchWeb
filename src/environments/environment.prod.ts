@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiBaseURL: 'http://ec2-35-181-50-128.eu-west-3.compute.amazonaws.com:9000/api/',
+  production: true,
+  apiBaseURL: 'http://localhost:9000/api/',
   username: 'admin',
   password: 'VMware1!'
 };

@@ -20,7 +20,7 @@ export class DestinationComponent implements OnInit {
 
   async ngOnInit() {
     ClarityIcons.addIcons(viewCardsIcon, viewListIcon, addTextIcon, languageIcon);
-    this.destinations = Array(10).fill(this.fakeDestination)
+    this.destinations = []; // Array(10).fill(this.fakeDestination)
     this.getAllDestination();
   }
 
