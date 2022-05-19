@@ -30,7 +30,7 @@ RUN yarn build_prod
 # STEP 2 Setup nginx container with minimal code
 ###################################################
 
-FROM nginx:1-alpine
+FROM nginx:1.20-alpine
 
 ## Replace default configuration 
 COPY nginx/default.conf etc/nginx/conf.d/
